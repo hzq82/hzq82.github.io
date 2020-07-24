@@ -184,16 +184,6 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
   </nav>
 </div>
 
@@ -252,16 +242,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-07-24 11:31:57 / 修改时间：13:38:55" itemprop="dateCreated datePublished" datetime="2020-07-24T11:31:57+08:00">2020-07-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
-                </span>
+              <time title="创建时间：2020-07-24 11:28:31 / 修改时间：13:42:59" itemprop="dateCreated datePublished" datetime="2020-07-24T11:28:31+08:00">2020-07-24</time>
             </span>
 
           
@@ -275,7 +256,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h2 id="elasticsearch-维护手册"><a href="#elasticsearch-维护手册" class="headerlink" title="elasticsearch 维护手册"></a>elasticsearch 维护手册</h2><h2 id="一-kibana"><a href="#一-kibana" class="headerlink" title="一.kibana"></a>一.kibana</h2><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">访问方式：http</span>:<span class="string">//192.168.113.224:5601 或 http://192.168.113.225:5601</span></span><br><span class="line"><span class="attr">ip：192.168.113.224,192.168.113.225</span></span><br><span class="line"><span class="comment">#启动</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">/opt/elk/kibana-7.1.1-linux-x86_64/bin</span></span><br><span class="line"><span class="attr">nohup</span> <span class="string">./kibana &amp;</span></span><br><span class="line"><span class="comment">#停止</span></span><br><span class="line"><span class="attr">kill</span> <span class="string">-9 process</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="二-elasticsearch-head"><a href="#二-elasticsearch-head" class="headerlink" title="二.elasticsearch-head"></a>二.elasticsearch-head</h2><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">访问方式：http</span>:<span class="string">//192.168.113.225:9100/</span></span><br><span class="line"><span class="meta">IP：192.168.113.224</span> <span class="string">192.168.113.225</span></span><br><span class="line"><span class="comment"># Start</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">/opt/elk/elasticsearch-head-7.1.1</span></span><br><span class="line"><span class="attr">nohup</span> <span class="string">npm run start &amp;</span></span><br><span class="line"><span class="comment"># Stop</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="三-elasticsearch"><a href="#三-elasticsearch" class="headerlink" title="三.elasticsearch"></a>三.elasticsearch</h2><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">访问方式：http</span>:<span class="string">//192.168.113.224:9200</span></span><br><span class="line"><span class="attr">ip</span>:<span class="string">192.168.113.223 192.168.113.224 192.168.113.225</span></span><br><span class="line"><span class="comment"># Start</span></span><br><span class="line"><span class="meta">[root@yz-elk01</span> <span class="string">bin]# su - elsearch</span></span><br><span class="line"><span class="meta">[root@yz-elk01</span> <span class="string">bin]# cd /opt/elk/elasticsearch-7.1.1/bin/</span></span><br><span class="line"><span class="meta">[root@yz-elk01</span> <span class="string">bin]# ./elasticsearch -d</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="四-kafka"><a href="#四-kafka" class="headerlink" title="四.kafka"></a>四.kafka</h2><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ip</span>:<span class="string">192.168.113.224</span></span><br><span class="line"><span class="meta">[root@yz-elk01</span> <span class="string">~]# cd /opt/elk/kafka_2.12-2.2.1/bin</span></span><br><span class="line"><span class="meta">[root@yz-elk01</span> <span class="string">bin]# ./kafka-server-start.sh -daemon ../config/server.properties</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="五-zookeeper"><a href="#五-zookeeper" class="headerlink" title="五.zookeeper"></a>五.zookeeper</h2><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ip</span>:<span class="string">192.168.113.224</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">/opt/elk/zookeeper-3.5.5/bin</span></span><br><span class="line"><span class="meta">./zkServer.sh</span> <span class="string">start</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="六-logstash"><a href="#六-logstash" class="headerlink" title="六.logstash"></a>六.logstash</h2><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ip：192.168.113.224</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">/opt/elk/logstash-7.1.0/bin</span></span><br><span class="line"><span class="attr">nohup</span> <span class="string">./logstash -f ../config/online.conf &amp;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>title: elasticsearch<br>date: 2020-07-24 11:31:57<br>categories: ops<br>tag: 博客</p>
+
       
     </div>
 
