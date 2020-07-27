@@ -1,341 +1,71 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  
-  <link rel="stylesheet" href="/lib/animate-css/animate.min.css">
-
-<script class="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"path":"search.xml"};
-  </script>
-
-  <meta name="description" content="linux1、什么是运维？什么是游戏运维？ 1）运维是指大型组织已经建立好的网络软硬件的维护，就是要保证业务的上线与运作的正常，在他运转的过程中，对他进行维护，他集合了网络、系统、数据库、开发、安全、监控于一身的技术，运维又包括很多种，有DBA运维、网站运维、虚拟化运维、监控运维、游戏运维等等">
-<meta property="og:type" content="article">
-<meta property="og:title" content="linux">
-<meta property="og:url" content="http://yoursite.com/2020/07/24/linux/index.html">
-<meta property="og:site_name" content="MY LIFE">
-<meta property="og:description" content="linux1、什么是运维？什么是游戏运维？ 1）运维是指大型组织已经建立好的网络软硬件的维护，就是要保证业务的上线与运作的正常，在他运转的过程中，对他进行维护，他集合了网络、系统、数据库、开发、安全、监控于一身的技术，运维又包括很多种，有DBA运维、网站运维、虚拟化运维、监控运维、游戏运维等等">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/QFzRdz9libEawR0xuaPapN1QiaC4vL4Hr4b7fQichUYZFr4kxH9E1MxvjBKTNQJhMJSudcpFx6Q4H3oBdpUV6WIkw/640?tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/QFzRdz9libEawR0xuaPapN1QiaC4vL4Hr4qibFylR5Fic1c64uvxzlkWMJ0SzcWsTvQmrL2NaRCbuqGwpKzos3WA0w/640?tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="article:published_time" content="2020-07-24T07:30:50.000Z">
-<meta property="article:modified_time" content="2020-07-27T02:02:08.814Z">
-<meta property="article:author" content="harry">
-<meta property="article:tag" content="运维">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/QFzRdz9libEawR0xuaPapN1QiaC4vL4Hr4b7fQichUYZFr4kxH9E1MxvjBKTNQJhMJSudcpFx6Q4H3oBdpUV6WIkw/640?tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
-
-<link rel="canonical" href="http://yoursite.com/2020/07/24/linux/">
-
-
-<script class="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
-
-  <title>linux | MY LIFE</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  body { margin-top: 2rem; }
-
-  .use-motion .menu-item,
-  .use-motion .sidebar,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header {
-    visibility: visible;
-  }
-
-  .use-motion .header,
-  .use-motion .site-brand-container .toggle,
-  .use-motion .footer { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle,
-  .use-motion .custom-logo-image {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line {
-    transform: scaleX(1);
-  }
-
-  .search-pop-overlay, .sidebar-nav { display: none; }
-  .sidebar-panel { display: block; }
-  </style>
-</noscript>
-
-<link rel="alternate" href="/atom.xml" title="MY LIFE" type="application/atom+xml">
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <main class="main">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-        <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-        <span class="toggle-line toggle-line-first"></span>
-        <span class="toggle-line toggle-line-middle"></span>
-        <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">MY LIFE</h1>
-      <i class="logo-line"></i>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux"><span class="nav-number">1.</span> <span class="nav-text">linux</span></a></li></ol></div>
-      </section>
-      <!--/noindex-->
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="harry"
-      src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">harry</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">3</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author animated">
-      <span class="links-of-author-item">
-        <a href="/haozq82@gmail.com" title="E-Mail → haozq82@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
-      </span>
-  </div>
-
-
-
-      </section>
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </header>
-
-      
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-<noscript>
-  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-      <div class="main-inner">
-        
-
-        <div class="content post posts-expand">
-          
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/24/linux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="harry">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MY LIFE">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          linux
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-24 15:30:50" itemprop="dateCreated datePublished" datetime="2020-07-24T15:30:50+08:00">2020-07-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-27 10:02:08" itemprop="dateModified" datetime="2020-07-27T10:02:08+08:00">2020-07-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h2><p>1、什么是运维？什么是游戏运维？</p>
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>template</title>
+    <url>/2020/07/24/template/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>ops</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nginx</title>
+    <url>/2020/07/24/nginx/</url>
+    <content><![CDATA[<h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><p><strong>一、介绍</strong></p>
+<p>​    Nginx是一个高性能的<strong>HTTP**</strong>和反向代理服务器<strong>，也是一个</strong>IMAP/POP3/SMTP<strong>**代理服务器</strong>。</p>
+<p>​     Nginx是一款轻量级的Web服务器/反向代理服务器以及电子邮件代理服务器，并在一个BSD-like协议下发行。由俄罗斯的程序设计师lgor Sysoev所开发，供俄国大型的入口网站及搜索引擎Rambler使用。其特点是<strong>占有内存少，并发能力强</strong>，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。</p>
+<p>​     Nginx相较于Apache\lighttpd具有占有内存少，稳定性高等优势，并且依靠并发能力强，丰富的模块库以及友好灵活的配置而闻名。<strong>在**</strong>Linux<strong>**操作系统下</strong>，nginx使用<strong>epoll事件模型</strong>,得益于此，nginx在Linux操作系统下效率相当高。同时Nginx在OpenBSD或FreeBSD操作系统上采用类似于Epoll的高效事件模型kqueue.</p>
+<a id="more"></a>
+
+<p><strong>二、名词解释</strong></p>
+<p><strong>代理服务器</strong></p>
+<p>一般是指局域网内部的机器<strong>通过代理服务器</strong>发送请求到互联网上的服务器，代理服务器一般作用在客户端。</p>
+<p><strong>反向代理</strong></p>
+<p>​      客户端（用户A）向反向代理的<strong>命名空间（**</strong>name-space<strong>**）中的内容</strong>发送普通请求，接着反向代理将判断<strong>向何处（原始服务器）转交请求</strong>，并将获得的内容返回给客户端。而客户端始终认为它访问的是原始服务器B而不是服务器Z。由于防火墙作用，只允许服务器Z进出，防火墙和反向代理共同作用保护了院子资源服务器B。</p>
+<p><img src="https://img-blog.csdn.net/20150630214513300?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1dGVuZ3RlbmcxMzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p>​     <strong>用途：将防火墙后面的服务器提供给Internet用户访问。反向代理还可以为后端的多台服务器提供负载平衡或为后端较慢的服务器提供缓冲服务。</strong></p>
+<p><strong>正向代理</strong></p>
+<p>​     正向代理是一个位于<strong>客户端**</strong>A和原始服务器（服务器B）之间的服务器（代理服务器Z**），为了从原始服务器取得内容，用户A向代理服务器Z发送一个请求并指定目标（服务器B），然后代理服务器Z向服务器B转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。</p>
+<p><img src="https://img-blog.csdn.net/20150630214532017?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1dGVuZ3RlbmcxMzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p>​      用途：<strong>在防火墙内的局域网客户端提供访问**</strong>Internet<strong>**的途径</strong>。还可以使用缓冲特性减少网络使用率。</p>
+<p>从安全性来讲：</p>
+<p>​    <strong>正向代理允许客户端通过它访问任意网站并且隐藏客户端自身</strong>，因此你必须采取安全措施以确保仅为经过授权的客户端提供服务。</p>
+<p>​    反向代理对外都是透明的，访问者并不知道自己访问的是一个代理。</p>
+<p><strong>三、Nginx VSApache</strong></p>
+<p>相同点：</p>
+<p>1、都是HTTP服务器软件</p>
+<p>2、功能上都采用模块化结构设计</p>
+<p>3、都支持通用的语言接口，如PHP、Perl、Python等</p>
+<p>4、支持正向、反向代理、虚拟主机、URL重写、压缩传输、SSL加密传输</p>
+<p>不同点：</p>
+<p>1、Apache处理速度很慢，占用很多内存资源</p>
+<p>2、功能上，Apache所有模块支持动静态编译，<strong>Nginx模块都是静态编译的</strong></p>
+<p>3、对Fcgi的支持：Apache支持的很不好，Nginx支持非常好</p>
+<p>4、处理连接方式：<strong>Nginx支持epoll,Apache不支持</strong></p>
+<p>5、空间使用上：<strong>Nginx安装包仅几百K</strong></p>
+<p>四、Nginx优势</p>
+<p>1、作为Web服务器，<strong>Nginx处理静态文件、索引文件，自动索引的效率非常高</strong></p>
+<p>2、作为代理服务器，Nginx可以实现无缓存的反向代理加速，提高网站运行速度</p>
+<p>3、作为负载均衡服务器，Nginx既可以在内部直接支持Rails和PHP，也可以支持HTTP代理服务器对外进行服务，同时还<strong>支持简单的容错和利用算法进行负载均衡</strong></p>
+<p>4、在性能方面，Nginx是专门为性能优化而开发的，实现上非常注重效率。它采用内核Poll模型，可以支持更多的并发连接，最大可以支持对5万个并发连接数的响应，而且只占用很低的内存资源</p>
+<p>5、在稳定性方面，Nginx采取了<strong>分阶段资源分配技术</strong>，使得CPU与内存的占用率非常低。Nginx官方表示，Nginx保持1万个没有活动的连接，而这些连接只占用2.5MB内存，因此，类似DOS这样的攻击对Nginx来说基本上是没有任何作用的</p>
+<p>6、在高可用性方面，<strong>Nginx支持热部署，启动速度特别迅速，因此可以在不间断服务的情况下，对软件版本或者配置进行升级，即使运行数月也无需重新启动，几乎可以做到7x24小时不间断地运行</strong></p>
+<p>   Nginx具有很高的稳定性；支持热部署；代码质量非常高，代码很规范，手法成熟，模块扩展也很容易；采用了一些os提供的最新特性如对sendfile(Linux2.2+),accept-filter（FreeBSD4.1+）,TCP_DEFER_ACCEPT(Linux 2.4+)的支持，从而大大提高了性能。</p>
+]]></content>
+      <categories>
+        <category>ops</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>linux</title>
+    <url>/2020/07/24/linux/</url>
+    <content><![CDATA[<h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h2><p>1、什么是运维？什么是游戏运维？</p>
 <p>1）运维是指大型组织已经建立好的网络软硬件的维护，就是要保证业务的上线与运作的正常，在他运转的过程中，对他进行维护，他集合了网络、系统、数据库、开发、安全、监控于一身的技术，运维又包括很多种，有DBA运维、网站运维、虚拟化运维、监控运维、游戏运维等等</p>
 <a id="more"></a>
 
@@ -488,23 +218,23 @@
 <p>虚拟路由冗余协议，可以认为是实现路由器高可用的协议，即将N台提供相同功能的路由器组成一个路由器组<br>这个组里面有一个master和多个backup，master上面有一个对外提供服务的vip（该路由器所在局域网内<br>其他机器的默认路由为该vip），master会发组播，当backup收不到vrrp包时就认为master宕掉了<br>这时就需要根据VRRP的优先级来选举一个backup当master。这样就可以保证路由器的高可用了</p>
 <p>keepalived主要有三个模块，分别是core、check和vrrp。core模块为keepalived的核心，负责主进程的启动、维护及全局配置文件的加载和解析。check负责健康检查，包括常见的各种检查方式，vrrp模块是来实现VRRP协议的</p>
 <p>Keepalived健康检查方式配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">HTTP_GET|SSL_GET</span><br><span class="line">HTTP_GET | SSL_GET</span><br><span class="line">&#123;</span><br><span class="line">url &#123;</span><br><span class="line">path &#x2F;# HTTP&#x2F;SSL 检查的url可以是多个</span><br><span class="line">digest  # HTTP&#x2F;SSL 检查后的摘要信息用工具genhash生成</span><br><span class="line">status_code 200# HTTP&#x2F;SSL 检查返回的状态码</span><br><span class="line">&#125;</span><br><span class="line">connect_port 80 # 连接端口</span><br><span class="line">bindto</span><br><span class="line">connect_timeout 3 # 连接超时时间</span><br><span class="line">nb_get_retry 3 # 重连次数</span><br><span class="line">delay_before_retry 2 #连接间隔时间</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP_GET|SSL_GET</span><br><span class="line">HTTP_GET | SSL_GET</span><br><span class="line">&#123;</span><br><span class="line">url &#123;</span><br><span class="line">path &#x2F;# HTTP&#x2F;SSL 检查的url可以是多个</span><br><span class="line">digest  # HTTP&#x2F;SSL 检查后的摘要信息用工具genhash生成</span><br><span class="line">status_code 200# HTTP&#x2F;SSL 检查返回的状态码</span><br><span class="line">&#125;</span><br><span class="line">connect_port 80 # 连接端口</span><br><span class="line">bindto</span><br><span class="line">connect_timeout 3 # 连接超时时间</span><br><span class="line">nb_get_retry 3 # 重连次数</span><br><span class="line">delay_before_retry 2 #连接间隔时间</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>21、统计ip访问情况，要求分析nginx访问日志，找出访问页面数量在前十位的ip</p>
 <ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat access.log | awk ‘&#123;print $1&#125;’ | uniq -c | sort -rn | head -10</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat access.log | awk ‘&#123;print $1&#125;’ | uniq -c | sort -rn | head -10</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <p>22、使用tcpdump监听主机为192.168.1.1，tcp端口为80的数据，同时将输出结果保存输出到tcpdump.log</p>
 <ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump ‘host 192.168.1.1 and port 80’ &gt; tcpdump.log</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tcpdump ‘host 192.168.1.1 and port 80’ &gt; tcpdump.log</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <p>23、如何将本地80 端口的请求转发到8080 端口，当前主机IP 为192.168.2.1</p>
 <ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -A PREROUTING -d 192.168.2.1 -p tcp -m tcp -dport 80 -j DNAT-to-destination 192.168.2.1:8080</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptables -A PREROUTING -d 192.168.2.1 -p tcp -m tcp -dport 80 -j DNAT-to-destination 192.168.2.1:8080</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -518,7 +248,7 @@
 <p>运维工程师在公司当中责任重大，需要保证时刻为公司及客户提供最高、最快、最稳定、最安全的服务<br>运维工程师的一个小小的失误，很有可能会对公司及客户造成重大损失<br>因此运维工程师的工作需要严谨及富有创新精神</p>
 <p>26、实时抓取并显示当前系统中tcp 80端口的网络数据信息，请写出完整操作命令</p>
 <ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -nn tcp port 80</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tcpdump -nn tcp port 80</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -552,134 +282,12 @@
 <p>物理层规定:为传输数据所需要的物理链路创建、维持、拆除<br>而提供具有机械的，电子的，功能的和规范的特性</p>
 <p>简单的说，物理层确保原始的数据可在各种物理媒体上传输。局域网与广域网皆属第1、2层</p>
 <p>物理层是OSI的第一层，它虽然处于最底层，却是整个开放系统的基础<br>物理层为设备之间的数据通信提供传输媒体及互连设备，为数据传输提供可靠的环境<br>如果您想要用尽量少的词来记住这个第一层，那就是“信号和介质”</p>
-
-    </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag"># 运维</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/07/24/template/" rel="prev" title="template">
-      <i class="fa fa-chevron-left"></i> template
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/07/24/nginx/" rel="next" title="nginx">
-      nginx <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
-        </div>
-        
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">harry</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-  
-
-
-
-
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-</body>
-</html>
+]]></content>
+      <categories>
+        <category>ops</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+</search>
