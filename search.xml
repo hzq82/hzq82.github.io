@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>template</title>
-    <url>/2020/07/24/template/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>ops</category>
-      </categories>
-      <tags>
-        <tag>运维</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>nginx</title>
     <url>/2020/07/24/nginx/</url>
     <content><![CDATA[<h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><p><strong>一、介绍</strong></p>
@@ -283,6 +272,17 @@
 <p>简单的说，物理层确保原始的数据可在各种物理媒体上传输。局域网与广域网皆属第1、2层</p>
 <p>物理层是OSI的第一层，它虽然处于最底层，却是整个开放系统的基础<br>物理层为设备之间的数据通信提供传输媒体及互连设备，为数据传输提供可靠的环境<br>如果您想要用尽量少的词来记住这个第一层，那就是“信号和介质”</p>
 ]]></content>
+      <categories>
+        <category>ops</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>template</title>
+    <url>/2020/07/24/template/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>ops</category>
       </categories>
