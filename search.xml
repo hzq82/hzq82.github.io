@@ -292,7 +292,7 @@
       </tags>
   </entry>
   <entry>
-    <title>template</title>
+    <title>nps内网穿透</title>
     <url>/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
     <content><![CDATA[<h2 id="openwrt之nps内网穿透"><a href="#openwrt之nps内网穿透" class="headerlink" title="openwrt之nps内网穿透"></a>openwrt之nps内网穿透</h2><h4 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">折腾完openwrt后，为了能在公司访问到家中的openwrt管理界面</span></span><br></pre></td></tr></table></figure>
 
