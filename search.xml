@@ -32,15 +32,19 @@
       </tags>
   </entry>
   <entry>
-    <title>template</title>
-    <url>/2020/07/24/template/</url>
-    <content><![CDATA[<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/20200727155306.jpg" alt=""></p>
+    <title>杂谈</title>
+    <url>/2020/08/04/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="技术杂谈"><a href="#技术杂谈" class="headerlink" title="技术杂谈"></a>技术杂谈</h2><h4 id="1-sata-和-sas的区别"><a href="#1-sata-和-sas的区别" class="headerlink" title="1.sata 和 sas的区别"></a>1.sata 和 sas的区别</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="meta">一.性能区别</span>   <span class="string"></span></span><br><span class="line">   <span class="attr">SAS更好：相比SATA，SAS在磁盘性能5261上更占优势。主要4102得益于强大SCSI指令集(包括SCSI指令队列)、双核处1653理器，以及对硬件顺序流处理的支持。SAS硬盘支持双向全双工模式，为同时发生的读写操作提供了两路活动通道,SATA只能提供单通道和半双工模式，无疑弱了不少。</span></span><br><span class="line"><span class="attr">二.sas接口跟sata接口一样吗</span></span><br><span class="line">   <span class="attr">不一样，sas的电源和数据口是一体的，可以插sata盘，sata的是分开的，不能插sas盘，sas向下兼容sata设备。</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2.准备工作"></a>2.准备工作</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">1.一个域名</span></span><br><span class="line"><span class="attr">2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序</span></span><br><span class="line"><span class="attr">3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 ]]></content>
       <categories>
-        <category>ops</category>
+        <category>IT</category>
       </categories>
       <tags>
-        <tag>运维</tag>
+        <tag>杂谈</tag>
       </tags>
   </entry>
   <entry>
@@ -314,6 +318,18 @@
 <p>物理层规定:为传输数据所需要的物理链路创建、维持、拆除<br>而提供具有机械的，电子的，功能的和规范的特性</p>
 <p>简单的说，物理层确保原始的数据可在各种物理媒体上传输。局域网与广域网皆属第1、2层</p>
 <p>物理层是OSI的第一层，它虽然处于最底层，却是整个开放系统的基础<br>物理层为设备之间的数据通信提供传输媒体及互连设备，为数据传输提供可靠的环境<br>如果您想要用尽量少的词来记住这个第一层，那就是“信号和介质”</p>
+]]></content>
+      <categories>
+        <category>ops</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>template</title>
+    <url>/2020/07/24/template/</url>
+    <content><![CDATA[<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/20200727155306.jpg" alt=""></p>
 ]]></content>
       <categories>
         <category>ops</category>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-08-03T03:12:19.984Z</updated>
+  <updated>2020-08-04T01:27:01.223Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>杂谈</title>
+    <link href="http://yoursite.com/2020/08/04/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2020/08/04/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/</id>
+    <published>2020-08-04T01:20:50.000Z</published>
+    <updated>2020-08-04T01:27:01.223Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="技术杂谈"><a href="#技术杂谈" class="headerlink" title="技术杂谈"></a>技术杂谈</h2><h4 id="1-sata-和-sas的区别"><a href="#1-sata-和-sas的区别" class="headerlink" title="1.sata 和 sas的区别"></a>1.sata 和 sas的区别</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">一.性能区别</span>   <span class="string"></span></span><br><span class="line">   <span class="attr">SAS更好：相比SATA，SAS在磁盘性能5261上更占优势。主要4102得益于强大SCSI指令集(包括SCSI指令队列)、双核处1653理器，以及对硬件顺序流处理的支持。SAS硬盘支持双向全双工模式，为同时发生的读写操作提供了两路活动通道,SATA只能提供单通道和半双工模式，无疑弱了不少。</span></span><br><span class="line"><span class="attr">二.sas接口跟sata接口一样吗</span></span><br><span class="line">   <span class="attr">不一样，sas的电源和数据口是一体的，可以插sata盘，sata的是分开的，不能插sas盘，sas向下兼容sata设备。</span></span><br></pre></td></tr></table></figure><h4 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2.准备工作"></a>2.准备工作</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1.一个域名</span></span><br><span class="line"><span class="attr">2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序</span></span><br><span class="line"><span class="attr">3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序</span></span><br></pre></td></tr></table></figure><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;技术杂谈&quot;&gt;&lt;a href=&quot;#技术杂谈&quot; class=&quot;headerlink&quot; title=&quot;技术杂谈&quot;&gt;&lt;/a&gt;技术杂谈&lt;/h2&gt;&lt;h4 id=&quot;1-sata-和-sas的区别&quot;&gt;&lt;a href=&quot;#1-sata-和-sas的区别&quot; class=&quot;headerlink&quot; title=&quot;1.sata 和 sas的区别&quot;&gt;&lt;/a&gt;1.sata 和 sas的区别&lt;/h4&gt;&lt;figure class=&quot;highlight properties&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;一.性能区别&lt;/span&gt;   &lt;span class=&quot;string&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;attr&quot;&gt;SAS更好：相比SATA，SAS在磁盘性能5261上更占优势。主要4102得益于强大SCSI指令集(包括SCSI指令队列)、双核处1653理器，以及对硬件顺序流处理的支持。SAS硬盘支持双向全双工模式，为同时发生的读写操作提供了两路活动通道,SATA只能提供单通道和半双工模式，无疑弱了不少。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;二.sas接口跟sata接口一样吗&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;attr&quot;&gt;不一样，sas的电源和数据口是一体的，可以插sata盘，sata的是分开的，不能插sas盘，sas向下兼容sata设备。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;2-准备工作&quot;&gt;&lt;a href=&quot;#2-准备工作&quot; class=&quot;headerlink&quot; title=&quot;2.准备工作&quot;&gt;&lt;/a&gt;2.准备工作&lt;/h4&gt;&lt;figure class=&quot;highlight properties&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;1.一个域名&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="IT" scheme="http://yoursite.com/categories/IT/"/>
+    
+    
+      <category term="杂谈" scheme="http://yoursite.com/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
   
   <entry>
     <title>nps内网穿透</title>
