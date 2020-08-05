@@ -117,11 +117,11 @@
   </entry>
   
   <entry>
-    <title>template</title>
-    <link href="http://yoursite.com/2020/07/24/template/"/>
-    <id>http://yoursite.com/2020/07/24/template/</id>
+    <title>hexo</title>
+    <link href="http://yoursite.com/2020/07/24/hexo/"/>
+    <id>http://yoursite.com/2020/07/24/hexo/</id>
     <published>2020-07-24T06:59:50.000Z</published>
-    <updated>2020-08-05T02:21:52.040Z</updated>
+    <updated>2020-08-05T02:23:07.952Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/20200727155306.jpg" alt=""></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#参考资料</span><br><span class="line">&lt;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;lijianming180&#x2F;p&#x2F;12433189.html&gt; 统计量</span><br></pre></td></tr></table></figure>]]></content>
     
