@@ -1,132 +1,343 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>杂谈</title>
-      <link href="/2020/08/04/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"/>
-      <url>/2020/08/04/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/</url>
-      
-        <content type="html"><![CDATA[<h2 id="技术杂谈"><a href="#技术杂谈" class="headerlink" title="技术杂谈"></a>技术杂谈</h2><h4 id="1-sata-和-sas的区别"><a href="#1-sata-和-sas的区别" class="headerlink" title="1.sata 和 sas的区别"></a>1.sata 和 sas的区别</h4><p>一.性能区别   </p><p>&#8195;&#8195;SAS更好：相比SATA，SAS在磁盘性能5261上更占优势。主要4102得益于强大SCSI指令集(包括SCSI指令队列)、双核处1653理器，以及对硬件顺序流处理的支持。SAS硬盘支持双向全双工模式，为同时发生的读写操作提供了两路活动通道,SATA只能提供单通道和半双工模式，无疑弱了不少。<br>二.sas接口跟sata接口一样吗<br>   不一样，sas的电源和数据口是一体的，可以插sata盘，sata的是分开的，不能插sas盘，sas向下兼容sata设备。</p><h4 id="2-NAS"><a href="#2-NAS" class="headerlink" title="2.NAS"></a>2.NAS</h4><p>&#8195;&#8195;NAS（Network Attached Storage：网络附属存储）按字面简单说就是连接在网络上，具备资料存储功能的装置，因此也称为“网络存储器”。它是一种专用数据存储服务器。它以数据为中心，将存储设备与服务器彻底分离，集中管理数据，从而释放带宽、提高性能、降低总拥有成本、保护投资。其成本远远低于使用服务器存储，而效率却远远高于后者。目前国际著名的NAS企业有Netapp、EMC、OUO等。</p><a id="more"></a>]]></content>
-      
-      
+<search>
+  <entry>
+    <title>hexo</title>
+    <url>/2020/07/24/hexo/</url>
+    <content><![CDATA[<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/20200727155306.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#参考资料</span><br><span class="line">https:&#x2F;&#x2F;www.cnblogs.com&#x2F;lijianming180&#x2F;p&#x2F;12433189.html 统计量</span><br></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
-          
-          <category> IT </category>
-          
+        <category>ops</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 杂谈 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>nps内网穿透</title>
-      <link href="/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
-      <url>/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
-      
-        <content type="html"><![CDATA[<h2 id="openwrt之nps内网穿透"><a href="#openwrt之nps内网穿透" class="headerlink" title="openwrt之nps内网穿透"></a>openwrt之nps内网穿透</h2><h4 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">折腾完openwrt后，为了能在公司访问到家中的openwrt管理界面</span></span><br></pre></td></tr></table></figure><h4 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2.准备工作"></a>2.准备工作</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1.一个域名</span></span><br><span class="line"><span class="attr">2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序</span></span><br><span class="line"><span class="attr">3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序</span></span><br></pre></td></tr></table></figure><a id="more"></a><h4 id="3-服务端程序下载安装"><a href="#3-服务端程序下载安装" class="headerlink" title="3.服务端程序下载安装"></a>3.服务端程序下载安装</h4><p>GitHub：<a href="https://github.com/cnlh/nps" target="_blank" rel="noopener">https://github.com/cnlh/nps</a><br>releases github: <a href="https://github.com/ehang-io/nps/releases" target="_blank" rel="noopener">https://github.com/ehang-io/nps/releases</a>  #下载地址</p><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">我使用的是centos，所以下载对应的版本，客户端openwrt自带，所以不需要下载</span></span><br></pre></td></tr></table></figure><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps.jpg" alt=""></p><h4 id="4-服务端安装"><a href="#4-服务端安装" class="headerlink" title="4.服务端安装"></a>4.服务端安装</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">wget</span> <span class="string">https://github.com/cnlh/nps/releases/download/v0.26.3/linux_amd64_server.tar.gz</span></span><br><span class="line"><span class="attr">tar</span> <span class="string">xzvf linux_amd64_server.tar.gz</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">~/nps</span></span><br><span class="line"><span class="meta">./nps</span> <span class="string">install</span></span><br><span class="line"><span class="attr">nohup</span> <span class="string">./nps &amp;</span></span><br><span class="line"><span class="comment">#有特殊需求可以修改conf文件，比如端口等，此处没有修改任何配置，默认服务端口8080，访问：</span></span><br><span class="line"><span class="meta">用户名：admin</span> <span class="string">密码：123（默认）</span></span><br></pre></td></tr></table></figure><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps1.jpg" alt=""></p><h4 id="5-客户端配置"><a href="#5-客户端配置" class="headerlink" title="5.客户端配置"></a>5.客户端配置</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps2.jpg" alt=""></p><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#端口默认8024是客户端访问服务端的端口，秘钥为自己定义，服务端需要配置此秘钥</span></span><br></pre></td></tr></table></figure><h4 id="6-服务端配置"><a href="#6-服务端配置" class="headerlink" title="6. 服务端配置"></a>6. 服务端配置</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps3.jpg" alt=""></p><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps4.jpg" alt=""></p><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps5.jpg" alt=""></p><p>至此所有都配置完成，下图访问效果</p><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps6.jpg" alt=""></p>]]></content>
-      
-      
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>linux</title>
+    <url>/2020/07/24/linux/</url>
+    <content><![CDATA[<h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h2><p>1、什么是运维？什么是游戏运维？</p>
+<p>1）运维是指大型组织已经建立好的网络软硬件的维护，就是要保证业务的上线与运作的正常，在他运转的过程中，对他进行维护，他集合了网络、系统、数据库、开发、安全、监控于一身的技术，运维又包括很多种，有DBA运维、网站运维、虚拟化运维、监控运维、游戏运维等等</p>
+<a id="more"></a>
+
+<p>2）游戏运维又有分工，分为开发运维、应用运维（业务运维）和系统运维</p>
+<p>开发运维：是给应用运维开发运维工具和运维平台的<br>应用运维：是给业务上线、维护和做故障排除的，用开发运维开发出来的工具给业务上线、维护、做故障排查<br>系统运维：是给应用运维提供业务上的基础设施，比如：系统、网络、监控、硬件等等</p>
+<p>总结：开发运维和系统运维给应用运维提供了“工具”和“基础设施”上的支撑</p>
+<p>开发运维、应用运维和系统运维他们的工作是环环相扣的</p>
+<p>2、在工作中，运维人员经常需要跟运营人员打交道，请问运营人员是做什么工作的？</p>
+<p>游戏运营要做的一个事情除了协调工作以外，还需要与各平台沟通，做好开服的时间、开服数、用户导量、活动等计划</p>
+<p>3、现在给你三百台服务器，你怎么对他们进行管理？</p>
+<p>管理3百台服务器的方式：<br>1）设定跳板机，使用统一账号登录，便于安全与登录的考量。<br>2）使用salt、ansiable、puppet进行系统的统一调度与配置的统一管理。<br>3）建立简单的服务器的系统、配置、应用的cmdb信息管理。便于查阅每台服务器上的各种信息记录。</p>
+<p>4、简述raid0 raid1 raid5 三种工作模式的工作原理及特点</p>
+<p>RAID，可以把硬盘整合成一个大磁盘，还可以在大磁盘上再分区，放数据<br>还有一个大功能，多块盘放在一起可以有冗余（备份）<br>RAID整合方式有很多，常用的：0 1 5 10</p>
+<p>RAID 0，可以是一块盘和N个盘组合</p>
+<p>其优点读写快，是RAID中最好的<br>缺点：没有冗余，一块坏了数据就全没有了</p>
+<p>RAID 1，只能2块盘，盘的大小可以不一样，以小的为准</p>
+<p>10G+10G只有10G，另一个做备份。它有100%的冗余，缺点：浪费资源，成本高</p>
+<p>RAID 5 ，3块盘，容量计算10*（n-1）,损失一块盘</p>
+<p>特点，读写性能一般，读还好一点，写不好</p>
+<p>冗余从好到坏：RAID1 RAID10 RAID 5 RAID0</p>
+<p>性能从好到坏：RAID0 RAID10 RAID5 RAID1</p>
+<p>成本从低到高：RAID0 RAID5 RAID1 RAID10</p>
+<p>单台服务器：很重要盘不多，系统盘，RAID1</p>
+<p>数据库服务器：主库：RAID10 从库 RAID5RAID0（为了维护成本，RAID10）</p>
+<p>WEB服务器，如果没有太多的数据的话，RAID5,RAID0（单盘）</p>
+<p>有多台，监控、应用服务器，RAID0 RAID5</p>
+<p>我们会根据数据的存储和访问的需求，去匹配对应的RAID级别</p>
+<p>5、LVS、Nginx、HAproxy有什么区别？工作中你怎么选择？</p>
+<p>LVS：是基于四层的转发<br>HAproxy：是基于四层和七层的转发，是专业的代理服务器<br>Nginx：是WEB服务器，缓存服务器，又是反向代理服务器，可以做七层的转发</p>
+<p><strong>区别</strong>：LVS由于是基于四层的转发所以只能做端口的转发，而基于URL的、基于目录的这种转发LVS就做不了</p>
+<p><strong>工作选择</strong>：</p>
+<p>HAproxy和Nginx由于可以做七层的转发，所以URL和目录的转发都可以做，在很大并发量的时候我们就要选择LVS，像中小型公司的话并发量没那么大，选择HAproxy或者Nginx足已，由于HAproxy由是专业的代理服务器，配置简单，所以中小型企业推荐使用HAproxy</p>
+<p>6、Squid、Varinsh和Nginx有什么区别，工作中你怎么选择？</p>
+<p>Squid、Varinsh和Nginx都是代理服务器</p>
+<p>什么是代理服务器：</p>
+<p>能当替用户去访问公网，并且能把访问到的数据缓存到服务器本地，等用户下次再访问相同的资源的时候，代理服务器直接从本地回应给用户，当本地没有的时候，我代替你去访问公网，我接收你的请求，我先在我自已的本地缓存找，如果我本地缓存有，我直接从我本地的缓存里回复你，如果我在我本地没有找到你要访问的缓存的数据，那么代理服务器就会代替你去访问公网</p>
+<p><strong>区别：</strong></p>
+<p>1）Nginx本来是反向代理/web服务器，用了插件可以做做这个副业但是本身不支持特性挺多，只能缓存静态文件</p>
+<p>2）从这些功能上。varnish和squid是专业的cache服务，而nginx这些是第三方模块完成</p>
+<p>3）varnish本身的技术上优势要高于squid，它采用了可视化页面缓存技术</p>
+<p>在内存的利用上，Varnish比Squid具有优势，性能要比Squid高。</p>
+<p>还有强大的通过Varnish管理端口，可以使用正则表达式快速、批量地清除部分缓存</p>
+<p>它是内存缓存，速度一流，但是内存缓存也限制了其容量，缓存页面和图片一般是挺好的</p>
+<p>4）squid的优势在于完整的庞大的cache技术资料，和很多的应用生产环境</p>
+<p>工作中选择：</p>
+<p>要做cache服务的话，我们肯定是要选择专业的cache服务，优先选择squid或者varnish。</p>
+<p>7、Tomcat和Resin有什么区别，工作中你怎么选择？</p>
+<p>区别：Tomcat用户数多，可参考文档多，Resin用户数少，可考虑文档少<br>最主要区别则是Tomcat是标准的java容器，不过性能方面比resin的要差一些<br>但稳定性和java程序的兼容性，应该是比resin的要好</p>
+<p>工作中选择：现在大公司都是用resin，追求性能；而中小型公司都是用Tomcat，追求稳定和程序的兼容</p>
+<p>8、什么是中间件？什么是jdk？</p>
+<p>中间件介绍：</p>
+<p>中间件是一种独立的系统软件或服务程序，分布式应用软件借助这种软件在不同的技术之间共享资源</p>
+<p>中间件位于客户机/ 服务器的操作系统之上，管理计算机资源和网络通讯<br>是连接两个独立应用程序或独立系统的软件。相连接的系统，即使它们具有不同的接口</p>
+<p>但通过中间件相互之间仍能交换信息。执行中间件的一个关键途径是信息传递，通过中间件，应用程序可以工作于多平台或OS环境。</p>
+<p>jdk：jdk是Java的开发工具包，它是一种用于构建在 Java 平台上发布的应用程序、applet 和组件的开发环境</p>
+<p>9、讲述一下Tomcat8005、8009、8080三个端口的含义？</p>
+<p>8005==》 关闭时使用</p>
+<p>8009==》 为AJP端口，即容器使用，如Apache能通过AJP协议访问Tomcat的8009端口</p>
+<p>8080==》 一般应用使用</p>
+<p>10、什么叫CDN？</p>
+<ul>
+<li>即内容分发网络</li>
+<li>其目的是通过在现有的Internet中增加一层新的网络架构，将网站的内容发布到最接近用户的网络边缘，使用户可就近取得所需的内容，提高用户访问网站的速度</li>
+</ul>
+<p>11、什么叫网站灰度发布？</p>
+<p>灰度发布是指在黑与白之间，能够平滑过渡的一种发布方式</p>
+<p>AB test就是一种灰度发布方式，让一部用户继续用A，一部分用户开始用B，如果用户对B没有什么反对意见，那么逐步扩大范围，把所有用户都迁移到B上面来灰度发布可以保证整体系统的稳定，在初始灰度的时候就可以发现、调整问题，以保证其影响度</p>
+<p>12、简述DNS进行域名解析的过程？</p>
+<p>用户要访问<a href="http://www.baidu.com，会先找本机的host文件，再找本地设置的DNS服务器，如果也没有的话，就去网络中找根服务器，根服务器反馈结果，说只能提供一级域名服务器.cn，就去找一级域名服务器，一级域名服务器说只能提供二级域名服务器.com.cn,就去找二级域名服务器，二级域服务器只能提供三级域名服务器.baidu.com.cn，就去找三级域名服务器，三级域名服务器正好有这个网站www.baidu.com，然后发给请求的服务器，保存一份之后，再发给客户端" target="_blank" rel="noopener">www.baidu.com，会先找本机的host文件，再找本地设置的DNS服务器，如果也没有的话，就去网络中找根服务器，根服务器反馈结果，说只能提供一级域名服务器.cn，就去找一级域名服务器，一级域名服务器说只能提供二级域名服务器.com.cn,就去找二级域名服务器，二级域服务器只能提供三级域名服务器.baidu.com.cn，就去找三级域名服务器，三级域名服务器正好有这个网站www.baidu.com，然后发给请求的服务器，保存一份之后，再发给客户端</a></p>
+<p>13、RabbitMQ是什么东西？</p>
+<p>RabbitMQ也就是消息队列中间件，消息中间件是在消息的传息过程中保存消息的容器<br>消息中间件再将消息从它的源中到它的目标中标时充当中间人的作用<br>队列的主要目的是提供路由并保证消息的传递；如果发送消息时接收者不可用<br>消息队列不会保留消息，直到可以成功地传递为止，当然，消息队列保存消息也是有期限地</p>
+<p>14、讲一下Keepalived的工作原理？</p>
+<p>在一个虚拟路由器中，只有作为MASTER的VRRP路由器会一直发送VRRP通告信息,<br>BACKUP不会抢占MASTER，除非它的优先级更高。当MASTER不可用时(BACKUP收不到通告信息)<br>多台BACKUP中优先级最高的这台会被抢占为MASTER。这种抢占是非常快速的(&lt;1s)，以保证服务的连续性<br>由于安全性考虑，VRRP包使用了加密协议进行加密。BACKUP不会发送通告信息，只会接收通告信息</p>
+<p>15、讲述一下LVS三种模式的工作过程？</p>
+<p>LVS 有三种负载均衡的模式，分别是VS/NAT（nat 模式） VS/DR(路由模式) VS/TUN（隧道模式）</p>
+<p><strong>一、NAT模式（VS-NAT）</strong></p>
+<p><strong>原理</strong>：就是把客户端发来的数据包的IP头的目的地址，在负载均衡器上换成其中一台RS的IP地址<br>并发至此RS来处理,RS处理完后把数据交给负载均衡器,负载均衡器再把数据包原IP地址改为自己的IP<br>将目的地址改为客户端IP地址即可期间,无论是进来的流量,还是出去的流量,都必须经过负载均衡器<br><strong>优点</strong>：集群中的物理服务器可以使用任何支持TCP/IP操作系统，只有负载均衡器需要一个合法的IP地址<br><strong>缺点</strong>：扩展性有限。当服务器节点（普通PC服务器）增长过多时,负载均衡器将成为整个系统的瓶颈<br>因为所有的请求包和应答包的流向都经过负载均衡器。当服务器节点过多时<br>大量的数据包都交汇在负载均衡器那，速度就会变慢！</p>
+<p><strong>二、IP隧道模式（VS-TUN）</strong></p>
+<p><strong>原理</strong>：首先要知道，互联网上的大多Internet服务的请求包很短小，而应答包通常很大<br>那么隧道模式就是，把客户端发来的数据包，封装一个新的IP头标记(仅目的IP)发给RS<br>RS收到后,先把数据包的头解开,还原数据包,处理后,直接返回给客户端,不需要再经过<br>负载均衡器。注意,由于RS需要对负载均衡器发过来的数据包进行还原,所以说必须支持<br>IPTUNNEL协议，所以,在RS的内核中,必须编译支持IPTUNNEL这个选项<br><strong>优点</strong>：负载均衡器只负责将请求包分发给后端节点服务器，而RS将应答包直接发给用户<br>所以，减少了负载均衡器的大量数据流动，负载均衡器不再是系统的瓶颈，就能处理很巨大的请求量<br>这种方式，一台负载均衡器能够为很多RS进行分发。而且跑在公网上就能进行不同地域的分发。<br><strong>缺点</strong>：隧道模式的RS节点需要合法IP，这种方式需要所有的服务器支持”IP Tunneling”<br>(IP Encapsulation)协议，服务器可能只局限在部分Linux系统上</p>
+<p>*<em>三、直接路由模式（VS-DR）<br>*</em></p>
+<p><strong>原理</strong>：负载均衡器和RS都使用同一个IP对外服务但只有DR对ARP请求进行响应<br>所有RS对本身这个IP的ARP请求保持静默也就是说,网关会把对这个服务IP的请求全部定向给DR<br>而DR收到数据包后根据调度算法,找出对应的RS,把目的MAC地址改为RS的MAC（因为IP一致）<br>并将请求分发给这台RS这时RS收到这个数据包,处理完成之后，由于IP一致，可以直接将数据返给客户<br>则等于直接从客户端收到这个数据包无异,处理后直接返回给客户端<br>由于负载均衡器要对二层包头进行改换,所以负载均衡器和RS之间必须在一个广播域<br>也可以简单的理解为在同一台交换机上<br><strong>优点</strong>：和TUN（隧道模式）一样，负载均衡器也只是分发请求，应答包通过单独的路由方法返回给客户端<br>与VS-TUN相比，VS-DR这种实现方式不需要隧道结构，因此可以使用大多数操作系统做为物理服务器。<br><strong>缺点</strong>：（不能说缺点，只能说是不足）要求负载均衡器的网卡必须与物理网卡在一个物理段上。</p>
+<p>16、mysql的innodb如何定位锁问题，mysql如何减少主从复制延迟？</p>
+<p>mysql的innodb如何定位锁问题:<br>在使用 show engine innodb status检查引擎状态时，发现了死锁问题<br>在5.5中，information_schema 库中增加了三个关于锁的表（MEMORY引擎）<br>innodb_trx     ## 当前运行的所有事务<br>innodb_locks   ## 当前出现的锁<br>innodb_lock_waits  ## 锁等待的对应关系</p>
+<p>mysql如何减少主从复制延迟:</p>
+<p>如果延迟比较大，就先确认以下几个因素：</p>
+<ol>
+<li>从库硬件比主库差，导致复制延迟</li>
+<li>主从复制单线程，如果主库写并发太大，来不及传送到从库就会导致延迟。</li>
+<li>更高版本的mysql可以支持多线程复制</li>
+<li>慢SQL语句过多</li>
+<li>网络延迟</li>
+<li>master负载，主库读写压力大，导致复制延迟，架构的前端要加buffer及缓存层</li>
+<li>slave负载，一般的做法是，使用多台slave来分摊读请求，再从这些slave中取一台专用的服务器，只作为备份用，不进行其他任何操作.另外， 2个可以减少延迟的参数:–slave-net-timeout=seconds 单位为秒 默认设置为 3600秒</li>
+</ol>
+<blockquote>
+<p>参数含义：当slave从主数据库读取log数据失败后，等待多久重新建立连接并获取数据</p>
+</blockquote>
+<p>–master-connect-retry=seconds 单位为秒 默认设置为 60秒</p>
+<blockquote>
+<p>参数含义：当重新建立主从连接时，如果连接建立失败，间隔多久后重试</p>
+</blockquote>
+<p>通常配置以上2个参数可以减少网络问题导致的主从数据同步延迟</p>
+<p><strong>MySQL数据库主从同步延迟解决方案</strong></p>
+<p>最简单的减少slave同步延时的方案就是在架构上做优化，尽量让主库的DDL快速执行，还有就是主库是写，对数据安全性较高，比如sync_binlog=1，innodb_flush_log_at_trx_commit= 1 之类的设置，而slave则不需要这么高的数据安全，完全可以讲sync_binlog设置为0或者关闭binlog，innodb_flushlog也可以设置为0来提高sql的执行效率。另外就是使用比主库更好的硬件设备作为slave</p>
+<p>17、如何重置mysql root密码？</p>
+<p>一、 在已知MYSQL数据库的ROOT用户密码的情况下，修改密码的方法：</p>
+<p>1、 在SHELL环境下，使用mysqladmin命令设置：<br>   mysqladmin –u root –p password “新密码”  回车后要求输入旧密码</p>
+<p>2、 在mysql&gt;环境中,使用update命令，直接更新mysql库user表的数据：</p>
+<p>   Update  mysql.user  set  password=password(‘新密码’)  where  user=’root’;<br>   flush  privileges;<br>   注意：mysql语句要以分号”；”结束</p>
+<p>3、 在mysql&gt;环境中，使用grant命令，修改root用户的授权权限。</p>
+<p>   grant  all  on  <em>.</em> to  root@’localhost’  identified  by  ‘新密码’；</p>
+<p>二、 如查忘记了mysql数据库的ROOT用户的密码，又如何做呢？方法如下：</p>
+<p>1、 关闭当前运行的mysqld服务程序：service  mysqld  stop（要先将mysqld添加为系统服务）<br>2、 使用mysqld_safe脚本以安全模式（不加载授权表）启动mysqld 服务<br>   /usr/local/mysql/bin/mysqld_safe  –skip-grant-table  &amp;<br>3、 使用空密码的root用户登录数据库，重新设置ROOT用户的密码<br>   ＃mysql  -u  root<br>   Mysql&gt; Update  mysql.user  set  password=password(‘新密码’)  where  user=’root’;<br>   Mysql&gt; flush  privileges;</p>
+<p>18、lvs/nginx/haproxy优缺点</p>
+<p>Nginx的优点是：<br>1、工作在网络的7层之上，可以针对http应用做一些分流的策略，比如针对域名、目录结构，它的正则规则比HAProxy更为强大和灵活，这也是它目前广泛流行的主要原因之一，Nginx单凭这点可利用的场合就远多于LVS了。</p>
+<p>2、Nginx对网络稳定性的依赖非常小，理论上能ping通就就能进行负载功能，这个也是它的优势之一，相反LVS对网络稳定性依赖比较大，这点本人深有体会；</p>
+<p>3、Nginx安装和配置比较简单，测试起来比较方便，它基本能把错误用日志打印出来，LVS的配置、测试就要花比较长的时间了，LVS对网络依赖比较大。</p>
+<p>4、可以承担高负载压力且稳定，在硬件不差的情况下一般能支撑几万次的并发量，负载度比LVS相对小些。</p>
+<p>5、Nginx可以通过端口检测到服务器内部的故障，比如根据服务器处理网页返回的状态码、超时等等，并且会把返回错误的请求重新提交到另一个节点，不过其中缺点就是不支持url来检测。比如用户正在上传一个文件，而处理该上传的节点刚好在上传过程中出现故障，Nginx会把上传切到另一台服务器重新处理，而LVS就直接断掉了，如果是上传一个很大的文件或者很重要的文件的话，用户可能会因此而不满。</p>
+<p>6、Nginx不仅仅是一款优秀的负载均衡器/反向代理软件，它同时也是功能强大的Web应用服务器，LNMP也是近几年非常流行的web架构，在高流量的环境中稳定性也很好。</p>
+<p>7、Nginx现在作为Web反向加速缓存越来越成熟了，速度比传统的Squid服务器更快，可考虑用其作为反向代理加速器</p>
+<p>8、Nginx可作为中层反向代理使用，这一层面Nginx基本上无对手，唯一可以对比Nginx的就只有lighttpd了，不过lighttpd目前还没有做到Nginx完全的功能，配置也不那么清晰易读，社区资料也远远没Nginx活跃</p>
+<p>9、Nginx也可作为静态网页和图片服务器，这方面的性能也无对手。还有Nginx社区非常活跃，第三方模块也很多</p>
+<p><strong>Nginx的缺点是：</strong></p>
+<p>1、Nginx仅能支持http、https和Email协议，这样就在适用范围上面小些，这个是它的缺点<br>2、对后端服务器的健康检查，只支持通过端口来检测，不支持通过url来检测<br>   不支持Session的直接保持，但能通过ip_hash来解决</p>
+<p>LVS：使用Linux内核集群实现一个高性能、高可用的负载均衡服务器，它具有很好的可伸缩性（Scalability)、可靠性（Reliability)和可管理性（Manageability)</p>
+<p><strong>LVS的优点是</strong>：</p>
+<p>1、抗负载能力强、是工作在网络4层之上仅作分发之用，没有流量的产生，这个特点也决定了它在负载均衡软件里的性能最强的，对内存和cpu资源消耗比较低</p>
+<p>2、配置性比较低，这是一个缺点也是一个优点，因为没有可太多配置的东西，所以并不需要太多接触，大大减少了人为出错的几率</p>
+<p>3、工作稳定，因为其本身抗负载能力很强，自身有完整的双机热备方案，如LVS+Keepalived，不过我们在项目实施中用得最多的还是LVS/DR+Keepalived</p>
+<p>4、无流量，LVS只分发请求，而流量并不从它本身出去，这点保证了均衡器IO的性能不会收到大流量的影响。</p>
+<p>5、应用范围较广，因为LVS工作在4层，所以它几乎可对所有应用做负载均衡，包括http、数据库、在线聊天室等</p>
+<p><strong>LVS的缺点是：</strong></p>
+<p>1、软件本身不支持正则表达式处理，不能做动静分离<br>   而现在许多网站在这方面都有较强的需求，这个是Nginx/HAProxy+Keepalived的优势所在<br>2、如果是网站应用比较庞大的话，LVS/DR+Keepalived实施起来就比较复杂了，特别后面有Windows Server的机器的话，如果实施及配置还有维护过程就比较复杂了，相对而言，Nginx/HAProxy+Keepalived就简单多了。</p>
+<p><strong>HAProxy的特点是：</strong></p>
+<p>1、HAProxy也是支持虚拟主机的。</p>
+<p>2、HAProxy的优点能够补充Nginx的一些缺点，比如支持Session的保持，Cookie的引导，同时支持通过获取指定的url来检测后端服务器的状态</p>
+<p>3、HAProxy跟LVS类似，本身就只是一款负载均衡软件，单纯从效率上来讲HAProxy会比Nginx有更出色的负载均衡速度，在并发处理上也是优于Nginx的</p>
+<p>4、HAProxy支持TCP协议的负载均衡转发，可以对MySQL读进行负载均衡，对后端的MySQL节点进行检测和负载均衡，大家可以用LVS+Keepalived对MySQL主从做负载均衡</p>
+<p>5、HAProxy负载均衡策略非常多，HAProxy的负载均衡算法现在具体有如下8种：</p>
+<p>①roundrobin，表示简单的轮询，这个不多说，这个是负载均衡基本都具备的；<br>② static-rr，表示根据权重，建议关注；<br>③leastconn，表示最少连接者先处理，建议关注；<br>④ source，表示根据请求源IP，这个跟Nginx的IP_hash机制类似<br>  我们用其作为解决session问题的一种方法，建议关注；<br>⑤ri，表示根据请求的URI；<br>⑥rl_param，表示根据请求的URl参数’balance url_param’ requires an URL parameter name；<br>⑦hdr(name)，表示根据HTTP请求头来锁定每一次HTTP请求；<br>⑧rdp-cookie(name)，表示根据据cookie(name)来锁定并哈希每一次TCP请求。</p>
+<p>19、mysql数据备份工具</p>
+<p>mysqldump工具，mysqldump是mysql自带的备份工具，目录在bin目录下面：/usr/local/mysql/bin/mysqldump，支持基于innodb的热备份，但是由于是逻辑备份，所以速度不是很快，适合备份数据比较小的场景，Mysqldump完全备份+二进制日志可以实现基于时间点的恢复。</p>
+<p><strong>基于LVM快照备份</strong></p>
+<p>在物理备份中，有基于文件系统的物理备份（LVM的快照），也可以直接用tar之类的命令对整个数据库目录<br>进行打包备份，但是这些只能进行泠备份，不同的存储引擎备份的也不一样，myisam自动备份到表级别<br>而innodb不开启独立表空间的话只能备份整个数据库。</p>
+<p><strong>tar包备份</strong></p>
+<p>percona提供的xtrabackup工具，支持innodb的物理热备份，支持完全备份，增量备份，而且速度非常快，支持innodb存储引起的数据在不同，数据库之间迁移，支持复制模式下的从机备份恢复备份恢复，为了让xtrabackup支持更多的功能扩展，可以设立独立表空间，打开 innodb_file_per_table功能，启用之后可以支持单独的表备份</p>
+<p>20、keepalive的工作原理和如何做到健康检查</p>
+<p>keepalived是以VRRP协议为实现基础的，VRRP全称Virtual Router Redundancy Protocol，即虚拟路由冗余协议。</p>
+<p>虚拟路由冗余协议，可以认为是实现路由器高可用的协议，即将N台提供相同功能的路由器组成一个路由器组<br>这个组里面有一个master和多个backup，master上面有一个对外提供服务的vip（该路由器所在局域网内<br>其他机器的默认路由为该vip），master会发组播，当backup收不到vrrp包时就认为master宕掉了<br>这时就需要根据VRRP的优先级来选举一个backup当master。这样就可以保证路由器的高可用了</p>
+<p>keepalived主要有三个模块，分别是core、check和vrrp。core模块为keepalived的核心，负责主进程的启动、维护及全局配置文件的加载和解析。check负责健康检查，包括常见的各种检查方式，vrrp模块是来实现VRRP协议的</p>
+<p>Keepalived健康检查方式配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP_GET|SSL_GET</span><br><span class="line">HTTP_GET | SSL_GET</span><br><span class="line">&#123;</span><br><span class="line">url &#123;</span><br><span class="line">path &#x2F;# HTTP&#x2F;SSL 检查的url可以是多个</span><br><span class="line">digest  # HTTP&#x2F;SSL 检查后的摘要信息用工具genhash生成</span><br><span class="line">status_code 200# HTTP&#x2F;SSL 检查返回的状态码</span><br><span class="line">&#125;</span><br><span class="line">connect_port 80 # 连接端口</span><br><span class="line">bindto</span><br><span class="line">connect_timeout 3 # 连接超时时间</span><br><span class="line">nb_get_retry 3 # 重连次数</span><br><span class="line">delay_before_retry 2 #连接间隔时间</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>21、统计ip访问情况，要求分析nginx访问日志，找出访问页面数量在前十位的ip</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat access.log | awk ‘&#123;print $1&#125;’ | uniq -c | sort -rn | head -10</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>22、使用tcpdump监听主机为192.168.1.1，tcp端口为80的数据，同时将输出结果保存输出到tcpdump.log</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tcpdump ‘host 192.168.1.1 and port 80’ &gt; tcpdump.log</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>23、如何将本地80 端口的请求转发到8080 端口，当前主机IP 为192.168.2.1</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptables -A PREROUTING -d 192.168.2.1 -p tcp -m tcp -dport 80 -j DNAT-to-destination 192.168.2.1:8080</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>24、简述raid0 raid1 raid5 三种工作模式的工作原理及特点</p>
+<p><strong>RAID 0</strong>：带区卷，连续以位或字节为单位分割数据，并行读/写于多个磁盘上，因此具有很高的数据传输率<br>但它没有数据冗余，RAID 0 只是单纯地提高性能，并没有为数据的可靠性提供保证<br>而且其中的一个磁盘失效将影响到所有数据。因此，RAID 0 不能应用于数据安全性要求高的场合</p>
+<p><strong>RAID 1：</strong>镜像卷，它是通过磁盘数据镜像实现数据冗余，在成对的独立磁盘上产生互为备份的数据</p>
+<p>不能提升写数据效率。当原始数据繁忙时，可直接从镜像拷贝中读取数据，因此RAID1 可以提高读取性能<br>RAID 1 是磁盘阵列中单位成本最高的，镜像卷可用容量为总容量的1/2，但提供了很高的数据安全性和可用性<br>当一个磁盘失效时，系统可以自动切换到镜像磁盘上读写，而不需要重组失效的数据</p>
+<p><strong>RAID5：</strong>至少由3块硬盘组成，分布式奇偶校验的独立磁盘结构，它的奇偶校验码存在于所有磁盘上</p>
+<p>任何一个硬盘损坏，都可以根据其它硬盘上的校验位来重建损坏的数据（最多允许1块硬盘损坏）<br>所以raid5可以实现数据冗余，确保数据的安全性，同时raid5也可以提升数据的读写性能</p>
+<p>25、你对现在运维工程师的理解和以及对其工作的认识</p>
+<p>运维工程师在公司当中责任重大，需要保证时刻为公司及客户提供最高、最快、最稳定、最安全的服务<br>运维工程师的一个小小的失误，很有可能会对公司及客户造成重大损失<br>因此运维工程师的工作需要严谨及富有创新精神</p>
+<p>26、实时抓取并显示当前系统中tcp 80端口的网络数据信息，请写出完整操作命令</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tcpdump -nn tcp port 80</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>27、服务器开不了机怎么解决一步步的排查</p>
+<p>A、造成服务器故障的原因可能有以下几点：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/QFzRdz9libEawR0xuaPapN1QiaC4vL4Hr4b7fQichUYZFr4kxH9E1MxvjBKTNQJhMJSudcpFx6Q4H3oBdpUV6WIkw/640?tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p>B、如何排查服务器故障的处理步骤如下：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/QFzRdz9libEawR0xuaPapN1QiaC4vL4Hr4qibFylR5Fic1c64uvxzlkWMJ0SzcWsTvQmrL2NaRCbuqGwpKzos3WA0w/640?tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p>28、Linux系统中病毒怎么解决<br>1）最简单有效的方法就是重装系统<br>2）要查的话就是找到病毒文件然后删除<br>中毒之后一般机器cpu、内存使用率会比较高，机器向外发包等异常情况，排查方法简单介绍下，top 命令找到cpu使用率最高的进程，一般病毒文件命名都比较乱，可以用 ps aux 找到病毒文件位置，rm -f  命令删除病毒文件，检查计划任务、开机启动项和病毒文件目录有无其他可以文件等</p>
+<p>3）由于即使删除病毒文件不排除有潜伏病毒，所以最好是把机器备份数据之后重装一下</p>
+<p>29、发现一个病毒文件你删了他又自动创建怎么解决</p>
+<p>公司的内网某台linux服务器流量莫名其妙的剧增,用iftop查看有连接外网的情况<br>针对这种情况一般重点查看netstat连接的外网ip和端口。用lsof -p pid可以查看到具体是那些进程，哪些文件，经查勘发现/root下有相关的配置conf.n hhe两个可疑文件，rm -rf后不到一分钟就自动生成了，由此推断是某个母进程产生的这些文件。所以找到母进程就是找到罪魁祸首</p>
+<p>查杀病毒最好断掉外网访问，还好是内网服务器，可以通过内网访问</p>
+<p>断了内网，病毒就失去外联的能力，杀掉它就容易的多，怎么找到呢，找了半天也没有看到蛛丝马迹，没办法只有ps axu一个个排查，方法是查看可以的用户和和系统相似而又不是的冒牌货，果然，看到了如下进程可疑，看不到图片就是/usr/bin/.sshd，于是我杀掉所有.sshd相关的进程，然后直接删掉.sshd这个可执行文件，然后才删掉了文章开头提到的自动复活的文件</p>
+<p>总结一下，遇到这种问题，如果不是太严重，尽量不要重装系统</p>
+<p>一般就是先断外网，然后利用iftop,ps,netstat,chattr,lsof,pstree这些工具顺藤摸瓜<br>一般都能找到元凶。但是如果遇到诸如此类的问题<br>/boot/efi/EFI/redhat/grub.efi: Heuristics.Broken.Executable FOUND，个人觉得就要重装系统了</p>
+<p>30、说说TCP/IP的七层模型</p>
+<p>应用层 (Application)：<br>网络服务与最终用户的一个接口。<br>协议有：HTTP FTP TFTP SMTP SNMP DNS TELNET HTTPS POP3 DHCP</p>
+<p>表示层（Presentation Layer）：</p>
+<p>数据的表示、安全、压缩。（在五层模型里面已经合并到了应用层）<br>格式有，JPEG、ASCll、DECOIC、加密格式等</p>
+<p>会话层（Session Layer）：</p>
+<p>建立、管理、终止会话。（在五层模型里面已经合并到了应用层）<br>对应主机进程，指本地主机与远程主机正在进行的会话</p>
+<p>传输层 (Transport)：</p>
+<p>定义传输数据的协议端口号，以及流控和差错校验。<br>协议有：TCP UDP，数据包一旦离开网卡即进入网络传输层</p>
+<p>网络层 (Network)：</p>
+<p>进行逻辑地址寻址，实现不同网络之间的路径选择。<br>协议有：ICMP IGMP IP（IPV4 IPV6） ARP RARP</p>
+<p>数据链路层 (Link)：</p>
+<p>建立逻辑连接、进行硬件地址寻址、差错校验等功能。（由底层网络定义协议）<br>将比特组合成字节进而组合成帧，用MAC地址访问介质，错误发现但不能纠正</p>
+<p>物理层（Physical Layer）：</p>
+<p>是计算机网络OSI模型中最低的一层</p>
+<p>物理层规定:为传输数据所需要的物理链路创建、维持、拆除<br>而提供具有机械的，电子的，功能的和规范的特性</p>
+<p>简单的说，物理层确保原始的数据可在各种物理媒体上传输。局域网与广域网皆属第1、2层</p>
+<p>物理层是OSI的第一层，它虽然处于最底层，却是整个开放系统的基础<br>物理层为设备之间的数据通信提供传输媒体及互连设备，为数据传输提供可靠的环境<br>如果您想要用尽量少的词来记住这个第一层，那就是“信号和介质”</p>
+]]></content>
       <categories>
-          
-          <category> ops </category>
-          
+        <category>ops</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 运维 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>nginx</title>
-      <link href="/2020/07/24/nginx/"/>
-      <url>/2020/07/24/nginx/</url>
-      
-        <content type="html"><![CDATA[<h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><p><strong>一、介绍</strong></p><p>​    Nginx是一个高性能的<strong>HTTP**</strong>和反向代理服务器<strong>，也是一个</strong>IMAP/POP3/SMTP<strong>**代理服务器</strong>。</p><p>​     Nginx是一款轻量级的Web服务器/反向代理服务器以及电子邮件代理服务器，并在一个BSD-like协议下发行。由俄罗斯的程序设计师lgor Sysoev所开发，供俄国大型的入口网站及搜索引擎Rambler使用。其特点是<strong>占有内存少，并发能力强</strong>，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。</p><p>​     Nginx相较于Apache\lighttpd具有占有内存少，稳定性高等优势，并且依靠并发能力强，丰富的模块库以及友好灵活的配置而闻名。<strong>在**</strong>Linux<strong>**操作系统下</strong>，nginx使用<strong>epoll事件模型</strong>,得益于此，nginx在Linux操作系统下效率相当高。同时Nginx在OpenBSD或FreeBSD操作系统上采用类似于Epoll的高效事件模型kqueue.</p><a id="more"></a><p><strong>二、名词解释</strong></p><p><strong>代理服务器</strong></p><p>一般是指局域网内部的机器<strong>通过代理服务器</strong>发送请求到互联网上的服务器，代理服务器一般作用在客户端。</p><p><strong>反向代理</strong></p><p>​      客户端（用户A）向反向代理的<strong>命名空间（**</strong>name-space<strong>**）中的内容</strong>发送普通请求，接着反向代理将判断<strong>向何处（原始服务器）转交请求</strong>，并将获得的内容返回给客户端。而客户端始终认为它访问的是原始服务器B而不是服务器Z。由于防火墙作用，只允许服务器Z进出，防火墙和反向代理共同作用保护了院子资源服务器B。</p><p><img src="https://img-blog.csdn.net/20150630214513300?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1dGVuZ3RlbmcxMzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p><p>​     <strong>用途：将防火墙后面的服务器提供给Internet用户访问。反向代理还可以为后端的多台服务器提供负载平衡或为后端较慢的服务器提供缓冲服务。</strong></p><p><strong>正向代理</strong></p><p>​     正向代理是一个位于<strong>客户端**</strong>A和原始服务器（服务器B）之间的服务器（代理服务器Z**），为了从原始服务器取得内容，用户A向代理服务器Z发送一个请求并指定目标（服务器B），然后代理服务器Z向服务器B转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。</p><p><img src="https://img-blog.csdn.net/20150630214532017?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1dGVuZ3RlbmcxMzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p><p>​      用途：<strong>在防火墙内的局域网客户端提供访问**</strong>Internet<strong>**的途径</strong>。还可以使用缓冲特性减少网络使用率。</p><p>从安全性来讲：</p><p>​    <strong>正向代理允许客户端通过它访问任意网站并且隐藏客户端自身</strong>，因此你必须采取安全措施以确保仅为经过授权的客户端提供服务。</p><p>​    反向代理对外都是透明的，访问者并不知道自己访问的是一个代理。</p><p><strong>三、Nginx VSApache</strong></p><p>相同点：</p><p>1、都是HTTP服务器软件</p><p>2、功能上都采用模块化结构设计</p><p>3、都支持通用的语言接口，如PHP、Perl、Python等</p><p>4、支持正向、反向代理、虚拟主机、URL重写、压缩传输、SSL加密传输</p><p>不同点：</p><p>1、Apache处理速度很慢，占用很多内存资源</p><p>2、功能上，Apache所有模块支持动静态编译，<strong>Nginx模块都是静态编译的</strong></p><p>3、对Fcgi的支持：Apache支持的很不好，Nginx支持非常好</p><p>4、处理连接方式：<strong>Nginx支持epoll,Apache不支持</strong></p><p>5、空间使用上：<strong>Nginx安装包仅几百K</strong></p><p>四、Nginx优势</p><p>1、作为Web服务器，<strong>Nginx处理静态文件、索引文件，自动索引的效率非常高</strong></p><p>2、作为代理服务器，Nginx可以实现无缓存的反向代理加速，提高网站运行速度</p><p>3、作为负载均衡服务器，Nginx既可以在内部直接支持Rails和PHP，也可以支持HTTP代理服务器对外进行服务，同时还<strong>支持简单的容错和利用算法进行负载均衡</strong></p><p>4、在性能方面，Nginx是专门为性能优化而开发的，实现上非常注重效率。它采用内核Poll模型，可以支持更多的并发连接，最大可以支持对5万个并发连接数的响应，而且只占用很低的内存资源</p><p>5、在稳定性方面，Nginx采取了<strong>分阶段资源分配技术</strong>，使得CPU与内存的占用率非常低。Nginx官方表示，Nginx保持1万个没有活动的连接，而这些连接只占用2.5MB内存，因此，类似DOS这样的攻击对Nginx来说基本上是没有任何作用的</p><p>6、在高可用性方面，<strong>Nginx支持热部署，启动速度特别迅速，因此可以在不间断服务的情况下，对软件版本或者配置进行升级，即使运行数月也无需重新启动，几乎可以做到7x24小时不间断地运行</strong></p><p>   Nginx具有很高的稳定性；支持热部署；代码质量非常高，代码很规范，手法成熟，模块扩展也很容易；采用了一些os提供的最新特性如对sendfile(Linux2.2+),accept-filter（FreeBSD4.1+）,TCP_DEFER_ACCEPT(Linux 2.4+)的支持，从而大大提高了性能。</p>]]></content>
-      
-      
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nginx</title>
+    <url>/2020/07/24/nginx/</url>
+    <content><![CDATA[<h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><p><strong>一、介绍</strong></p>
+<p>​    Nginx是一个高性能的<strong>HTTP**</strong>和反向代理服务器<strong>，也是一个</strong>IMAP/POP3/SMTP<strong>**代理服务器</strong>。</p>
+<p>​     Nginx是一款轻量级的Web服务器/反向代理服务器以及电子邮件代理服务器，并在一个BSD-like协议下发行。由俄罗斯的程序设计师lgor Sysoev所开发，供俄国大型的入口网站及搜索引擎Rambler使用。其特点是<strong>占有内存少，并发能力强</strong>，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。</p>
+<p>​     Nginx相较于Apache\lighttpd具有占有内存少，稳定性高等优势，并且依靠并发能力强，丰富的模块库以及友好灵活的配置而闻名。<strong>在**</strong>Linux<strong>**操作系统下</strong>，nginx使用<strong>epoll事件模型</strong>,得益于此，nginx在Linux操作系统下效率相当高。同时Nginx在OpenBSD或FreeBSD操作系统上采用类似于Epoll的高效事件模型kqueue.</p>
+<a id="more"></a>
+
+<p><strong>二、名词解释</strong></p>
+<p><strong>代理服务器</strong></p>
+<p>一般是指局域网内部的机器<strong>通过代理服务器</strong>发送请求到互联网上的服务器，代理服务器一般作用在客户端。</p>
+<p><strong>反向代理</strong></p>
+<p>​      客户端（用户A）向反向代理的<strong>命名空间（**</strong>name-space<strong>**）中的内容</strong>发送普通请求，接着反向代理将判断<strong>向何处（原始服务器）转交请求</strong>，并将获得的内容返回给客户端。而客户端始终认为它访问的是原始服务器B而不是服务器Z。由于防火墙作用，只允许服务器Z进出，防火墙和反向代理共同作用保护了院子资源服务器B。</p>
+<p><img src="https://img-blog.csdn.net/20150630214513300?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1dGVuZ3RlbmcxMzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p>​     <strong>用途：将防火墙后面的服务器提供给Internet用户访问。反向代理还可以为后端的多台服务器提供负载平衡或为后端较慢的服务器提供缓冲服务。</strong></p>
+<p><strong>正向代理</strong></p>
+<p>​     正向代理是一个位于<strong>客户端**</strong>A和原始服务器（服务器B）之间的服务器（代理服务器Z**），为了从原始服务器取得内容，用户A向代理服务器Z发送一个请求并指定目标（服务器B），然后代理服务器Z向服务器B转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。</p>
+<p><img src="https://img-blog.csdn.net/20150630214532017?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1dGVuZ3RlbmcxMzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p>​      用途：<strong>在防火墙内的局域网客户端提供访问**</strong>Internet<strong>**的途径</strong>。还可以使用缓冲特性减少网络使用率。</p>
+<p>从安全性来讲：</p>
+<p>​    <strong>正向代理允许客户端通过它访问任意网站并且隐藏客户端自身</strong>，因此你必须采取安全措施以确保仅为经过授权的客户端提供服务。</p>
+<p>​    反向代理对外都是透明的，访问者并不知道自己访问的是一个代理。</p>
+<p><strong>三、Nginx VSApache</strong></p>
+<p>相同点：</p>
+<p>1、都是HTTP服务器软件</p>
+<p>2、功能上都采用模块化结构设计</p>
+<p>3、都支持通用的语言接口，如PHP、Perl、Python等</p>
+<p>4、支持正向、反向代理、虚拟主机、URL重写、压缩传输、SSL加密传输</p>
+<p>不同点：</p>
+<p>1、Apache处理速度很慢，占用很多内存资源</p>
+<p>2、功能上，Apache所有模块支持动静态编译，<strong>Nginx模块都是静态编译的</strong></p>
+<p>3、对Fcgi的支持：Apache支持的很不好，Nginx支持非常好</p>
+<p>4、处理连接方式：<strong>Nginx支持epoll,Apache不支持</strong></p>
+<p>5、空间使用上：<strong>Nginx安装包仅几百K</strong></p>
+<p>四、Nginx优势</p>
+<p>1、作为Web服务器，<strong>Nginx处理静态文件、索引文件，自动索引的效率非常高</strong></p>
+<p>2、作为代理服务器，Nginx可以实现无缓存的反向代理加速，提高网站运行速度</p>
+<p>3、作为负载均衡服务器，Nginx既可以在内部直接支持Rails和PHP，也可以支持HTTP代理服务器对外进行服务，同时还<strong>支持简单的容错和利用算法进行负载均衡</strong></p>
+<p>4、在性能方面，Nginx是专门为性能优化而开发的，实现上非常注重效率。它采用内核Poll模型，可以支持更多的并发连接，最大可以支持对5万个并发连接数的响应，而且只占用很低的内存资源</p>
+<p>5、在稳定性方面，Nginx采取了<strong>分阶段资源分配技术</strong>，使得CPU与内存的占用率非常低。Nginx官方表示，Nginx保持1万个没有活动的连接，而这些连接只占用2.5MB内存，因此，类似DOS这样的攻击对Nginx来说基本上是没有任何作用的</p>
+<p>6、在高可用性方面，<strong>Nginx支持热部署，启动速度特别迅速，因此可以在不间断服务的情况下，对软件版本或者配置进行升级，即使运行数月也无需重新启动，几乎可以做到7x24小时不间断地运行</strong></p>
+<p>   Nginx具有很高的稳定性；支持热部署；代码质量非常高，代码很规范，手法成熟，模块扩展也很容易；采用了一些os提供的最新特性如对sendfile(Linux2.2+),accept-filter（FreeBSD4.1+）,TCP_DEFER_ACCEPT(Linux 2.4+)的支持，从而大大提高了性能。</p>
+]]></content>
       <categories>
-          
-          <category> ops </category>
-          
+        <category>ops</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 运维 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>linux</title>
-      <link href="/2020/07/24/linux/"/>
-      <url>/2020/07/24/linux/</url>
-      
-        <content type="html"><![CDATA[<h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h2><p>1、什么是运维？什么是游戏运维？</p><p>1）运维是指大型组织已经建立好的网络软硬件的维护，就是要保证业务的上线与运作的正常，在他运转的过程中，对他进行维护，他集合了网络、系统、数据库、开发、安全、监控于一身的技术，运维又包括很多种，有DBA运维、网站运维、虚拟化运维、监控运维、游戏运维等等</p><a id="more"></a><p>2）游戏运维又有分工，分为开发运维、应用运维（业务运维）和系统运维</p><p>开发运维：是给应用运维开发运维工具和运维平台的<br>应用运维：是给业务上线、维护和做故障排除的，用开发运维开发出来的工具给业务上线、维护、做故障排查<br>系统运维：是给应用运维提供业务上的基础设施，比如：系统、网络、监控、硬件等等</p><p>总结：开发运维和系统运维给应用运维提供了“工具”和“基础设施”上的支撑</p><p>开发运维、应用运维和系统运维他们的工作是环环相扣的</p><p>2、在工作中，运维人员经常需要跟运营人员打交道，请问运营人员是做什么工作的？</p><p>游戏运营要做的一个事情除了协调工作以外，还需要与各平台沟通，做好开服的时间、开服数、用户导量、活动等计划</p><p>3、现在给你三百台服务器，你怎么对他们进行管理？</p><p>管理3百台服务器的方式：<br>1）设定跳板机，使用统一账号登录，便于安全与登录的考量。<br>2）使用salt、ansiable、puppet进行系统的统一调度与配置的统一管理。<br>3）建立简单的服务器的系统、配置、应用的cmdb信息管理。便于查阅每台服务器上的各种信息记录。</p><p>4、简述raid0 raid1 raid5 三种工作模式的工作原理及特点</p><p>RAID，可以把硬盘整合成一个大磁盘，还可以在大磁盘上再分区，放数据<br>还有一个大功能，多块盘放在一起可以有冗余（备份）<br>RAID整合方式有很多，常用的：0 1 5 10</p><p>RAID 0，可以是一块盘和N个盘组合</p><p>其优点读写快，是RAID中最好的<br>缺点：没有冗余，一块坏了数据就全没有了</p><p>RAID 1，只能2块盘，盘的大小可以不一样，以小的为准</p><p>10G+10G只有10G，另一个做备份。它有100%的冗余，缺点：浪费资源，成本高</p><p>RAID 5 ，3块盘，容量计算10*（n-1）,损失一块盘</p><p>特点，读写性能一般，读还好一点，写不好</p><p>冗余从好到坏：RAID1 RAID10 RAID 5 RAID0</p><p>性能从好到坏：RAID0 RAID10 RAID5 RAID1</p><p>成本从低到高：RAID0 RAID5 RAID1 RAID10</p><p>单台服务器：很重要盘不多，系统盘，RAID1</p><p>数据库服务器：主库：RAID10 从库 RAID5RAID0（为了维护成本，RAID10）</p><p>WEB服务器，如果没有太多的数据的话，RAID5,RAID0（单盘）</p><p>有多台，监控、应用服务器，RAID0 RAID5</p><p>我们会根据数据的存储和访问的需求，去匹配对应的RAID级别</p><p>5、LVS、Nginx、HAproxy有什么区别？工作中你怎么选择？</p><p>LVS：是基于四层的转发<br>HAproxy：是基于四层和七层的转发，是专业的代理服务器<br>Nginx：是WEB服务器，缓存服务器，又是反向代理服务器，可以做七层的转发</p><p><strong>区别</strong>：LVS由于是基于四层的转发所以只能做端口的转发，而基于URL的、基于目录的这种转发LVS就做不了</p><p><strong>工作选择</strong>：</p><p>HAproxy和Nginx由于可以做七层的转发，所以URL和目录的转发都可以做，在很大并发量的时候我们就要选择LVS，像中小型公司的话并发量没那么大，选择HAproxy或者Nginx足已，由于HAproxy由是专业的代理服务器，配置简单，所以中小型企业推荐使用HAproxy</p><p>6、Squid、Varinsh和Nginx有什么区别，工作中你怎么选择？</p><p>Squid、Varinsh和Nginx都是代理服务器</p><p>什么是代理服务器：</p><p>能当替用户去访问公网，并且能把访问到的数据缓存到服务器本地，等用户下次再访问相同的资源的时候，代理服务器直接从本地回应给用户，当本地没有的时候，我代替你去访问公网，我接收你的请求，我先在我自已的本地缓存找，如果我本地缓存有，我直接从我本地的缓存里回复你，如果我在我本地没有找到你要访问的缓存的数据，那么代理服务器就会代替你去访问公网</p><p><strong>区别：</strong></p><p>1）Nginx本来是反向代理/web服务器，用了插件可以做做这个副业但是本身不支持特性挺多，只能缓存静态文件</p><p>2）从这些功能上。varnish和squid是专业的cache服务，而nginx这些是第三方模块完成</p><p>3）varnish本身的技术上优势要高于squid，它采用了可视化页面缓存技术</p><p>在内存的利用上，Varnish比Squid具有优势，性能要比Squid高。</p><p>还有强大的通过Varnish管理端口，可以使用正则表达式快速、批量地清除部分缓存</p><p>它是内存缓存，速度一流，但是内存缓存也限制了其容量，缓存页面和图片一般是挺好的</p><p>4）squid的优势在于完整的庞大的cache技术资料，和很多的应用生产环境</p><p>工作中选择：</p><p>要做cache服务的话，我们肯定是要选择专业的cache服务，优先选择squid或者varnish。</p><p>7、Tomcat和Resin有什么区别，工作中你怎么选择？</p><p>区别：Tomcat用户数多，可参考文档多，Resin用户数少，可考虑文档少<br>最主要区别则是Tomcat是标准的java容器，不过性能方面比resin的要差一些<br>但稳定性和java程序的兼容性，应该是比resin的要好</p><p>工作中选择：现在大公司都是用resin，追求性能；而中小型公司都是用Tomcat，追求稳定和程序的兼容</p><p>8、什么是中间件？什么是jdk？</p><p>中间件介绍：</p><p>中间件是一种独立的系统软件或服务程序，分布式应用软件借助这种软件在不同的技术之间共享资源</p><p>中间件位于客户机/ 服务器的操作系统之上，管理计算机资源和网络通讯<br>是连接两个独立应用程序或独立系统的软件。相连接的系统，即使它们具有不同的接口</p><p>但通过中间件相互之间仍能交换信息。执行中间件的一个关键途径是信息传递，通过中间件，应用程序可以工作于多平台或OS环境。</p><p>jdk：jdk是Java的开发工具包，它是一种用于构建在 Java 平台上发布的应用程序、applet 和组件的开发环境</p><p>9、讲述一下Tomcat8005、8009、8080三个端口的含义？</p><p>8005==》 关闭时使用</p><p>8009==》 为AJP端口，即容器使用，如Apache能通过AJP协议访问Tomcat的8009端口</p><p>8080==》 一般应用使用</p><p>10、什么叫CDN？</p><ul><li>即内容分发网络</li><li>其目的是通过在现有的Internet中增加一层新的网络架构，将网站的内容发布到最接近用户的网络边缘，使用户可就近取得所需的内容，提高用户访问网站的速度</li></ul><p>11、什么叫网站灰度发布？</p><p>灰度发布是指在黑与白之间，能够平滑过渡的一种发布方式</p><p>AB test就是一种灰度发布方式，让一部用户继续用A，一部分用户开始用B，如果用户对B没有什么反对意见，那么逐步扩大范围，把所有用户都迁移到B上面来灰度发布可以保证整体系统的稳定，在初始灰度的时候就可以发现、调整问题，以保证其影响度</p><p>12、简述DNS进行域名解析的过程？</p><p>用户要访问<a href="http://www.baidu.com，会先找本机的host文件，再找本地设置的DNS服务器，如果也没有的话，就去网络中找根服务器，根服务器反馈结果，说只能提供一级域名服务器.cn，就去找一级域名服务器，一级域名服务器说只能提供二级域名服务器.com.cn,就去找二级域名服务器，二级域服务器只能提供三级域名服务器.baidu.com.cn，就去找三级域名服务器，三级域名服务器正好有这个网站www.baidu.com，然后发给请求的服务器，保存一份之后，再发给客户端" target="_blank" rel="noopener">www.baidu.com，会先找本机的host文件，再找本地设置的DNS服务器，如果也没有的话，就去网络中找根服务器，根服务器反馈结果，说只能提供一级域名服务器.cn，就去找一级域名服务器，一级域名服务器说只能提供二级域名服务器.com.cn,就去找二级域名服务器，二级域服务器只能提供三级域名服务器.baidu.com.cn，就去找三级域名服务器，三级域名服务器正好有这个网站www.baidu.com，然后发给请求的服务器，保存一份之后，再发给客户端</a></p><p>13、RabbitMQ是什么东西？</p><p>RabbitMQ也就是消息队列中间件，消息中间件是在消息的传息过程中保存消息的容器<br>消息中间件再将消息从它的源中到它的目标中标时充当中间人的作用<br>队列的主要目的是提供路由并保证消息的传递；如果发送消息时接收者不可用<br>消息队列不会保留消息，直到可以成功地传递为止，当然，消息队列保存消息也是有期限地</p><p>14、讲一下Keepalived的工作原理？</p><p>在一个虚拟路由器中，只有作为MASTER的VRRP路由器会一直发送VRRP通告信息,<br>BACKUP不会抢占MASTER，除非它的优先级更高。当MASTER不可用时(BACKUP收不到通告信息)<br>多台BACKUP中优先级最高的这台会被抢占为MASTER。这种抢占是非常快速的(&lt;1s)，以保证服务的连续性<br>由于安全性考虑，VRRP包使用了加密协议进行加密。BACKUP不会发送通告信息，只会接收通告信息</p><p>15、讲述一下LVS三种模式的工作过程？</p><p>LVS 有三种负载均衡的模式，分别是VS/NAT（nat 模式） VS/DR(路由模式) VS/TUN（隧道模式）</p><p><strong>一、NAT模式（VS-NAT）</strong></p><p><strong>原理</strong>：就是把客户端发来的数据包的IP头的目的地址，在负载均衡器上换成其中一台RS的IP地址<br>并发至此RS来处理,RS处理完后把数据交给负载均衡器,负载均衡器再把数据包原IP地址改为自己的IP<br>将目的地址改为客户端IP地址即可期间,无论是进来的流量,还是出去的流量,都必须经过负载均衡器<br><strong>优点</strong>：集群中的物理服务器可以使用任何支持TCP/IP操作系统，只有负载均衡器需要一个合法的IP地址<br><strong>缺点</strong>：扩展性有限。当服务器节点（普通PC服务器）增长过多时,负载均衡器将成为整个系统的瓶颈<br>因为所有的请求包和应答包的流向都经过负载均衡器。当服务器节点过多时<br>大量的数据包都交汇在负载均衡器那，速度就会变慢！</p><p><strong>二、IP隧道模式（VS-TUN）</strong></p><p><strong>原理</strong>：首先要知道，互联网上的大多Internet服务的请求包很短小，而应答包通常很大<br>那么隧道模式就是，把客户端发来的数据包，封装一个新的IP头标记(仅目的IP)发给RS<br>RS收到后,先把数据包的头解开,还原数据包,处理后,直接返回给客户端,不需要再经过<br>负载均衡器。注意,由于RS需要对负载均衡器发过来的数据包进行还原,所以说必须支持<br>IPTUNNEL协议，所以,在RS的内核中,必须编译支持IPTUNNEL这个选项<br><strong>优点</strong>：负载均衡器只负责将请求包分发给后端节点服务器，而RS将应答包直接发给用户<br>所以，减少了负载均衡器的大量数据流动，负载均衡器不再是系统的瓶颈，就能处理很巨大的请求量<br>这种方式，一台负载均衡器能够为很多RS进行分发。而且跑在公网上就能进行不同地域的分发。<br><strong>缺点</strong>：隧道模式的RS节点需要合法IP，这种方式需要所有的服务器支持”IP Tunneling”<br>(IP Encapsulation)协议，服务器可能只局限在部分Linux系统上</p><p>*<em>三、直接路由模式（VS-DR）<br>*</em></p><p><strong>原理</strong>：负载均衡器和RS都使用同一个IP对外服务但只有DR对ARP请求进行响应<br>所有RS对本身这个IP的ARP请求保持静默也就是说,网关会把对这个服务IP的请求全部定向给DR<br>而DR收到数据包后根据调度算法,找出对应的RS,把目的MAC地址改为RS的MAC（因为IP一致）<br>并将请求分发给这台RS这时RS收到这个数据包,处理完成之后，由于IP一致，可以直接将数据返给客户<br>则等于直接从客户端收到这个数据包无异,处理后直接返回给客户端<br>由于负载均衡器要对二层包头进行改换,所以负载均衡器和RS之间必须在一个广播域<br>也可以简单的理解为在同一台交换机上<br><strong>优点</strong>：和TUN（隧道模式）一样，负载均衡器也只是分发请求，应答包通过单独的路由方法返回给客户端<br>与VS-TUN相比，VS-DR这种实现方式不需要隧道结构，因此可以使用大多数操作系统做为物理服务器。<br><strong>缺点</strong>：（不能说缺点，只能说是不足）要求负载均衡器的网卡必须与物理网卡在一个物理段上。</p><p>16、mysql的innodb如何定位锁问题，mysql如何减少主从复制延迟？</p><p>mysql的innodb如何定位锁问题:<br>在使用 show engine innodb status检查引擎状态时，发现了死锁问题<br>在5.5中，information_schema 库中增加了三个关于锁的表（MEMORY引擎）<br>innodb_trx     ## 当前运行的所有事务<br>innodb_locks   ## 当前出现的锁<br>innodb_lock_waits  ## 锁等待的对应关系</p><p>mysql如何减少主从复制延迟:</p><p>如果延迟比较大，就先确认以下几个因素：</p><ol><li>从库硬件比主库差，导致复制延迟</li><li>主从复制单线程，如果主库写并发太大，来不及传送到从库就会导致延迟。</li><li>更高版本的mysql可以支持多线程复制</li><li>慢SQL语句过多</li><li>网络延迟</li><li>master负载，主库读写压力大，导致复制延迟，架构的前端要加buffer及缓存层</li><li>slave负载，一般的做法是，使用多台slave来分摊读请求，再从这些slave中取一台专用的服务器，只作为备份用，不进行其他任何操作.另外， 2个可以减少延迟的参数:–slave-net-timeout=seconds 单位为秒 默认设置为 3600秒</li></ol><blockquote><p>参数含义：当slave从主数据库读取log数据失败后，等待多久重新建立连接并获取数据</p></blockquote><p>–master-connect-retry=seconds 单位为秒 默认设置为 60秒</p><blockquote><p>参数含义：当重新建立主从连接时，如果连接建立失败，间隔多久后重试</p></blockquote><p>通常配置以上2个参数可以减少网络问题导致的主从数据同步延迟</p><p><strong>MySQL数据库主从同步延迟解决方案</strong></p><p>最简单的减少slave同步延时的方案就是在架构上做优化，尽量让主库的DDL快速执行，还有就是主库是写，对数据安全性较高，比如sync_binlog=1，innodb_flush_log_at_trx_commit= 1 之类的设置，而slave则不需要这么高的数据安全，完全可以讲sync_binlog设置为0或者关闭binlog，innodb_flushlog也可以设置为0来提高sql的执行效率。另外就是使用比主库更好的硬件设备作为slave</p><p>17、如何重置mysql root密码？</p><p>一、 在已知MYSQL数据库的ROOT用户密码的情况下，修改密码的方法：</p><p>1、 在SHELL环境下，使用mysqladmin命令设置：<br>   mysqladmin –u root –p password “新密码”  回车后要求输入旧密码</p><p>2、 在mysql&gt;环境中,使用update命令，直接更新mysql库user表的数据：</p><p>   Update  mysql.user  set  password=password(‘新密码’)  where  user=’root’;<br>   flush  privileges;<br>   注意：mysql语句要以分号”；”结束</p><p>3、 在mysql&gt;环境中，使用grant命令，修改root用户的授权权限。</p><p>   grant  all  on  <em>.</em> to  root@’localhost’  identified  by  ‘新密码’；</p><p>二、 如查忘记了mysql数据库的ROOT用户的密码，又如何做呢？方法如下：</p><p>1、 关闭当前运行的mysqld服务程序：service  mysqld  stop（要先将mysqld添加为系统服务）<br>2、 使用mysqld_safe脚本以安全模式（不加载授权表）启动mysqld 服务<br>   /usr/local/mysql/bin/mysqld_safe  –skip-grant-table  &amp;<br>3、 使用空密码的root用户登录数据库，重新设置ROOT用户的密码<br>   ＃mysql  -u  root<br>   Mysql&gt; Update  mysql.user  set  password=password(‘新密码’)  where  user=’root’;<br>   Mysql&gt; flush  privileges;</p><p>18、lvs/nginx/haproxy优缺点</p><p>Nginx的优点是：<br>1、工作在网络的7层之上，可以针对http应用做一些分流的策略，比如针对域名、目录结构，它的正则规则比HAProxy更为强大和灵活，这也是它目前广泛流行的主要原因之一，Nginx单凭这点可利用的场合就远多于LVS了。</p><p>2、Nginx对网络稳定性的依赖非常小，理论上能ping通就就能进行负载功能，这个也是它的优势之一，相反LVS对网络稳定性依赖比较大，这点本人深有体会；</p><p>3、Nginx安装和配置比较简单，测试起来比较方便，它基本能把错误用日志打印出来，LVS的配置、测试就要花比较长的时间了，LVS对网络依赖比较大。</p><p>4、可以承担高负载压力且稳定，在硬件不差的情况下一般能支撑几万次的并发量，负载度比LVS相对小些。</p><p>5、Nginx可以通过端口检测到服务器内部的故障，比如根据服务器处理网页返回的状态码、超时等等，并且会把返回错误的请求重新提交到另一个节点，不过其中缺点就是不支持url来检测。比如用户正在上传一个文件，而处理该上传的节点刚好在上传过程中出现故障，Nginx会把上传切到另一台服务器重新处理，而LVS就直接断掉了，如果是上传一个很大的文件或者很重要的文件的话，用户可能会因此而不满。</p><p>6、Nginx不仅仅是一款优秀的负载均衡器/反向代理软件，它同时也是功能强大的Web应用服务器，LNMP也是近几年非常流行的web架构，在高流量的环境中稳定性也很好。</p><p>7、Nginx现在作为Web反向加速缓存越来越成熟了，速度比传统的Squid服务器更快，可考虑用其作为反向代理加速器</p><p>8、Nginx可作为中层反向代理使用，这一层面Nginx基本上无对手，唯一可以对比Nginx的就只有lighttpd了，不过lighttpd目前还没有做到Nginx完全的功能，配置也不那么清晰易读，社区资料也远远没Nginx活跃</p><p>9、Nginx也可作为静态网页和图片服务器，这方面的性能也无对手。还有Nginx社区非常活跃，第三方模块也很多</p><p><strong>Nginx的缺点是：</strong></p><p>1、Nginx仅能支持http、https和Email协议，这样就在适用范围上面小些，这个是它的缺点<br>2、对后端服务器的健康检查，只支持通过端口来检测，不支持通过url来检测<br>   不支持Session的直接保持，但能通过ip_hash来解决</p><p>LVS：使用Linux内核集群实现一个高性能、高可用的负载均衡服务器，它具有很好的可伸缩性（Scalability)、可靠性（Reliability)和可管理性（Manageability)</p><p><strong>LVS的优点是</strong>：</p><p>1、抗负载能力强、是工作在网络4层之上仅作分发之用，没有流量的产生，这个特点也决定了它在负载均衡软件里的性能最强的，对内存和cpu资源消耗比较低</p><p>2、配置性比较低，这是一个缺点也是一个优点，因为没有可太多配置的东西，所以并不需要太多接触，大大减少了人为出错的几率</p><p>3、工作稳定，因为其本身抗负载能力很强，自身有完整的双机热备方案，如LVS+Keepalived，不过我们在项目实施中用得最多的还是LVS/DR+Keepalived</p><p>4、无流量，LVS只分发请求，而流量并不从它本身出去，这点保证了均衡器IO的性能不会收到大流量的影响。</p><p>5、应用范围较广，因为LVS工作在4层，所以它几乎可对所有应用做负载均衡，包括http、数据库、在线聊天室等</p><p><strong>LVS的缺点是：</strong></p><p>1、软件本身不支持正则表达式处理，不能做动静分离<br>   而现在许多网站在这方面都有较强的需求，这个是Nginx/HAProxy+Keepalived的优势所在<br>2、如果是网站应用比较庞大的话，LVS/DR+Keepalived实施起来就比较复杂了，特别后面有Windows Server的机器的话，如果实施及配置还有维护过程就比较复杂了，相对而言，Nginx/HAProxy+Keepalived就简单多了。</p><p><strong>HAProxy的特点是：</strong></p><p>1、HAProxy也是支持虚拟主机的。</p><p>2、HAProxy的优点能够补充Nginx的一些缺点，比如支持Session的保持，Cookie的引导，同时支持通过获取指定的url来检测后端服务器的状态</p><p>3、HAProxy跟LVS类似，本身就只是一款负载均衡软件，单纯从效率上来讲HAProxy会比Nginx有更出色的负载均衡速度，在并发处理上也是优于Nginx的</p><p>4、HAProxy支持TCP协议的负载均衡转发，可以对MySQL读进行负载均衡，对后端的MySQL节点进行检测和负载均衡，大家可以用LVS+Keepalived对MySQL主从做负载均衡</p><p>5、HAProxy负载均衡策略非常多，HAProxy的负载均衡算法现在具体有如下8种：</p><p>①roundrobin，表示简单的轮询，这个不多说，这个是负载均衡基本都具备的；<br>② static-rr，表示根据权重，建议关注；<br>③leastconn，表示最少连接者先处理，建议关注；<br>④ source，表示根据请求源IP，这个跟Nginx的IP_hash机制类似<br>  我们用其作为解决session问题的一种方法，建议关注；<br>⑤ri，表示根据请求的URI；<br>⑥rl_param，表示根据请求的URl参数’balance url_param’ requires an URL parameter name；<br>⑦hdr(name)，表示根据HTTP请求头来锁定每一次HTTP请求；<br>⑧rdp-cookie(name)，表示根据据cookie(name)来锁定并哈希每一次TCP请求。</p><p>19、mysql数据备份工具</p><p>mysqldump工具，mysqldump是mysql自带的备份工具，目录在bin目录下面：/usr/local/mysql/bin/mysqldump，支持基于innodb的热备份，但是由于是逻辑备份，所以速度不是很快，适合备份数据比较小的场景，Mysqldump完全备份+二进制日志可以实现基于时间点的恢复。</p><p><strong>基于LVM快照备份</strong></p><p>在物理备份中，有基于文件系统的物理备份（LVM的快照），也可以直接用tar之类的命令对整个数据库目录<br>进行打包备份，但是这些只能进行泠备份，不同的存储引擎备份的也不一样，myisam自动备份到表级别<br>而innodb不开启独立表空间的话只能备份整个数据库。</p><p><strong>tar包备份</strong></p><p>percona提供的xtrabackup工具，支持innodb的物理热备份，支持完全备份，增量备份，而且速度非常快，支持innodb存储引起的数据在不同，数据库之间迁移，支持复制模式下的从机备份恢复备份恢复，为了让xtrabackup支持更多的功能扩展，可以设立独立表空间，打开 innodb_file_per_table功能，启用之后可以支持单独的表备份</p><p>20、keepalive的工作原理和如何做到健康检查</p><p>keepalived是以VRRP协议为实现基础的，VRRP全称Virtual Router Redundancy Protocol，即虚拟路由冗余协议。</p><p>虚拟路由冗余协议，可以认为是实现路由器高可用的协议，即将N台提供相同功能的路由器组成一个路由器组<br>这个组里面有一个master和多个backup，master上面有一个对外提供服务的vip（该路由器所在局域网内<br>其他机器的默认路由为该vip），master会发组播，当backup收不到vrrp包时就认为master宕掉了<br>这时就需要根据VRRP的优先级来选举一个backup当master。这样就可以保证路由器的高可用了</p><p>keepalived主要有三个模块，分别是core、check和vrrp。core模块为keepalived的核心，负责主进程的启动、维护及全局配置文件的加载和解析。check负责健康检查，包括常见的各种检查方式，vrrp模块是来实现VRRP协议的</p><p>Keepalived健康检查方式配置</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">HTTP_GET|SSL_GET</span><br><span class="line">HTTP_GET | SSL_GET</span><br><span class="line">&#123;</span><br><span class="line">url &#123;</span><br><span class="line">path &#x2F;# HTTP&#x2F;SSL 检查的url可以是多个</span><br><span class="line">digest  # HTTP&#x2F;SSL 检查后的摘要信息用工具genhash生成</span><br><span class="line">status_code 200# HTTP&#x2F;SSL 检查返回的状态码</span><br><span class="line">&#125;</span><br><span class="line">connect_port 80 # 连接端口</span><br><span class="line">bindto</span><br><span class="line">connect_timeout 3 # 连接超时时间</span><br><span class="line">nb_get_retry 3 # 重连次数</span><br><span class="line">delay_before_retry 2 #连接间隔时间</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>21、统计ip访问情况，要求分析nginx访问日志，找出访问页面数量在前十位的ip</p><ul><li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat access.log | awk ‘&#123;print $1&#125;’ | uniq -c | sort -rn | head -10</span><br></pre></td></tr></table></figure></li></ul><p>22、使用tcpdump监听主机为192.168.1.1，tcp端口为80的数据，同时将输出结果保存输出到tcpdump.log</p><ul><li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump ‘host 192.168.1.1 and port 80’ &gt; tcpdump.log</span><br></pre></td></tr></table></figure></li></ul><p>23、如何将本地80 端口的请求转发到8080 端口，当前主机IP 为192.168.2.1</p><ul><li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -A PREROUTING -d 192.168.2.1 -p tcp -m tcp -dport 80 -j DNAT-to-destination 192.168.2.1:8080</span><br></pre></td></tr></table></figure></li></ul><p>24、简述raid0 raid1 raid5 三种工作模式的工作原理及特点</p><p><strong>RAID 0</strong>：带区卷，连续以位或字节为单位分割数据，并行读/写于多个磁盘上，因此具有很高的数据传输率<br>但它没有数据冗余，RAID 0 只是单纯地提高性能，并没有为数据的可靠性提供保证<br>而且其中的一个磁盘失效将影响到所有数据。因此，RAID 0 不能应用于数据安全性要求高的场合</p><p><strong>RAID 1：</strong>镜像卷，它是通过磁盘数据镜像实现数据冗余，在成对的独立磁盘上产生互为备份的数据</p><p>不能提升写数据效率。当原始数据繁忙时，可直接从镜像拷贝中读取数据，因此RAID1 可以提高读取性能<br>RAID 1 是磁盘阵列中单位成本最高的，镜像卷可用容量为总容量的1/2，但提供了很高的数据安全性和可用性<br>当一个磁盘失效时，系统可以自动切换到镜像磁盘上读写，而不需要重组失效的数据</p><p><strong>RAID5：</strong>至少由3块硬盘组成，分布式奇偶校验的独立磁盘结构，它的奇偶校验码存在于所有磁盘上</p><p>任何一个硬盘损坏，都可以根据其它硬盘上的校验位来重建损坏的数据（最多允许1块硬盘损坏）<br>所以raid5可以实现数据冗余，确保数据的安全性，同时raid5也可以提升数据的读写性能</p><p>25、你对现在运维工程师的理解和以及对其工作的认识</p><p>运维工程师在公司当中责任重大，需要保证时刻为公司及客户提供最高、最快、最稳定、最安全的服务<br>运维工程师的一个小小的失误，很有可能会对公司及客户造成重大损失<br>因此运维工程师的工作需要严谨及富有创新精神</p><p>26、实时抓取并显示当前系统中tcp 80端口的网络数据信息，请写出完整操作命令</p><ul><li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -nn tcp port 80</span><br></pre></td></tr></table></figure></li></ul><p>27、服务器开不了机怎么解决一步步的排查</p><p>A、造成服务器故障的原因可能有以下几点：</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/QFzRdz9libEawR0xuaPapN1QiaC4vL4Hr4b7fQichUYZFr4kxH9E1MxvjBKTNQJhMJSudcpFx6Q4H3oBdpUV6WIkw/640?tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p><p>B、如何排查服务器故障的处理步骤如下：</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/QFzRdz9libEawR0xuaPapN1QiaC4vL4Hr4qibFylR5Fic1c64uvxzlkWMJ0SzcWsTvQmrL2NaRCbuqGwpKzos3WA0w/640?tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p><p>28、Linux系统中病毒怎么解决<br>1）最简单有效的方法就是重装系统<br>2）要查的话就是找到病毒文件然后删除<br>中毒之后一般机器cpu、内存使用率会比较高，机器向外发包等异常情况，排查方法简单介绍下，top 命令找到cpu使用率最高的进程，一般病毒文件命名都比较乱，可以用 ps aux 找到病毒文件位置，rm -f  命令删除病毒文件，检查计划任务、开机启动项和病毒文件目录有无其他可以文件等</p><p>3）由于即使删除病毒文件不排除有潜伏病毒，所以最好是把机器备份数据之后重装一下</p><p>29、发现一个病毒文件你删了他又自动创建怎么解决</p><p>公司的内网某台linux服务器流量莫名其妙的剧增,用iftop查看有连接外网的情况<br>针对这种情况一般重点查看netstat连接的外网ip和端口。用lsof -p pid可以查看到具体是那些进程，哪些文件，经查勘发现/root下有相关的配置conf.n hhe两个可疑文件，rm -rf后不到一分钟就自动生成了，由此推断是某个母进程产生的这些文件。所以找到母进程就是找到罪魁祸首</p><p>查杀病毒最好断掉外网访问，还好是内网服务器，可以通过内网访问</p><p>断了内网，病毒就失去外联的能力，杀掉它就容易的多，怎么找到呢，找了半天也没有看到蛛丝马迹，没办法只有ps axu一个个排查，方法是查看可以的用户和和系统相似而又不是的冒牌货，果然，看到了如下进程可疑，看不到图片就是/usr/bin/.sshd，于是我杀掉所有.sshd相关的进程，然后直接删掉.sshd这个可执行文件，然后才删掉了文章开头提到的自动复活的文件</p><p>总结一下，遇到这种问题，如果不是太严重，尽量不要重装系统</p><p>一般就是先断外网，然后利用iftop,ps,netstat,chattr,lsof,pstree这些工具顺藤摸瓜<br>一般都能找到元凶。但是如果遇到诸如此类的问题<br>/boot/efi/EFI/redhat/grub.efi: Heuristics.Broken.Executable FOUND，个人觉得就要重装系统了</p><p>30、说说TCP/IP的七层模型</p><p>应用层 (Application)：<br>网络服务与最终用户的一个接口。<br>协议有：HTTP FTP TFTP SMTP SNMP DNS TELNET HTTPS POP3 DHCP</p><p>表示层（Presentation Layer）：</p><p>数据的表示、安全、压缩。（在五层模型里面已经合并到了应用层）<br>格式有，JPEG、ASCll、DECOIC、加密格式等</p><p>会话层（Session Layer）：</p><p>建立、管理、终止会话。（在五层模型里面已经合并到了应用层）<br>对应主机进程，指本地主机与远程主机正在进行的会话</p><p>传输层 (Transport)：</p><p>定义传输数据的协议端口号，以及流控和差错校验。<br>协议有：TCP UDP，数据包一旦离开网卡即进入网络传输层</p><p>网络层 (Network)：</p><p>进行逻辑地址寻址，实现不同网络之间的路径选择。<br>协议有：ICMP IGMP IP（IPV4 IPV6） ARP RARP</p><p>数据链路层 (Link)：</p><p>建立逻辑连接、进行硬件地址寻址、差错校验等功能。（由底层网络定义协议）<br>将比特组合成字节进而组合成帧，用MAC地址访问介质，错误发现但不能纠正</p><p>物理层（Physical Layer）：</p><p>是计算机网络OSI模型中最低的一层</p><p>物理层规定:为传输数据所需要的物理链路创建、维持、拆除<br>而提供具有机械的，电子的，功能的和规范的特性</p><p>简单的说，物理层确保原始的数据可在各种物理媒体上传输。局域网与广域网皆属第1、2层</p><p>物理层是OSI的第一层，它虽然处于最底层，却是整个开放系统的基础<br>物理层为设备之间的数据通信提供传输媒体及互连设备，为数据传输提供可靠的环境<br>如果您想要用尽量少的词来记住这个第一层，那就是“信号和介质”</p>]]></content>
-      
-      
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nps内网穿透</title>
+    <url>/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
+    <content><![CDATA[<h2 id="openwrt之nps内网穿透"><a href="#openwrt之nps内网穿透" class="headerlink" title="openwrt之nps内网穿透"></a>openwrt之nps内网穿透</h2><h4 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">折腾完openwrt后，为了能在公司访问到家中的openwrt管理界面</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2.准备工作"></a>2.准备工作</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">1.一个域名</span></span><br><span class="line"><span class="attr">2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序</span></span><br><span class="line"><span class="attr">3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h4 id="3-服务端程序下载安装"><a href="#3-服务端程序下载安装" class="headerlink" title="3.服务端程序下载安装"></a>3.服务端程序下载安装</h4><p>GitHub：<a href="https://github.com/cnlh/nps" target="_blank" rel="noopener">https://github.com/cnlh/nps</a><br>releases github: <a href="https://github.com/ehang-io/nps/releases" target="_blank" rel="noopener">https://github.com/ehang-io/nps/releases</a>  #下载地址</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">我使用的是centos，所以下载对应的版本，客户端openwrt自带，所以不需要下载</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps.jpg" alt=""></p>
+<h4 id="4-服务端安装"><a href="#4-服务端安装" class="headerlink" title="4.服务端安装"></a>4.服务端安装</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">wget</span> <span class="string">https://github.com/cnlh/nps/releases/download/v0.26.3/linux_amd64_server.tar.gz</span></span><br><span class="line"><span class="attr">tar</span> <span class="string">xzvf linux_amd64_server.tar.gz</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">~/nps</span></span><br><span class="line"><span class="meta">./nps</span> <span class="string">install</span></span><br><span class="line"><span class="attr">nohup</span> <span class="string">./nps &amp;</span></span><br><span class="line"><span class="comment">#有特殊需求可以修改conf文件，比如端口等，此处没有修改任何配置，默认服务端口8080，访问：</span></span><br><span class="line"><span class="meta">用户名：admin</span> <span class="string">密码：123（默认）</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps1.jpg" alt=""></p>
+<h4 id="5-客户端配置"><a href="#5-客户端配置" class="headerlink" title="5.客户端配置"></a>5.客户端配置</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps2.jpg" alt=""></p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#端口默认8024是客户端访问服务端的端口，秘钥为自己定义，服务端需要配置此秘钥</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="6-服务端配置"><a href="#6-服务端配置" class="headerlink" title="6. 服务端配置"></a>6. 服务端配置</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps3.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps4.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps5.jpg" alt=""></p>
+<p>至此所有都配置完成，下图访问效果</p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps6.jpg" alt=""></p>
+]]></content>
       <categories>
-          
-          <category> ops </category>
-          
+        <category>ops</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 运维 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>hexo</title>
-      <link href="/2020/07/24/hexo/"/>
-      <url>/2020/07/24/hexo/</url>
-      
-        <content type="html"><![CDATA[<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/20200727155306.jpg" alt=""></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#参考资料</span><br><span class="line">&lt;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;lijianming180&#x2F;p&#x2F;12433189.html&gt; 统计量</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>杂谈</title>
+    <url>/2020/08/04/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="技术杂谈"><a href="#技术杂谈" class="headerlink" title="技术杂谈"></a>技术杂谈</h2><h4 id="1-sata-和-sas的区别"><a href="#1-sata-和-sas的区别" class="headerlink" title="1.sata 和 sas的区别"></a>1.sata 和 sas的区别</h4><p>一.性能区别   </p>
+<p>&#8195;&#8195;SAS更好：相比SATA，SAS在磁盘性能5261上更占优势。主要4102得益于强大SCSI指令集(包括SCSI指令队列)、双核处1653理器，以及对硬件顺序流处理的支持。SAS硬盘支持双向全双工模式，为同时发生的读写操作提供了两路活动通道,SATA只能提供单通道和半双工模式，无疑弱了不少。<br>二.sas接口跟sata接口一样吗<br>   不一样，sas的电源和数据口是一体的，可以插sata盘，sata的是分开的，不能插sas盘，sas向下兼容sata设备。</p>
+<h4 id="2-NAS"><a href="#2-NAS" class="headerlink" title="2.NAS"></a>2.NAS</h4><p>&#8195;&#8195;NAS（Network Attached Storage：网络附属存储）按字面简单说就是连接在网络上，具备资料存储功能的装置，因此也称为“网络存储器”。它是一种专用数据存储服务器。它以数据为中心，将存储设备与服务器彻底分离，集中管理数据，从而释放带宽、提高性能、降低总拥有成本、保护投资。其成本远远低于使用服务器存储，而效率却远远高于后者。目前国际著名的NAS企业有Netapp、EMC、OUO等。</p>
+<a id="more"></a>
+]]></content>
       <categories>
-          
-          <category> ops </category>
-          
+        <category>IT</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 运维 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>杂谈</tag>
+      </tags>
+  </entry>
 </search>
