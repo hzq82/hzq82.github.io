@@ -2528,7 +2528,7 @@ ul.breadcrumb li + li:last-child {
 }
 .header-inner {
   background: var(--content-bg-color);
-  border-radius: initial;
+  border-radius: 15px 15px 15px 15px;
   box-shadow: initial;
   width: 240px;
 }
@@ -2564,7 +2564,7 @@ ul.breadcrumb li + li:last-child {
 .main-inner {
   align-self: stretch;
   background: var(--content-bg-color);
-  border-radius: initial;
+  border-radius: 15px 15px 15px 15px;
   box-shadow: initial;
   box-sizing: border-box;
   padding: 40px;
@@ -2712,7 +2712,7 @@ ul.breadcrumb li + li:last-child {
 }
 .sidebar-inner {
   background: var(--content-bg-color);
-  border-radius: initial;
+  border-radius: 15px;
   box-shadow: initial;
   box-sizing: border-box;
   color: var(--text-color);
