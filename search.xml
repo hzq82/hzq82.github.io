@@ -68,11 +68,11 @@
   <entry>
     <title>linux</title>
     <url>/2020/07/24/linux/</url>
-    <content><![CDATA[<h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h2><p>1、什么是运维？什么是游戏运维？</p>
+    <content><![CDATA[<h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h2><p>1、什么是运维？运维的分类？</p>
 <p>1）运维是指大型组织已经建立好的网络软硬件的维护，就是要保证业务的上线与运作的正常，在他运转的过程中，对他进行维护，他集合了网络、系统、数据库、开发、安全、监控于一身的技术，运维又包括很多种，有DBA运维、网站运维、虚拟化运维、监控运维、游戏运维等等</p>
 <a id="more"></a>
 
-<p>2）游戏运维又有分工，分为开发运维、应用运维（业务运维）和系统运维</p>
+<p>2）运维又有分工，分为开发运维、应用运维（业务运维）和系统运维</p>
 <p>开发运维：是给应用运维开发运维工具和运维平台的<br>应用运维：是给业务上线、维护和做故障排除的，用开发运维开发出来的工具给业务上线、维护、做故障排查<br>系统运维：是给应用运维提供业务上的基础设施，比如：系统、网络、监控、硬件等等</p>
 <p>总结：开发运维和系统运维给应用运维提供了“工具”和“基础设施”上的支撑</p>
 <p>开发运维、应用运维和系统运维他们的工作是环环相扣的</p>
@@ -294,12 +294,14 @@
       </tags>
   </entry>
   <entry>
-    <title>opstfix</title>
+    <title>postfix</title>
     <url>/2020/08/12/ops%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>参考资料<a href="https://blog.51cto.com/13490688/2061070" target="_blank" rel="noopener">https://blog.51cto.com/13490688/2061070</a></p>
 <h4 id="postfix-维护"><a href="#postfix-维护" class="headerlink" title="postfix 维护"></a>postfix 维护</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">start postfix</span></span><br><span class="line"><span class="attr">vi</span> <span class="string">/etc/postfix/main.cf #发信功能配置文件</span></span><br><span class="line"><span class="attr">service</span> <span class="string">dovecot start</span></span><br><span class="line"><span class="attr">vi</span> <span class="string">/etc/dovecot/dovecot.conf #收信功能配置文件</span></span><br></pre></td></tr></table></figure>
 
-<a id="more"></a>]]></content>
+<a id="more"></a>
+
+]]></content>
       <categories>
         <category>ops</category>
       </categories>
