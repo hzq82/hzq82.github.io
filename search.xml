@@ -294,13 +294,29 @@
       </tags>
   </entry>
   <entry>
-    <title>postfix</title>
-    <url>/2020/08/12/ops%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>参考资料<a href="https://blog.51cto.com/13490688/2061070" target="_blank" rel="noopener">https://blog.51cto.com/13490688/2061070</a></p>
-<h4 id="postfix-维护"><a href="#postfix-维护" class="headerlink" title="postfix 维护"></a>postfix 维护</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">start postfix</span></span><br><span class="line"><span class="attr">vi</span> <span class="string">/etc/postfix/main.cf #发信功能配置文件</span></span><br><span class="line"><span class="attr">service</span> <span class="string">dovecot start</span></span><br><span class="line"><span class="attr">vi</span> <span class="string">/etc/dovecot/dovecot.conf #收信功能配置文件</span></span><br></pre></td></tr></table></figure>
+    <title>nps内网穿透</title>
+    <url>/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
+    <content><![CDATA[<h2 id="openwrt之nps内网穿透"><a href="#openwrt之nps内网穿透" class="headerlink" title="openwrt之nps内网穿透"></a>openwrt之nps内网穿透</h2><h4 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">折腾完openwrt后，为了能在公司访问到家中的openwrt管理界面</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2.准备工作"></a>2.准备工作</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">1.一个域名</span></span><br><span class="line"><span class="attr">2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序</span></span><br><span class="line"><span class="attr">3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序</span></span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
 
+<h4 id="3-服务端程序下载安装"><a href="#3-服务端程序下载安装" class="headerlink" title="3.服务端程序下载安装"></a>3.服务端程序下载安装</h4><p>GitHub：<a href="https://github.com/cnlh/nps" target="_blank" rel="noopener">https://github.com/cnlh/nps</a><br>releases github: <a href="https://github.com/ehang-io/nps/releases" target="_blank" rel="noopener">https://github.com/ehang-io/nps/releases</a>  #下载地址</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">我使用的是centos，所以下载对应的版本，客户端openwrt自带，所以不需要下载</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps.jpg" alt=""></p>
+<h4 id="4-服务端安装"><a href="#4-服务端安装" class="headerlink" title="4.服务端安装"></a>4.服务端安装</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">wget</span> <span class="string">https://github.com/cnlh/nps/releases/download/v0.26.3/linux_amd64_server.tar.gz</span></span><br><span class="line"><span class="attr">tar</span> <span class="string">xzvf linux_amd64_server.tar.gz</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">~/nps</span></span><br><span class="line"><span class="meta">./nps</span> <span class="string">install</span></span><br><span class="line"><span class="attr">nohup</span> <span class="string">./nps &amp;</span></span><br><span class="line"><span class="comment">#有特殊需求可以修改conf文件，比如端口等，此处没有修改任何配置，默认服务端口8080，访问：</span></span><br><span class="line"><span class="meta">用户名：admin</span> <span class="string">密码：123（默认）</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps1.jpg" alt=""></p>
+<h4 id="5-客户端配置"><a href="#5-客户端配置" class="headerlink" title="5.客户端配置"></a>5.客户端配置</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps2.jpg" alt=""></p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#端口默认8024是客户端访问服务端的端口，秘钥为自己定义，服务端需要配置此秘钥</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="6-服务端配置"><a href="#6-服务端配置" class="headerlink" title="6. 服务端配置"></a>6. 服务端配置</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps3.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps4.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps5.jpg" alt=""></p>
+<p>至此所有都配置完成，下图访问效果</p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps6.jpg" alt=""></p>
 ]]></content>
       <categories>
         <category>ops</category>
@@ -335,29 +351,13 @@
       </tags>
   </entry>
   <entry>
-    <title>nps内网穿透</title>
-    <url>/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
-    <content><![CDATA[<h2 id="openwrt之nps内网穿透"><a href="#openwrt之nps内网穿透" class="headerlink" title="openwrt之nps内网穿透"></a>openwrt之nps内网穿透</h2><h4 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">折腾完openwrt后，为了能在公司访问到家中的openwrt管理界面</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2.准备工作"></a>2.准备工作</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">1.一个域名</span></span><br><span class="line"><span class="attr">2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序</span></span><br><span class="line"><span class="attr">3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序</span></span><br></pre></td></tr></table></figure>
+    <title>postfix</title>
+    <url>/2020/08/12/ops%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>参考资料<a href="https://blog.51cto.com/13490688/2061070" target="_blank" rel="noopener">https://blog.51cto.com/13490688/2061070</a></p>
+<h4 id="postfix-维护"><a href="#postfix-维护" class="headerlink" title="postfix 维护"></a>postfix 维护</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">start postfix</span></span><br><span class="line"><span class="attr">vi</span> <span class="string">/etc/postfix/main.cf #发信功能配置文件</span></span><br><span class="line"><span class="attr">service</span> <span class="string">dovecot start</span></span><br><span class="line"><span class="attr">vi</span> <span class="string">/etc/dovecot/dovecot.conf #收信功能配置文件</span></span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
 
-<h4 id="3-服务端程序下载安装"><a href="#3-服务端程序下载安装" class="headerlink" title="3.服务端程序下载安装"></a>3.服务端程序下载安装</h4><p>GitHub：<a href="https://github.com/cnlh/nps" target="_blank" rel="noopener">https://github.com/cnlh/nps</a><br>releases github: <a href="https://github.com/ehang-io/nps/releases" target="_blank" rel="noopener">https://github.com/ehang-io/nps/releases</a>  #下载地址</p>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">我使用的是centos，所以下载对应的版本，客户端openwrt自带，所以不需要下载</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps.jpg" alt=""></p>
-<h4 id="4-服务端安装"><a href="#4-服务端安装" class="headerlink" title="4.服务端安装"></a>4.服务端安装</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">wget</span> <span class="string">https://github.com/cnlh/nps/releases/download/v0.26.3/linux_amd64_server.tar.gz</span></span><br><span class="line"><span class="attr">tar</span> <span class="string">xzvf linux_amd64_server.tar.gz</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">~/nps</span></span><br><span class="line"><span class="meta">./nps</span> <span class="string">install</span></span><br><span class="line"><span class="attr">nohup</span> <span class="string">./nps &amp;</span></span><br><span class="line"><span class="comment">#有特殊需求可以修改conf文件，比如端口等，此处没有修改任何配置，默认服务端口8080，访问：</span></span><br><span class="line"><span class="meta">用户名：admin</span> <span class="string">密码：123（默认）</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps1.jpg" alt=""></p>
-<h4 id="5-客户端配置"><a href="#5-客户端配置" class="headerlink" title="5.客户端配置"></a>5.客户端配置</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps2.jpg" alt=""></p>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#端口默认8024是客户端访问服务端的端口，秘钥为自己定义，服务端需要配置此秘钥</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="6-服务端配置"><a href="#6-服务端配置" class="headerlink" title="6. 服务端配置"></a>6. 服务端配置</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps3.jpg" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps4.jpg" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps5.jpg" alt=""></p>
-<p>至此所有都配置完成，下图访问效果</p>
-<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps6.jpg" alt=""></p>
 ]]></content>
       <categories>
         <category>ops</category>
