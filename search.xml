@@ -66,38 +66,6 @@
       </tags>
   </entry>
   <entry>
-    <title>nps内网穿透</title>
-    <url>/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
-    <content><![CDATA[<h2 id="openwrt之nps内网穿透"><a href="#openwrt之nps内网穿透" class="headerlink" title="openwrt之nps内网穿透"></a>openwrt之nps内网穿透</h2><h4 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">折腾完openwrt后，为了能在公司访问到家中的openwrt管理界面</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2.准备工作"></a>2.准备工作</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">1.一个域名</span></span><br><span class="line"><span class="attr">2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序</span></span><br><span class="line"><span class="attr">3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序</span></span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<h4 id="3-服务端程序下载安装"><a href="#3-服务端程序下载安装" class="headerlink" title="3.服务端程序下载安装"></a>3.服务端程序下载安装</h4><p>GitHub：<a href="https://github.com/cnlh/nps" target="_blank" rel="noopener">https://github.com/cnlh/nps</a><br>releases github: <a href="https://github.com/ehang-io/nps/releases" target="_blank" rel="noopener">https://github.com/ehang-io/nps/releases</a>  #下载地址</p>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">我使用的是centos，所以下载对应的版本，客户端openwrt自带，所以不需要下载</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps.jpg" alt=""></p>
-<h4 id="4-服务端安装"><a href="#4-服务端安装" class="headerlink" title="4.服务端安装"></a>4.服务端安装</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">wget</span> <span class="string">https://github.com/cnlh/nps/releases/download/v0.26.3/linux_amd64_server.tar.gz</span></span><br><span class="line"><span class="attr">tar</span> <span class="string">xzvf linux_amd64_server.tar.gz</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">~/nps</span></span><br><span class="line"><span class="meta">./nps</span> <span class="string">install</span></span><br><span class="line"><span class="attr">nohup</span> <span class="string">./nps &amp;</span></span><br><span class="line"><span class="comment">#有特殊需求可以修改conf文件，比如端口等，此处没有修改任何配置，默认服务端口8080，访问：</span></span><br><span class="line"><span class="meta">用户名：admin</span> <span class="string">密码：123（默认）</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps1.jpg" alt=""></p>
-<h4 id="5-客户端配置"><a href="#5-客户端配置" class="headerlink" title="5.客户端配置"></a>5.客户端配置</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps2.jpg" alt=""></p>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#端口默认8024是客户端访问服务端的端口，秘钥为自己定义，服务端需要配置此秘钥</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="6-服务端配置"><a href="#6-服务端配置" class="headerlink" title="6. 服务端配置"></a>6. 服务端配置</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps3.jpg" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps4.jpg" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps5.jpg" alt=""></p>
-<p>至此所有都配置完成，下图访问效果</p>
-<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps6.jpg" alt=""></p>
-]]></content>
-      <categories>
-        <category>ops</category>
-      </categories>
-      <tags>
-        <tag>运维</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>linux</title>
     <url>/2020/07/24/linux/</url>
     <content><![CDATA[<h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h2><p>1、什么是运维？运维的分类？</p>
@@ -344,19 +312,35 @@
       </tags>
   </entry>
   <entry>
-    <title>网络知识</title>
-    <url>/2020/08/14/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<h4 id="https-通讯流程"><a href="#https-通讯流程" class="headerlink" title="https 通讯流程"></a>https 通讯流程</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">1）Client发起请求；</span></span><br><span class="line"><span class="attr">2）Server端响应请求，并在之后将证书发送至Client；</span></span><br><span class="line"><span class="attr">3）Client使用认证机构的公钥认证证书，并从证书中取出Server端公钥；</span></span><br><span class="line"><span class="attr">4）Client使用公钥加密一个随机秘钥，并传到Server；</span></span><br><span class="line"><span class="attr">5）Server使用私钥解密出随机秘钥；</span></span><br><span class="line"><span class="attr">6）通信双方使用随机秘钥最为对称秘钥进行加密解密。</span></span><br><span class="line"><span class="comment">#参考 http://www.52im.net/thread-1751-1-1.html</span></span><br></pre></td></tr></table></figure>
+    <title>nps内网穿透</title>
+    <url>/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
+    <content><![CDATA[<h2 id="openwrt之nps内网穿透"><a href="#openwrt之nps内网穿透" class="headerlink" title="openwrt之nps内网穿透"></a>openwrt之nps内网穿透</h2><h4 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">折腾完openwrt后，为了能在公司访问到家中的openwrt管理界面</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="traceroute的基本原理"><a href="#traceroute的基本原理" class="headerlink" title="traceroute的基本原理"></a>traceroute的基本原理</h4><p><img src="http://www.52im.net/data/attachment/forum/201809/21/161014pkzjhk8h93ozr89r.png" alt=""></p>
-<p><img src="http://www.52im.net/data/attachment/forum/201809/21/161013ss7klzmlm3dh9xis.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">具体做法就是：</span><br><span class="line">- **1）**Traceroute会设置特殊的TTL值，来追踪源主机和目标主机之间的路由数。首先它给目标主机发送一个 TTL&#x3D;1 的UDP数据包，那么这个数据包一旦在路上遇到一个路由器，TTL就变成了0（TTL规则是每经过一个路由器都会减1），因为TTL&#x3D;0了，所以路由器就会把这个数据包丢掉，然后产生一个错误类型（超时）的ICMP数据包回发给源主机，也就是差错包。这个时候源主机就拿到了第一个路由节点的IP和相关信息了a；</span><br><span class="line">- **2）**接着，源主机再给目标主机发一个 TTL&#x3D;2 的UDP数据包，依旧上述流程走一遍，就知道第二个路由节点的IP和耗时情况等信息了；  </span><br><span class="line">- **3）**如此反复进行，Traceroute就可以拿到从主机A到主机B之间所有路由器的信息了。  </span><br><span class="line"> 但是有个问题是，如果数据包到达了目标主机的话，即使目标主机接收到TTL值为1的IP数据包，它也是不会丢弃该数据包的，也不会产生一份超时的ICMP回发数据包的，因为数据包已经达到了目的地嘛。那我们应该怎么认定数据包是否达到了目标主机呢？  </span><br><span class="line"> Traceroute的方法是在源主机发送UDP数据包给目标主机的时候，会设置一个不可能达到的目标端口号（例如大于30000的端口号），那么当这个数据包真的到达目标主机的时候，目标主机发现没有对应的端口号，因此会产生一份“端口不可达”的错误ICMP报文返回给源主机。  </span><br><span class="line">#参考资料 http:&#x2F;&#x2F;www.52im.net&#x2F;thread-1973-1-1.html</span><br></pre></td></tr></table></figure>
+<h4 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2.准备工作"></a>2.准备工作</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">1.一个域名</span></span><br><span class="line"><span class="attr">2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序</span></span><br><span class="line"><span class="attr">3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h4 id="3-服务端程序下载安装"><a href="#3-服务端程序下载安装" class="headerlink" title="3.服务端程序下载安装"></a>3.服务端程序下载安装</h4><p>GitHub：<a href="https://github.com/cnlh/nps" target="_blank" rel="noopener">https://github.com/cnlh/nps</a><br>releases github: <a href="https://github.com/ehang-io/nps/releases" target="_blank" rel="noopener">https://github.com/ehang-io/nps/releases</a>  #下载地址</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">我使用的是centos，所以下载对应的版本，客户端openwrt自带，所以不需要下载</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps.jpg" alt=""></p>
+<h4 id="4-服务端安装"><a href="#4-服务端安装" class="headerlink" title="4.服务端安装"></a>4.服务端安装</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">wget</span> <span class="string">https://github.com/cnlh/nps/releases/download/v0.26.3/linux_amd64_server.tar.gz</span></span><br><span class="line"><span class="attr">tar</span> <span class="string">xzvf linux_amd64_server.tar.gz</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">~/nps</span></span><br><span class="line"><span class="meta">./nps</span> <span class="string">install</span></span><br><span class="line"><span class="attr">nohup</span> <span class="string">./nps &amp;</span></span><br><span class="line"><span class="comment">#有特殊需求可以修改conf文件，比如端口等，此处没有修改任何配置，默认服务端口8080，访问：</span></span><br><span class="line"><span class="meta">用户名：admin</span> <span class="string">密码：123（默认）</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps1.jpg" alt=""></p>
+<h4 id="5-客户端配置"><a href="#5-客户端配置" class="headerlink" title="5.客户端配置"></a>5.客户端配置</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps2.jpg" alt=""></p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#端口默认8024是客户端访问服务端的端口，秘钥为自己定义，服务端需要配置此秘钥</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="6-服务端配置"><a href="#6-服务端配置" class="headerlink" title="6. 服务端配置"></a>6. 服务端配置</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps3.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps4.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps5.jpg" alt=""></p>
+<p>至此所有都配置完成，下图访问效果</p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps6.jpg" alt=""></p>
 ]]></content>
       <categories>
         <category>ops</category>
       </categories>
       <tags>
-        <tag>杂谈</tag>
+        <tag>运维</tag>
       </tags>
   </entry>
   <entry>
@@ -381,6 +365,22 @@
 ]]></content>
       <categories>
         <category>IT</category>
+      </categories>
+      <tags>
+        <tag>杂谈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网络知识</title>
+    <url>/2020/08/14/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h4 id="https-通讯流程"><a href="#https-通讯流程" class="headerlink" title="https 通讯流程"></a>https 通讯流程</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">1）Client发起请求；</span></span><br><span class="line"><span class="attr">2）Server端响应请求，并在之后将证书发送至Client；</span></span><br><span class="line"><span class="attr">3）Client使用认证机构的公钥认证证书，并从证书中取出Server端公钥；</span></span><br><span class="line"><span class="attr">4）Client使用公钥加密一个随机秘钥，并传到Server；</span></span><br><span class="line"><span class="attr">5）Server使用私钥解密出随机秘钥；</span></span><br><span class="line"><span class="attr">6）通信双方使用随机秘钥最为对称秘钥进行加密解密。</span></span><br><span class="line"><span class="comment">#参考 http://www.52im.net/thread-1751-1-1.html</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="traceroute的基本原理"><a href="#traceroute的基本原理" class="headerlink" title="traceroute的基本原理"></a>traceroute的基本原理</h4><p><img src="http://www.52im.net/data/attachment/forum/201809/21/161014pkzjhk8h93ozr89r.png" alt=""></p>
+<p><img src="http://www.52im.net/data/attachment/forum/201809/21/161013ss7klzmlm3dh9xis.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">具体做法就是：</span><br><span class="line">1.Traceroute会设置特殊的TTL值，来追踪源主机和目标主机之间的路由数。首先它给目标主机发送一个 TTL&#x3D;1 的UDP数据包，那么这个数据包一旦在路上遇到一个路由器，TTL就变成了0（TTL规则是每经过一个路由器都会减1），因为TTL&#x3D;0了，所以路由器就会把这个数据包丢掉，然后产生一个错误类型（超时）的ICMP数据包回发给源主机，也就是差错包。这个时候源主机就拿到了第一个路由节点的IP和相关信息了;  </span><br><span class="line"></span><br><span class="line">2.接着，源主机再给目标主机发一个 TTL&#x3D;2 的UDP数据包，依旧上述流程走一遍，就知道第二个路由节点的IP和耗时情况等信息了;  </span><br><span class="line"></span><br><span class="line">3.如此反复进行，Traceroute就可以拿到从主机A到主机B之间所有路由器的信息了。  </span><br><span class="line"> 但是有个问题是，如果数据包到达了目标主机的话，即使目标主机接收到TTL值为1的IP数据包，它也是不会丢弃该数据包的，也不会产生一份超时的ICMP回发数据包的，因为数据包已经达到了目的地嘛。那我们应该怎么认定数据包是否达到了目标主机呢?  </span><br><span class="line"> </span><br><span class="line"> Traceroute的方法是在源主机发送UDP数据包给目标主机的时候，会设置一个不可能达到的目标端口号（例如大于30000的端口号），那么当这个数据包真的到达目标主机的时候，目标主机发现没有对应的端口号，因此会产生一份“端口不可达”的错误ICMP报文返回给源主机.  </span><br><span class="line"> </span><br><span class="line">#参考资料 http:&#x2F;&#x2F;www.52im.net&#x2F;thread-1973-1-1.html</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>ops</category>
       </categories>
       <tags>
         <tag>杂谈</tag>
