@@ -30,9 +30,9 @@
 <meta property="og:description" content="1.组件简介 123#参考资料https:&#x2F;&#x2F;blog.csdn.net&#x2F;sinat_35322593&#x2F;article&#x2F;details&#x2F;79883639https:&#x2F;&#x2F;blog.csdn.net&#x2F;Mei_ZS&#x2F;article&#x2F;details&#x2F;93191279  2.HDFS&amp;#8">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzq82/img/master/img/bigdata.png">
-<meta property="og:image" content="https://img-blog.csdn.net/20170426191955111?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYmFpZHVfMjgzOTg5NzE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="https://raw.githubusercontent.com/hzq82/img/master/img/20170426191955111.png">
 <meta property="article:published_time" content="2020-08-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-08-20T08:55:42.710Z">
+<meta property="article:modified_time" content="2020-08-21T01:05:29.084Z">
 <meta property="article:author" content="harry">
 <meta property="article:tag" content="运维">
 <meta name="twitter:card" content="summary">
@@ -304,10 +304,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-08-20 00:00:00 / 修改时间：16:55:42" itemprop="dateCreated datePublished" datetime="2020-08-20T00:00:00+08:00">2020-08-20</time>
+              <time title="创建时间：2020-08-20 00:00:00" itemprop="dateCreated datePublished" datetime="2020-08-20T00:00:00+08:00">2020-08-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-21 09:05:29" itemprop="dateModified" datetime="2020-08-21T09:05:29+08:00">2020-08-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -380,7 +386,7 @@
 <p>&#8195;&#8195;但是。Pig并不适合处理所有的“数据处理”任务。和MapReducer一样，它是为数据批处理而设计的，如果想执行的查询只涉及一个大型数据集的一小部分数据，Pig的实现不是很好，因为它要扫描整个数据集或其中的很大一部分。</p>
 <h4 id="9-sqoop"><a href="#9-sqoop" class="headerlink" title="9.sqoop"></a>9.sqoop</h4><p>&#8195;&#8195;Hadoop正成为企业用于大数据分析的最热门选择，但想将你的数据移植过去并不容易。Apache  Sqoop正在加紧帮助客户将重要数据从数据库移到Hadoop。随着Hadoop和关系型数据库之间的数据移动渐渐变成一个标准的流程，云管理员们能够利用Sqoop的并行批量数据加载能力来简化这一流程，降低编写自定义数据加载脚本的需求。</p>
 <p>&#8195;&#8195;Apache Sqoop（SQL-to-Hadoop）项目旨在协助 RDBMS 与 Hadoop 之间进行高效的大数据交流。用户可以在  Sqoop 的帮助下，轻松地把关系型数据库的数据导入到 Hadoop 与其相关的系统 (如HBase和Hive)中；同时也可以把数据从  Hadoop 系统里抽取并导出到关系型数据库里。因此，可以说Sqoop就是一个桥梁，连接了关系型数据库与Hadoop。</p>
-<p><img src="https://img-blog.csdn.net/20170426191955111?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYmFpZHVfMjgzOTg5NzE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/20170426191955111.png" alt=""></p>
 <h4 id="10-Flume"><a href="#10-Flume" class="headerlink" title="10.Flume"></a>10.Flume</h4><p>&#8195;&#8195;Flume是Cloudera提供的一个高可用的，高可靠的，分布式的海量日志采集、聚合和传输的软件。<br>&#8195;&#8195;Flume的核心是把数据从数据源(source)收集过来，再将收集到的数据送到指定的目的地(sink)。为了保证输送的过程一定成功，在送到目的地(sink)之前，会先缓存数据(channel),待数据真正到达目的地(sink)后，flume再删除自己缓存的数据。</p>
 <h4 id="11-kafka"><a href="#11-kafka" class="headerlink" title="11.kafka"></a>11.kafka</h4><p>&#8195;&#8195;Kafka是Linkedin于2010年12月开源的消息系统，主要用于处理活跃的流式数据。活跃的流式数据在Web网站应用中非常常见，这些数据包括网站的PV（Page View），用户访问了什么内容，搜索了什么内容等。这些数据通常以日志的形式记录下来，然后每隔一段时间进行一次统计。</p>
 <h4 id="12-Mahout"><a href="#12-Mahout" class="headerlink" title="12.Mahout"></a>12.Mahout</h4><p>&#8195;&#8195;Mahout源于2008年，最初是Apache Lucent的子项目，现在发展为Apache的顶级项目。Mahout是一个可扩展的机器学习和数据挖掘库。</p>
