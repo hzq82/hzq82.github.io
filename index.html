@@ -295,10 +295,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-02 15:00:00 / 修改时间：15:03:40" itemprop="dateCreated datePublished" datetime="2020-09-02T15:00:00+08:00">2020-09-02</time>
+              <time title="创建时间：2020-09-02 15:00:00" itemprop="dateCreated datePublished" datetime="2020-09-02T15:00:00+08:00">2020-09-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-03 10:19:20" itemprop="dateModified" datetime="2020-09-03T10:19:20+08:00">2020-09-03</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -334,9 +340,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="IBM-vps"><a href="#IBM-vps" class="headerlink" title="IBM-vps"></a>IBM-vps</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Siemens</span> <span class="string">Tutorials</span></span><br><span class="line"><span class="attr">1</span>: <span class="string">https://www.xjycloud.xyz</span></span><br><span class="line"><span class="attr">(注册即送50g免费流量)</span></span><br><span class="line"><span class="attr">2</span>:<span class="string">https://www.xjycloud.pw</span></span><br><span class="line"><span class="meta">【安装脚本】</span>: <span class="string"></span></span><br><span class="line"><span class="meta">一键安装脚本：wget</span> <span class="string">--no-check-certificate -O install.sh https://raw.githubusercontent.com/CCChieh/IBMYes/master/install.sh &amp;&amp; chmod +x install.sh  &amp;&amp; ./install.sh</span></span><br><span class="line"></span><br><span class="line"><span class="meta">2.资源组ID</span>:<span class="string"></span></span><br><span class="line"><span class="attr">ibmcloud</span> <span class="string">resource groups</span></span><br><span class="line"></span><br><span class="line"><span class="meta">3.4个secret</span>:<span class="string"></span></span><br><span class="line"><span class="attr">IBM_ACCOUNT</span> <span class="string">// IBM Cloud的登录邮箱和密码</span></span><br><span class="line"><span class="attr">IBM_APP_NAME</span> <span class="string">// 应用的名称</span></span><br><span class="line"><span class="attr">REGION_NUM</span> <span class="string">// 区域编码</span></span><br><span class="line"><span class="attr">RESOURSE_ID</span> <span class="string">// 资源组ID</span></span><br><span class="line"></span><br><span class="line"><span class="attr">4</span>:<span class="string">yml文件更改</span></span><br><span class="line"></span><br><span class="line"><span class="meta">./IBM_Cloud_CLI/ibmcloud</span> <span class="string">cf install</span></span><br><span class="line"><span class="attr">修改成</span></span><br><span class="line"><span class="meta">./IBM_Cloud_CLI/ibmcloud</span> <span class="string">cf install -v 6.51.0</span></span><br><span class="line"></span><br><span class="line"><span class="attr">5.CF反代脚本：</span></span><br><span class="line"><span class="attr">addEventListener(</span></span><br><span class="line"><span class="meta">"fetch",event</span> =<span class="string">&gt; &#123;</span></span><br><span class="line"><span class="attr">let</span> <span class="string">url=new URL(event.request.url);</span></span><br><span class="line"><span class="meta">url.hostname</span>=<span class="string">"你的域名";</span></span><br><span class="line"><span class="attr">let</span> <span class="string">request=new Request(url,event.request);</span></span><br><span class="line"><span class="meta">event.</span> <span class="string">respondWith(</span></span><br><span class="line"><span class="attr">fetch(request)</span></span><br><span class="line"><span class="attr">)</span></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"><span class="attr">)</span></span><br></pre></td></tr></table></figure>
-
-
+          <h4 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">只需要一个邮箱就可以注册IBM免费vps，可用来翻墙；</span><br><span class="line">注册地址https:&#x2F;&#x2F;www.ibm.com&#x2F;cloud</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/02/IBM_vps/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
