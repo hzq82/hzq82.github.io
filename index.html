@@ -297,7 +297,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-09-11 00:00:00 / 修改时间：14:03:47" itemprop="dateCreated datePublished" datetime="2020-09-11T00:00:00+08:00">2020-09-11</time>
+              <time title="创建时间：2020-09-11 00:00:00 / 修改时间：14:19:35" itemprop="dateCreated datePublished" datetime="2020-09-11T00:00:00+08:00">2020-09-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -446,99 +446,7 @@
 <ol>
 <li><code>curl www.google.com</code></li>
 </ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="harry">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MY LIFE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/" class="post-title-link" itemprop="url">kubenetes 单机版</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-09 00:00:00 / 修改时间：14:14:56" itemprop="dateCreated datePublished" datetime="2020-09-09T00:00:00+08:00">2020-09-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="关闭centos-自带的防火墙服务"><a href="#关闭centos-自带的防火墙服务" class="headerlink" title="关闭centos 自带的防火墙服务"></a>关闭centos 自带的防火墙服务</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">stop firewalld</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">disable firewalld</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="配置kubenetes-源"><a href="#配置kubenetes-源" class="headerlink" title="配置kubenetes 源"></a>配置kubenetes 源</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">vi</span> <span class="string">/etc/yum.repos.d/kubernetes.repo</span></span><br><span class="line"><span class="attr">[Kubernetes]</span></span><br><span class="line"><span class="attr">baseurl</span>=<span class="string">http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64</span></span><br><span class="line"><span class="attr">enabled</span>=<span class="string">1</span></span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="string">0</span></span><br><span class="line"><span class="attr">repo_gpgcheck</span>=<span class="string">0</span></span><br><span class="line"><span class="attr">gpgkey</span>=<span class="string">http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg  http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="安装etcd-kubernetes"><a href="#安装etcd-kubernetes" class="headerlink" title="安装etcd kubernetes"></a>安装etcd kubernetes</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#自动附带安装Docker</span></span><br><span class="line"><span class="attr">yum</span> <span class="string">install -y etcd kubernetes</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#修改option的内容如下:</span></span><br><span class="line"><span class="attr">vi</span> <span class="string">/etc/sysconfig/docker</span></span><br><span class="line"><span class="attr">OPTIONS</span>=<span class="string">'--selinux-enabled=false --insecure-registry gcr.io'</span></span><br><span class="line"><span class="comment">#修改apiserver配置</span></span><br><span class="line"><span class="attr">vi</span> <span class="string">/etc/kubernetes/apiserver</span></span><br><span class="line"><span class="attr">KUBE_ADMISSION_CONTROL</span>=<span class="string">"--admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ResourceQuota"</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#顺序启动</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start etcd</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start docker</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start kube-apiserver</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start kube-controller-manager</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start kube-scheduler</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start kubelet</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start kube-proxy</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置开机启动</span></span><br><span class="line"></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable etcd</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable docker</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable kube-apiserver</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable kube-controller-manager</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable kube-scheduler</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable kubelet</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable kube-proxy</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#显示如下信息说明安装成功</span></span><br><span class="line"><span class="meta">[root@node1</span> <span class="string">~]# kubectl version</span></span><br><span class="line"><span class="attr">Client</span> <span class="string">Version: version.Info&#123;Major:"1", Minor:"5", GitVersion:"v1.5.2", GitCommit:"269f928217957e7126dc87e6adfa82242bfe5b1e", GitTreeState:"clean", BuildDate:"2017-07-03T15:31:10Z", GoVersion:"go1.7.4", Compiler:"gc", Platform:"linux/amd64"&#125;</span></span><br><span class="line"><span class="attr">Server</span> <span class="string">Version: version.Info&#123;Major:"1", Minor:"5", GitVersion:"v1.5.2", GitCommit:"269f928217957e7126dc87e6adfa82242bfe5b1e", GitTreeState:"clean", BuildDate:"2017-07-03T15:31:10Z", GoVersion:"go1.7.4", Compiler:"gc", Platform:"linux/amd64"&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">[root@node1</span> <span class="string">~]# etcdctl cluster-health</span></span><br><span class="line"><span class="attr">member</span> <span class="string">8e9e05c52164694d is healthy: got healthy result from http://localhost:2379</span></span><br><span class="line"><span class="attr">cluster</span> <span class="string">is healthy</span></span><br><span class="line"><span class="meta">[root@node1</span> <span class="string">~]#</span></span><br></pre></td></tr></table></figure>
-
+<p><code>#参考 https://hongyuanyu.github.io/2019/04/24/centos配置shadowsocks客户端/</code></p>
 
       
     </div>
@@ -644,6 +552,99 @@
 <p>​      其中绿色方块为应用服务，蓝色方块为 Sidecar Proxy，应用服务之间通过 Sidecar Proxy 进行通信，整个服务通信形成图中的蓝色网络连线，图中所有蓝色部分就形成了 Service Mesh。</p>
 <p>​      我们会看到上面的服务不再负责传递请求的具体逻辑，只负责完成业务处理。服务间通讯的环节就从应用里面剥离出来，呈现出一个抽象层。有大量服务，表现为网络。</p>
 <h4 id="kubernetes-和Istio-的关系"><a href="#kubernetes-和Istio-的关系" class="headerlink" title="kubernetes 和Istio 的关系"></a>kubernetes 和Istio 的关系</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/istio-1.jpg" alt=""></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="harry">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MY LIFE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/" class="post-title-link" itemprop="url">kubenetes 单机版</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-09 00:00:00 / 修改时间：14:14:56" itemprop="dateCreated datePublished" datetime="2020-09-09T00:00:00+08:00">2020-09-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="关闭centos-自带的防火墙服务"><a href="#关闭centos-自带的防火墙服务" class="headerlink" title="关闭centos 自带的防火墙服务"></a>关闭centos 自带的防火墙服务</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">stop firewalld</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">disable firewalld</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="配置kubenetes-源"><a href="#配置kubenetes-源" class="headerlink" title="配置kubenetes 源"></a>配置kubenetes 源</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">vi</span> <span class="string">/etc/yum.repos.d/kubernetes.repo</span></span><br><span class="line"><span class="attr">[Kubernetes]</span></span><br><span class="line"><span class="attr">baseurl</span>=<span class="string">http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64</span></span><br><span class="line"><span class="attr">enabled</span>=<span class="string">1</span></span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="string">0</span></span><br><span class="line"><span class="attr">repo_gpgcheck</span>=<span class="string">0</span></span><br><span class="line"><span class="attr">gpgkey</span>=<span class="string">http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg  http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="安装etcd-kubernetes"><a href="#安装etcd-kubernetes" class="headerlink" title="安装etcd kubernetes"></a>安装etcd kubernetes</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#自动附带安装Docker</span></span><br><span class="line"><span class="attr">yum</span> <span class="string">install -y etcd kubernetes</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#修改option的内容如下:</span></span><br><span class="line"><span class="attr">vi</span> <span class="string">/etc/sysconfig/docker</span></span><br><span class="line"><span class="attr">OPTIONS</span>=<span class="string">'--selinux-enabled=false --insecure-registry gcr.io'</span></span><br><span class="line"><span class="comment">#修改apiserver配置</span></span><br><span class="line"><span class="attr">vi</span> <span class="string">/etc/kubernetes/apiserver</span></span><br><span class="line"><span class="attr">KUBE_ADMISSION_CONTROL</span>=<span class="string">"--admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ResourceQuota"</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#顺序启动</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start etcd</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start docker</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start kube-apiserver</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start kube-controller-manager</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start kube-scheduler</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start kubelet</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start kube-proxy</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置开机启动</span></span><br><span class="line"></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable etcd</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable docker</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable kube-apiserver</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable kube-controller-manager</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable kube-scheduler</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable kubelet</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable kube-proxy</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#显示如下信息说明安装成功</span></span><br><span class="line"><span class="meta">[root@node1</span> <span class="string">~]# kubectl version</span></span><br><span class="line"><span class="attr">Client</span> <span class="string">Version: version.Info&#123;Major:"1", Minor:"5", GitVersion:"v1.5.2", GitCommit:"269f928217957e7126dc87e6adfa82242bfe5b1e", GitTreeState:"clean", BuildDate:"2017-07-03T15:31:10Z", GoVersion:"go1.7.4", Compiler:"gc", Platform:"linux/amd64"&#125;</span></span><br><span class="line"><span class="attr">Server</span> <span class="string">Version: version.Info&#123;Major:"1", Minor:"5", GitVersion:"v1.5.2", GitCommit:"269f928217957e7126dc87e6adfa82242bfe5b1e", GitTreeState:"clean", BuildDate:"2017-07-03T15:31:10Z", GoVersion:"go1.7.4", Compiler:"gc", Platform:"linux/amd64"&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">[root@node1</span> <span class="string">~]# etcdctl cluster-health</span></span><br><span class="line"><span class="attr">member</span> <span class="string">8e9e05c52164694d is healthy: got healthy result from http://localhost:2379</span></span><br><span class="line"><span class="attr">cluster</span> <span class="string">is healthy</span></span><br><span class="line"><span class="meta">[root@node1</span> <span class="string">~]#</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>
