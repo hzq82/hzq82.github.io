@@ -22,20 +22,25 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="参考资料https:&#x2F;&#x2F;blog.51cto.com&#x2F;13490688&#x2F;2061070 postfix 维护1234systemctl start postfixvi &#x2F;etc&#x2F;postfix&#x2F;main.cf #发信功能配置文件service dovecot startvi &#x2F;etc&#x2F;dovecot&#x2F;dovecot.conf #收信功能配置文件">
+  <meta name="description" content="kubernetes回顾12345kubernetes 提供平台基础设施层强大的容器编排和调度能力；--服务部署与弹性伸缩：Deployment--服务拆分和服务发现：Serviceskubernetes 提供简单的负载均衡能力--负载均衡：基于IPVS（IP Virtual Server）及iptables的简单均衡机制  istio 是什么12    Istio 允许您连接、保护、控制和观察服">
 <meta property="og:type" content="article">
-<meta property="og:title" content="postfix">
-<meta property="og:url" content="http://yoursite.com/2020/08/12/ops%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="istio">
+<meta property="og:url" content="http://yoursite.com/2020/09/09/istio/index.html">
 <meta property="og:site_name" content="MY LIFE">
-<meta property="og:description" content="参考资料https:&#x2F;&#x2F;blog.51cto.com&#x2F;13490688&#x2F;2061070 postfix 维护1234systemctl start postfixvi &#x2F;etc&#x2F;postfix&#x2F;main.cf #发信功能配置文件service dovecot startvi &#x2F;etc&#x2F;dovecot&#x2F;dovecot.conf #收信功能配置文件">
+<meta property="og:description" content="kubernetes回顾12345kubernetes 提供平台基础设施层强大的容器编排和调度能力；--服务部署与弹性伸缩：Deployment--服务拆分和服务发现：Serviceskubernetes 提供简单的负载均衡能力--负载均衡：基于IPVS（IP Virtual Server）及iptables的简单均衡机制  istio 是什么12    Istio 允许您连接、保护、控制和观察服">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-08-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-08-13T06:56:45.826Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hzq82/img/master/img/istio.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/hzq82/img/master/img/service-mesh-arch.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hzq82/img/master/img/service-mesh-1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hzq82/img/master/img/istio-1.jpg">
+<meta property="article:published_time" content="2020-09-08T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-09-10T03:38:09.762Z">
 <meta property="article:author" content="harry">
 <meta property="article:tag" content="运维">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hzq82/img/master/img/istio.jpg">
 
-<link rel="canonical" href="http://yoursite.com/2020/08/12/ops%E7%AC%94%E8%AE%B0/">
+<link rel="canonical" href="http://yoursite.com/2020/09/09/istio/">
 
 
 <script class="page-configurations">
@@ -48,7 +53,7 @@
   };
 </script>
 
-  <title>postfix | MY LIFE</title>
+  <title>istio | MY LIFE</title>
   
 
 
@@ -205,7 +210,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#postfix-维护"><span class="nav-number">1.</span> <span class="nav-text">postfix 维护</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-39-取随机数"><span class="nav-number">2.</span> <span class="nav-text">1-39 取随机数</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#kubernetes回顾"><span class="nav-number">1.</span> <span class="nav-text">kubernetes回顾</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#istio-是什么"><span class="nav-number">2.</span> <span class="nav-text">istio 是什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sidecar概念"><span class="nav-number">3.</span> <span class="nav-text">Sidecar概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务网格是什么-Service-Mesh"><span class="nav-number">4.</span> <span class="nav-text">服务网格是什么(Service Mesh)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解Service-Mesh"><span class="nav-number">5.</span> <span class="nav-text">理解Service Mesh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kubernetes-和Istio-的关系"><span class="nav-number">6.</span> <span class="nav-text">kubernetes 和Istio 的关系</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -279,7 +284,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/12/ops%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/09/istio/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -292,7 +297,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          postfix
+          istio
         </h1>
 
         <div class="post-meta">
@@ -302,14 +307,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-08-12 00:00:00" itemprop="dateCreated datePublished" datetime="2020-08-12T00:00:00+08:00">2020-08-12</time>
+              <time title="创建时间：2020-09-09 00:00:00" itemprop="dateCreated datePublished" datetime="2020-09-09T00:00:00+08:00">2020-09-09</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-13 14:56:45" itemprop="dateModified" datetime="2020-08-13T14:56:45+08:00">2020-08-13</time>
+                <time title="修改时间：2020-09-10 11:38:09" itemprop="dateModified" datetime="2020-09-10T11:38:09+08:00">2020-09-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -337,8 +342,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/08/12/ops%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/08/12/ops%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/09/09/istio/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/09/istio/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -353,13 +358,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>参考资料<a href="https://blog.51cto.com/13490688/2061070" target="_blank" rel="noopener">https://blog.51cto.com/13490688/2061070</a></p>
-<h4 id="postfix-维护"><a href="#postfix-维护" class="headerlink" title="postfix 维护"></a>postfix 维护</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">start postfix</span></span><br><span class="line"><span class="attr">vi</span> <span class="string">/etc/postfix/main.cf #发信功能配置文件</span></span><br><span class="line"><span class="attr">service</span> <span class="string">dovecot start</span></span><br><span class="line"><span class="attr">vi</span> <span class="string">/etc/dovecot/dovecot.conf #收信功能配置文件</span></span><br></pre></td></tr></table></figure>
+        <h4 id="kubernetes回顾"><a href="#kubernetes回顾" class="headerlink" title="kubernetes回顾"></a>kubernetes回顾</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kubernetes 提供平台基础设施层强大的容器编排和调度能力；</span><br><span class="line">--服务部署与弹性伸缩：Deployment</span><br><span class="line">--服务拆分和服务发现：Services</span><br><span class="line">kubernetes 提供简单的负载均衡能力</span><br><span class="line">--负载均衡：基于IPVS（IP Virtual Server）及iptables的简单均衡机制</span><br></pre></td></tr></table></figure>
 
-<a id="more"></a>
+<h4 id="istio-是什么"><a href="#istio-是什么" class="headerlink" title="istio 是什么"></a>istio 是什么</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    Istio 允许您连接、保护、控制和观察服务。</span><br><span class="line">从较高的层面来说，Istio 有助于降低这些部署的复杂性，并减轻开发团队的压力。它是一个完全开源的服务网格，作为透明的一层接入到现有的分布式应用程序里。它也是一个平台，拥有可以集成任何日志、遥测和策略系统的 API 接口。Istio 多样化的特性使您能够成功且高效地运行分布式微服务架构，并提供保护、连接和监控微服务的统一方法。</span><br></pre></td></tr></table></figure>
 
-<h4 id="1-39-取随机数"><a href="#1-39-取随机数" class="headerlink" title="1-39 取随机数"></a>1-39 取随机数</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">expr</span> <span class="string">$[RANDOM%39+1] 或 expr $[$RANDOM%39] + 1</span></span><br><span class="line"><span class="meta">使用expr</span> <span class="string">进行运算</span></span><br><span class="line"><span class="attr">使用Linux系统里面自带的随机变量RANDOM</span></span><br><span class="line"><span class="attr">利用%对39取余得到0-38的随机数</span></span><br><span class="line"><span class="attr">再进行+1处理得到1-39的随机数</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/istio.jpg" alt=""></p>
+<h4 id="Sidecar概念"><a href="#Sidecar概念" class="headerlink" title="Sidecar概念"></a>Sidecar概念</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    Sidecar模式是一种将应用功能从应用本身剥离出来作为单独进程的方式。该模式允许我们向应用无侵入添加多种功能，避免了为满足第三方组件需求而向应用添加额外的配置代码。</span><br><span class="line">就像边车加装在摩托车上一样，在软件架构中，sidecar附加到主应用，或者叫父应用上，以扩展&#x2F;增强功能特性，同时Sidecar与主应用是松耦合的。</span><br><span class="line">举个例子，假设现在有6个相互通信的微服务，每个微服务都需要具有可观察性、监控、日志记录、配置、断路器等功能，而所有这些功能都是在微服务中使用一些第三方库实现的。这样一组服务的实际情况可能会非常复杂，增加了应用的整体复杂性，尤其是当每个微服务用不同的语言编写。</span><br></pre></td></tr></table></figure>
 
+<h4 id="服务网格是什么-Service-Mesh"><a href="#服务网格是什么-Service-Mesh" class="headerlink" title="服务网格是什么(Service Mesh)"></a>服务网格是什么(Service Mesh)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   服务网格用来描述组成这些应用程序的微服务网络以及它们之间的交互。随着服务网格的规模和复杂性不断的增长，它将会变得越来越难以理解和管理。它的需求包括服务发现、负载均衡、故障恢复、度量和监控等。服务网格通常还有更复杂的运维需求，比如 A&#x2F;B 测试、金丝雀发布、速率限制、访问控制和端到端认证。</span><br><span class="line">   服务网格（Service Mesh）是处理服务间通信的基础设施层。它负责构成现代云原生应用程序的复杂服务拓扑来可靠地交付请求。在实践中，Service Mesh 通常以轻量级网络代理阵列的形式实现，这些代理与应用程序代码部署在一起，对应用程序来说无需感知代理的存在。</span><br><span class="line"></span><br><span class="line">Service Mesh 有如下几个特点：</span><br><span class="line">应用程序间通信的中间层</span><br><span class="line">轻量级网络代理</span><br><span class="line">应用程序无感知</span><br><span class="line">解耦应用程序的重试&#x2F;超时、监控、追踪和服务发现</span><br><span class="line">目前两款流行的 Service Mesh 开源软件 Istio 和 Linkerd 都可以直接在 Kubernetes 中集成。</span><br></pre></td></tr></table></figure>
+
+<h4 id="理解Service-Mesh"><a href="#理解Service-Mesh" class="headerlink" title="理解Service Mesh"></a>理解Service Mesh</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果用一句话来解释什么是 Service Mesh，可以将它比作是应用程序或者说微服务间的 TCP&#x2F;IP，负责服务之间的网络调用、限流、熔断和监控。对于编写应用程序来说一般无须关心 TCP&#x2F;IP 这一层（比如通过 HTTP 协议的 RESTful 应用），同样使用 Service Mesh 也就无须关心服务之间的那些原本通过服务框架实现的事情，比如 Spring Cloud、Netflix OSS 和其他中间件，现在只要交给 Service Mesh 就可以了。</span><br></pre></td></tr></table></figure>
+
+<p>Service Mesh 的架构如下图所示:</p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/service-mesh-arch.png" alt=""></p>
+<p>Service Mesh 作为 sidecar 运行，对应用程序来说是透明，所有应用程序间的流量都会通过它，所以对应用程序流量的控制都可以在 serivce mesh 中实现。</p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/service-mesh-1.png" alt=""></p>
+<p>​      其中绿色方块为应用服务，蓝色方块为 Sidecar Proxy，应用服务之间通过 Sidecar Proxy 进行通信，整个服务通信形成图中的蓝色网络连线，图中所有蓝色部分就形成了 Service Mesh。</p>
+<p>​      我们会看到上面的服务不再负责传递请求的具体逻辑，只负责完成业务处理。服务间通讯的环节就从应用里面剥离出来，呈现出一个抽象层。有大量服务，表现为网络。</p>
+<h4 id="kubernetes-和Istio-的关系"><a href="#kubernetes-和Istio-的关系" class="headerlink" title="kubernetes 和Istio 的关系"></a>kubernetes 和Istio 的关系</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/istio-1.jpg" alt=""></p>
 
     </div>
 
@@ -378,12 +394,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/08/04/%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5/" rel="prev" title="杂谈">
-      <i class="fa fa-chevron-left"></i> 杂谈
+    <a href="/2020/09/07/mysql/" rel="prev" title="mysql">
+      <i class="fa fa-chevron-left"></i> mysql
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/08/14/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/" rel="next" title="网络知识">
-      网络知识 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/" rel="next" title="kubenetes 单机版">
+      kubenetes 单机版 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>

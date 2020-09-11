@@ -215,7 +215,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -272,6 +272,482 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/11/cenos7%20shadowsocks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="harry">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MY LIFE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/11/cenos7%20shadowsocks/" class="post-title-link" itemprop="url">centos shadowsocks</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-11 00:00:00 / 修改时间：14:03:47" itemprop="dateCreated datePublished" datetime="2020-09-11T00:00:00+08:00">2020-09-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/09/11/cenos7%20shadowsocks/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/11/cenos7%20shadowsocks/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-安装配置Shadowsocks客户端"><a href="#1-安装配置Shadowsocks客户端" class="headerlink" title="1. 安装配置Shadowsocks客户端"></a>1. 安装配置Shadowsocks客户端</h2><h3 id="1-1-安装Shadowsocks客户端"><a href="#1-1-安装Shadowsocks客户端" class="headerlink" title="1.1 安装Shadowsocks客户端"></a>1.1 安装Shadowsocks客户端</h3><ul>
+<li>安装epel扩展源<br> 采用Python包管理工pip安装。</li>
+</ul>
+<ol>
+<li><code>yum -y install epel-release</code></li>
+<li><code>yum -y install python-pip</code></li>
+</ol>
+<ul>
+<li>安装Shadowsocks客户端</li>
+</ul>
+<ol>
+<li><code>pip install shadowsocks</code></li>
+</ol>
+<h3 id="1-2-配置Shadowsocks客户端"><a href="#1-2-配置Shadowsocks客户端" class="headerlink" title="1.2 配置Shadowsocks客户端"></a>1.2 配置Shadowsocks客户端</h3><ul>
+<li>新建配置文件</li>
+</ul>
+<ol>
+<li><code>mkdir /etc/shadowsocks</code></li>
+<li><code>vi /etc/shadowsocks/shadowsocks.json</code></li>
+</ol>
+<ul>
+<li>添加配置信息</li>
+</ul>
+<ol>
+<li><code>{</code></li>
+<li><code>&quot;server&quot;:&quot;1.1.1.1&quot;,</code></li>
+<li><code>&quot;server_port&quot;:1035,</code></li>
+<li><code>&quot;local_address&quot;:  &quot;127.0.0.1&quot;,</code></li>
+<li><code>&quot;local_port&quot;:1080,</code></li>
+<li><code>&quot;password&quot;:&quot;password&quot;,</code></li>
+<li><code>&quot;timeout&quot;:300,</code></li>
+<li><code>&quot;method&quot;:&quot;aes-256-cfb&quot;,</code></li>
+<li><code>&quot;fast_open&quot;:  false,</code></li>
+<li><code>&quot;workers&quot;:  1</code></li>
+<li><code>}</code></li>
+</ol>
+<p>参数说明：<br> server：Shadowsocks服务器地址<br> server_port：Shadowsocks服务器端口<br> local_address：本地IP<br> local_port：本地端口<br> password：Shadowsocks连接密码<br> timeout：等待超时时间<br> method：加密方式<br> workers:工作线程数<br> fast_open：true或false。开启fast_open以降低延迟，但要求Linux内核在3.7+。开启方法 <code>echo 3 &gt; /proc/sys/net/ipv4/tcp_fastopen</code></p>
+<ul>
+<li>配置自启动<br> ① 新建启动脚本文件/etc/systemd/system/shadowsocks.service，内容如下：</li>
+</ul>
+<ol>
+<li><code>[Unit]</code></li>
+<li><code>Description=Shadowsocks</code></li>
+<li><code>[Service]</code></li>
+<li><code>TimeoutStartSec=0</code></li>
+<li><code>ExecStart=/usr/bin/sslocal -c /etc/shadowsocks/shadowsocks.json</code></li>
+<li><code>[Install]</code></li>
+<li><code>WantedBy=multi-user.target</code></li>
+</ol>
+<p>② 启动Shadowsocks客户端</p>
+<ol>
+<li><code>systemctl enable shadowsocks.service</code></li>
+<li><code>systemctl start shadowsocks.service</code></li>
+<li><code>systemctl status shadowsocks.service</code></li>
+</ol>
+<ul>
+<li>验证Shadowsocks客户端是否正常运行</li>
+</ul>
+<ol>
+<li><code>curl --socks5 127.0.0.1:1080 http://httpbin.org/ip</code></li>
+</ol>
+<p>若Shadowsock客户端已正常运行，则结果如下：</p>
+<ol>
+<li><code>{</code></li>
+<li><code>&quot;origin&quot;:  &quot;x.x.x.x&quot;  #你的Shadowsock服务器IP</code></li>
+<li><code>}</code></li>
+</ol>
+<h2 id="2-安装配置Privoxy"><a href="#2-安装配置Privoxy" class="headerlink" title="2. 安装配置Privoxy"></a>2. 安装配置Privoxy</h2><p>Shadowsocks是一个 socket5 服务，我们需要使用 Privoxy 把流量转到 http／https 上。</p>
+<h3 id="2-1-安装Privoxy"><a href="#2-1-安装Privoxy" class="headerlink" title="2.1 安装Privoxy"></a>2.1 安装Privoxy</h3><ul>
+<li>安装Privoxy</li>
+</ul>
+<ol>
+<li><code>yum -y install privoxy</code></li>
+</ol>
+<ul>
+<li>启动Privoxy</li>
+</ul>
+<ol>
+<li><code>systemctl enable privoxy</code></li>
+<li><code>systemctl start privoxy</code></li>
+<li><code>systemctl status privoxy</code></li>
+</ol>
+<h3 id="2-2-配置Privoxy"><a href="#2-2-配置Privoxy" class="headerlink" title="2.2 配置Privoxy"></a>2.2 配置Privoxy</h3><ul>
+<li>配置Privoxy<br> ① 修改配置文件/etc/privoxy/config</li>
+</ul>
+<ol>
+<li><code>vi /etc/privoxy/config</code></li>
+</ol>
+<p>② 确保如下内容没有被注释掉</p>
+<ol>
+<li><code>listen-address 127.0.0.1:8118  # 8118 是默认端口，不用改</code></li>
+<li><code>forward-socks5t /  127.0.0.1:1080  .  #转发到本地端口</code></li>
+</ol>
+<ul>
+<li>设置http/https代理<br> ① 修改配置文件/etc/profile</li>
+</ul>
+<ol>
+<li><code>sudo vi /etc/profile</code></li>
+</ol>
+<p>添加如下信息：</p>
+<ol>
+<li><code>export http_proxy=http://127.0.0.1:8118</code></li>
+<li><code>export https_proxy=http://127.0.0.1:8118</code></li>
+<li><code>source /etc/profile</code></li>
+</ol>
+<p><strong>注：</strong>端口和privoxy 中的监听端口保持一致</p>
+<ul>
+<li>验证是否可用</li>
+</ul>
+<ol>
+<li><code>curl www.google.com</code></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="harry">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MY LIFE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/" class="post-title-link" itemprop="url">kubenetes 单机版</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-09 00:00:00 / 修改时间：14:14:56" itemprop="dateCreated datePublished" datetime="2020-09-09T00:00:00+08:00">2020-09-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="关闭centos-自带的防火墙服务"><a href="#关闭centos-自带的防火墙服务" class="headerlink" title="关闭centos 自带的防火墙服务"></a>关闭centos 自带的防火墙服务</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">stop firewalld</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">disable firewalld</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="配置kubenetes-源"><a href="#配置kubenetes-源" class="headerlink" title="配置kubenetes 源"></a>配置kubenetes 源</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">vi</span> <span class="string">/etc/yum.repos.d/kubernetes.repo</span></span><br><span class="line"><span class="attr">[Kubernetes]</span></span><br><span class="line"><span class="attr">baseurl</span>=<span class="string">http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64</span></span><br><span class="line"><span class="attr">enabled</span>=<span class="string">1</span></span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="string">0</span></span><br><span class="line"><span class="attr">repo_gpgcheck</span>=<span class="string">0</span></span><br><span class="line"><span class="attr">gpgkey</span>=<span class="string">http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg  http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="安装etcd-kubernetes"><a href="#安装etcd-kubernetes" class="headerlink" title="安装etcd kubernetes"></a>安装etcd kubernetes</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#自动附带安装Docker</span></span><br><span class="line"><span class="attr">yum</span> <span class="string">install -y etcd kubernetes</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#修改option的内容如下:</span></span><br><span class="line"><span class="attr">vi</span> <span class="string">/etc/sysconfig/docker</span></span><br><span class="line"><span class="attr">OPTIONS</span>=<span class="string">'--selinux-enabled=false --insecure-registry gcr.io'</span></span><br><span class="line"><span class="comment">#修改apiserver配置</span></span><br><span class="line"><span class="attr">vi</span> <span class="string">/etc/kubernetes/apiserver</span></span><br><span class="line"><span class="attr">KUBE_ADMISSION_CONTROL</span>=<span class="string">"--admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ResourceQuota"</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#顺序启动</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start etcd</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start docker</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start kube-apiserver</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start kube-controller-manager</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start kube-scheduler</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start kubelet</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start kube-proxy</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置开机启动</span></span><br><span class="line"></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable etcd</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable docker</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable kube-apiserver</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable kube-controller-manager</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable kube-scheduler</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable kubelet</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable kube-proxy</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#显示如下信息说明安装成功</span></span><br><span class="line"><span class="meta">[root@node1</span> <span class="string">~]# kubectl version</span></span><br><span class="line"><span class="attr">Client</span> <span class="string">Version: version.Info&#123;Major:"1", Minor:"5", GitVersion:"v1.5.2", GitCommit:"269f928217957e7126dc87e6adfa82242bfe5b1e", GitTreeState:"clean", BuildDate:"2017-07-03T15:31:10Z", GoVersion:"go1.7.4", Compiler:"gc", Platform:"linux/amd64"&#125;</span></span><br><span class="line"><span class="attr">Server</span> <span class="string">Version: version.Info&#123;Major:"1", Minor:"5", GitVersion:"v1.5.2", GitCommit:"269f928217957e7126dc87e6adfa82242bfe5b1e", GitTreeState:"clean", BuildDate:"2017-07-03T15:31:10Z", GoVersion:"go1.7.4", Compiler:"gc", Platform:"linux/amd64"&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">[root@node1</span> <span class="string">~]# etcdctl cluster-health</span></span><br><span class="line"><span class="attr">member</span> <span class="string">8e9e05c52164694d is healthy: got healthy result from http://localhost:2379</span></span><br><span class="line"><span class="attr">cluster</span> <span class="string">is healthy</span></span><br><span class="line"><span class="meta">[root@node1</span> <span class="string">~]#</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/09/istio/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="harry">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MY LIFE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/09/istio/" class="post-title-link" itemprop="url">istio</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-09 00:00:00" itemprop="dateCreated datePublished" datetime="2020-09-09T00:00:00+08:00">2020-09-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-10 11:38:09" itemprop="dateModified" datetime="2020-09-10T11:38:09+08:00">2020-09-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/09/09/istio/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/09/istio/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="kubernetes回顾"><a href="#kubernetes回顾" class="headerlink" title="kubernetes回顾"></a>kubernetes回顾</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kubernetes 提供平台基础设施层强大的容器编排和调度能力；</span><br><span class="line">--服务部署与弹性伸缩：Deployment</span><br><span class="line">--服务拆分和服务发现：Services</span><br><span class="line">kubernetes 提供简单的负载均衡能力</span><br><span class="line">--负载均衡：基于IPVS（IP Virtual Server）及iptables的简单均衡机制</span><br></pre></td></tr></table></figure>
+
+<h4 id="istio-是什么"><a href="#istio-是什么" class="headerlink" title="istio 是什么"></a>istio 是什么</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    Istio 允许您连接、保护、控制和观察服务。</span><br><span class="line">从较高的层面来说，Istio 有助于降低这些部署的复杂性，并减轻开发团队的压力。它是一个完全开源的服务网格，作为透明的一层接入到现有的分布式应用程序里。它也是一个平台，拥有可以集成任何日志、遥测和策略系统的 API 接口。Istio 多样化的特性使您能够成功且高效地运行分布式微服务架构，并提供保护、连接和监控微服务的统一方法。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/istio.jpg" alt=""></p>
+<h4 id="Sidecar概念"><a href="#Sidecar概念" class="headerlink" title="Sidecar概念"></a>Sidecar概念</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    Sidecar模式是一种将应用功能从应用本身剥离出来作为单独进程的方式。该模式允许我们向应用无侵入添加多种功能，避免了为满足第三方组件需求而向应用添加额外的配置代码。</span><br><span class="line">就像边车加装在摩托车上一样，在软件架构中，sidecar附加到主应用，或者叫父应用上，以扩展&#x2F;增强功能特性，同时Sidecar与主应用是松耦合的。</span><br><span class="line">举个例子，假设现在有6个相互通信的微服务，每个微服务都需要具有可观察性、监控、日志记录、配置、断路器等功能，而所有这些功能都是在微服务中使用一些第三方库实现的。这样一组服务的实际情况可能会非常复杂，增加了应用的整体复杂性，尤其是当每个微服务用不同的语言编写。</span><br></pre></td></tr></table></figure>
+
+<h4 id="服务网格是什么-Service-Mesh"><a href="#服务网格是什么-Service-Mesh" class="headerlink" title="服务网格是什么(Service Mesh)"></a>服务网格是什么(Service Mesh)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   服务网格用来描述组成这些应用程序的微服务网络以及它们之间的交互。随着服务网格的规模和复杂性不断的增长，它将会变得越来越难以理解和管理。它的需求包括服务发现、负载均衡、故障恢复、度量和监控等。服务网格通常还有更复杂的运维需求，比如 A&#x2F;B 测试、金丝雀发布、速率限制、访问控制和端到端认证。</span><br><span class="line">   服务网格（Service Mesh）是处理服务间通信的基础设施层。它负责构成现代云原生应用程序的复杂服务拓扑来可靠地交付请求。在实践中，Service Mesh 通常以轻量级网络代理阵列的形式实现，这些代理与应用程序代码部署在一起，对应用程序来说无需感知代理的存在。</span><br><span class="line"></span><br><span class="line">Service Mesh 有如下几个特点：</span><br><span class="line">应用程序间通信的中间层</span><br><span class="line">轻量级网络代理</span><br><span class="line">应用程序无感知</span><br><span class="line">解耦应用程序的重试&#x2F;超时、监控、追踪和服务发现</span><br><span class="line">目前两款流行的 Service Mesh 开源软件 Istio 和 Linkerd 都可以直接在 Kubernetes 中集成。</span><br></pre></td></tr></table></figure>
+
+<h4 id="理解Service-Mesh"><a href="#理解Service-Mesh" class="headerlink" title="理解Service Mesh"></a>理解Service Mesh</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果用一句话来解释什么是 Service Mesh，可以将它比作是应用程序或者说微服务间的 TCP&#x2F;IP，负责服务之间的网络调用、限流、熔断和监控。对于编写应用程序来说一般无须关心 TCP&#x2F;IP 这一层（比如通过 HTTP 协议的 RESTful 应用），同样使用 Service Mesh 也就无须关心服务之间的那些原本通过服务框架实现的事情，比如 Spring Cloud、Netflix OSS 和其他中间件，现在只要交给 Service Mesh 就可以了。</span><br></pre></td></tr></table></figure>
+
+<p>Service Mesh 的架构如下图所示:</p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/service-mesh-arch.png" alt=""></p>
+<p>Service Mesh 作为 sidecar 运行，对应用程序来说是透明，所有应用程序间的流量都会通过它，所以对应用程序流量的控制都可以在 serivce mesh 中实现。</p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/service-mesh-1.png" alt=""></p>
+<p>​      其中绿色方块为应用服务，蓝色方块为 Sidecar Proxy，应用服务之间通过 Sidecar Proxy 进行通信，整个服务通信形成图中的蓝色网络连线，图中所有蓝色部分就形成了 Service Mesh。</p>
+<p>​      我们会看到上面的服务不再负责传递请求的具体逻辑，只负责完成业务处理。服务间通讯的环节就从应用里面剥离出来，呈现出一个抽象层。有大量服务，表现为网络。</p>
+<h4 id="kubernetes-和Istio-的关系"><a href="#kubernetes-和Istio-的关系" class="headerlink" title="kubernetes 和Istio 的关系"></a>kubernetes 和Istio 的关系</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/istio-1.jpg" alt=""></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/07/mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="harry">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MY LIFE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/07/mysql/" class="post-title-link" itemprop="url">mysql</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-07 00:00:00 / 修改时间：11:31:21" itemprop="dateCreated datePublished" datetime="2020-09-07T00:00:00+08:00">2020-09-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/09/07/mysql/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/07/mysql/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span> <span class="string">flush privileges;</span></span><br><span class="line"><span class="meta">mysql&gt;GRANT</span> <span class="string">ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'a'; #赋权，使其可以远程登录</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/02/IBM_vps/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -303,7 +779,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-03 10:28:58" itemprop="dateModified" datetime="2020-09-03T10:28:58+08:00">2020-09-03</time>
+                <time title="修改时间：2020-09-03 10:32:19" itemprop="dateModified" datetime="2020-09-03T10:32:19+08:00">2020-09-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -842,389 +1318,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="harry">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MY LIFE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" class="post-title-link" itemprop="url">nps内网穿透</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-03 11:08:50" itemprop="dateCreated datePublished" datetime="2020-08-03T11:08:50+08:00">2020-08-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-04 14:41:07" itemprop="dateModified" datetime="2020-08-04T14:41:07+08:00">2020-08-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="openwrt之nps内网穿透"><a href="#openwrt之nps内网穿透" class="headerlink" title="openwrt之nps内网穿透"></a>openwrt之nps内网穿透</h2><h4 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">折腾完openwrt后，为了能在公司访问到家中的openwrt管理界面</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2.准备工作"></a>2.准备工作</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1.一个域名</span></span><br><span class="line"><span class="attr">2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序</span></span><br><span class="line"><span class="attr">3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/24/nginx/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="harry">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MY LIFE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/24/nginx/" class="post-title-link" itemprop="url">nginx</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-24 15:30:50" itemprop="dateCreated datePublished" datetime="2020-07-24T15:30:50+08:00">2020-07-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-27 10:03:10" itemprop="dateModified" datetime="2020-07-27T10:03:10+08:00">2020-07-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/07/24/nginx/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/24/nginx/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><p><strong>一、介绍</strong></p>
-<p>​    Nginx是一个高性能的<strong>HTTP**</strong>和反向代理服务器<strong>，也是一个</strong>IMAP/POP3/SMTP<strong>**代理服务器</strong>。</p>
-<p>​     Nginx是一款轻量级的Web服务器/反向代理服务器以及电子邮件代理服务器，并在一个BSD-like协议下发行。由俄罗斯的程序设计师lgor Sysoev所开发，供俄国大型的入口网站及搜索引擎Rambler使用。其特点是<strong>占有内存少，并发能力强</strong>，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。</p>
-<p>​     Nginx相较于Apache\lighttpd具有占有内存少，稳定性高等优势，并且依靠并发能力强，丰富的模块库以及友好灵活的配置而闻名。<strong>在**</strong>Linux<strong>**操作系统下</strong>，nginx使用<strong>epoll事件模型</strong>,得益于此，nginx在Linux操作系统下效率相当高。同时Nginx在OpenBSD或FreeBSD操作系统上采用类似于Epoll的高效事件模型kqueue.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/24/nginx/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/24/linux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="harry">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MY LIFE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/24/linux/" class="post-title-link" itemprop="url">linux</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-24 15:30:50" itemprop="dateCreated datePublished" datetime="2020-07-24T15:30:50+08:00">2020-07-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-12 10:58:57" itemprop="dateModified" datetime="2020-08-12T10:58:57+08:00">2020-08-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/07/24/linux/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/24/linux/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h2><p>1、什么是运维？运维的分类？</p>
-<p>1）运维是指大型组织已经建立好的网络软硬件的维护，就是要保证业务的上线与运作的正常，在他运转的过程中，对他进行维护，他集合了网络、系统、数据库、开发、安全、监控于一身的技术，运维又包括很多种，有DBA运维、网站运维、虚拟化运维、监控运维、游戏运维等等</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/24/linux/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/24/hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="harry">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MY LIFE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/24/hexo/" class="post-title-link" itemprop="url">hexo</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-24 14:59:50" itemprop="dateCreated datePublished" datetime="2020-07-24T14:59:50+08:00">2020-07-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-05 10:25:22" itemprop="dateModified" datetime="2020-08-05T10:25:22+08:00">2020-08-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/07/24/hexo/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/24/hexo/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/20200727155306.jpg" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#参考资料</span><br><span class="line">https:&#x2F;&#x2F;www.cnblogs.com&#x2F;lijianming180&#x2F;p&#x2F;12433189.html 统计量</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
