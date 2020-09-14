@@ -30,7 +30,7 @@
 <meta property="og:description" content="关闭centos 自带的防火墙服务12systemctl stop firewalldsystemctl disable firewalld  配置kubenetes 源1234567vi &#x2F;etc&#x2F;yum.repos.d&#x2F;kubernetes.repo[Kubernetes]baseurl&#x3D;http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;kubernetes&#x2F;yum&#x2F;repos&#x2F;kubern">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-09-08T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-09-09T06:14:56.051Z">
+<meta property="article:modified_time" content="2020-09-14T01:54:24.772Z">
 <meta property="article:author" content="harry">
 <meta property="article:tag" content="运维">
 <meta name="twitter:card" content="summary">
@@ -205,7 +205,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#关闭centos-自带的防火墙服务"><span class="nav-number">1.</span> <span class="nav-text">关闭centos 自带的防火墙服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置kubenetes-源"><span class="nav-number">2.</span> <span class="nav-text">配置kubenetes 源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装etcd-kubernetes"><span class="nav-number">3.</span> <span class="nav-text">安装etcd kubernetes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改配置文件"><span class="nav-number">4.</span> <span class="nav-text">修改配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动服务"><span class="nav-number">5.</span> <span class="nav-text">启动服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证"><span class="nav-number">6.</span> <span class="nav-text">验证</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#关闭centos-自带的防火墙服务"><span class="nav-number">1.</span> <span class="nav-text">关闭centos 自带的防火墙服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置kubenetes-源"><span class="nav-number">2.</span> <span class="nav-text">配置kubenetes 源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装etcd-kubernetes"><span class="nav-number">3.</span> <span class="nav-text">安装etcd kubernetes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改配置文件"><span class="nav-number">4.</span> <span class="nav-text">修改配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动服务"><span class="nav-number">5.</span> <span class="nav-text">启动服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证"><span class="nav-number">6.</span> <span class="nav-text">验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#github-地址"><span class="nav-number">7.</span> <span class="nav-text">github 地址</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -301,10 +301,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-09 00:00:00 / 修改时间：14:14:56" itemprop="dateCreated datePublished" datetime="2020-09-09T00:00:00+08:00">2020-09-09</time>
+              <time title="创建时间：2020-09-09 00:00:00" itemprop="dateCreated datePublished" datetime="2020-09-09T00:00:00+08:00">2020-09-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-14 09:54:24" itemprop="dateModified" datetime="2020-09-14T09:54:24+08:00">2020-09-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -359,6 +365,8 @@
 
 <h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#显示如下信息说明安装成功</span></span><br><span class="line"><span class="meta">[root@node1</span> <span class="string">~]# kubectl version</span></span><br><span class="line"><span class="attr">Client</span> <span class="string">Version: version.Info&#123;Major:"1", Minor:"5", GitVersion:"v1.5.2", GitCommit:"269f928217957e7126dc87e6adfa82242bfe5b1e", GitTreeState:"clean", BuildDate:"2017-07-03T15:31:10Z", GoVersion:"go1.7.4", Compiler:"gc", Platform:"linux/amd64"&#125;</span></span><br><span class="line"><span class="attr">Server</span> <span class="string">Version: version.Info&#123;Major:"1", Minor:"5", GitVersion:"v1.5.2", GitCommit:"269f928217957e7126dc87e6adfa82242bfe5b1e", GitTreeState:"clean", BuildDate:"2017-07-03T15:31:10Z", GoVersion:"go1.7.4", Compiler:"gc", Platform:"linux/amd64"&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">[root@node1</span> <span class="string">~]# etcdctl cluster-health</span></span><br><span class="line"><span class="attr">member</span> <span class="string">8e9e05c52164694d is healthy: got healthy result from http://localhost:2379</span></span><br><span class="line"><span class="attr">cluster</span> <span class="string">is healthy</span></span><br><span class="line"><span class="meta">[root@node1</span> <span class="string">~]#</span></span><br></pre></td></tr></table></figure>
 
+<p>以上方式安装的版本比较老，若想安装新版本请参考下面的方式</p>
+<h4 id="github-地址"><a href="#github-地址" class="headerlink" title="github 地址"></a>github 地址</h4><p><code>https://github.com/easzlab/kubeasz/blob/master/docs/setup/quickStart.md</code></p>
 
     </div>
 

@@ -2,15 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://yoursite.com/2020/09/11/cenos7%20shadowsocks/</loc>
-    <lastmod>2020-09-11</lastmod>
+    <lastmod>2020-09-14</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite.com/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/</loc>
+    <lastmod>2020-09-14</lastmod>
   </url>
   <url>
     <loc>http://yoursite.com/2020/09/09/istio/</loc>
     <lastmod>2020-09-10</lastmod>
-  </url>
-  <url>
-    <loc>http://yoursite.com/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/</loc>
-    <lastmod>2020-09-09</lastmod>
   </url>
   <url>
     <loc>http://yoursite.com/2020/09/07/mysql/</loc>
