@@ -30,11 +30,14 @@
 <meta property="og:description" content="kubernetes回顾12345kubernetes 提供平台基础设施层强大的容器编排和调度能力；--服务部署与弹性伸缩：Deployment--服务拆分和服务发现：Serviceskubernetes 提供简单的负载均衡能力--负载均衡：基于IPVS（IP Virtual Server）及iptables的简单均衡机制  istio 是什么1234    服务网格词汇 Istio，希腊语言中大">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzq82/img/master/img/istio.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/hzq82/img/master/img/porxy.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzq82/img/master/img/service-mesh-arch.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzq82/img/master/img/service-mesh-1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzq82/img/master/img/istio-1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/hzq82/img/master/img/istio-2.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/hzq82/img/master/img/istio-3.jpg">
 <meta property="article:published_time" content="2020-09-08T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-09-21T02:56:24.119Z">
+<meta property="article:modified_time" content="2020-09-21T07:46:08.610Z">
 <meta property="article:author" content="harry">
 <meta property="article:tag" content="运维">
 <meta name="twitter:card" content="summary">
@@ -210,7 +213,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#kubernetes回顾"><span class="nav-number">1.</span> <span class="nav-text">kubernetes回顾</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#istio-是什么"><span class="nav-number">2.</span> <span class="nav-text">istio 是什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sidecar概念"><span class="nav-number">3.</span> <span class="nav-text">Sidecar概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务网格是什么-Service-Mesh"><span class="nav-number">4.</span> <span class="nav-text">服务网格是什么(Service Mesh)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解Service-Mesh"><span class="nav-number">5.</span> <span class="nav-text">理解Service Mesh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kubernetes-和Istio-的关系"><span class="nav-number">6.</span> <span class="nav-text">kubernetes 和Istio 的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令"><span class="nav-number">7.</span> <span class="nav-text">常用命令</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#kubernetes回顾"><span class="nav-number">1.</span> <span class="nav-text">kubernetes回顾</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#istio-是什么"><span class="nav-number">2.</span> <span class="nav-text">istio 是什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务网格是什么-Service-Mesh"><span class="nav-number">3.</span> <span class="nav-text">服务网格是什么(Service Mesh)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回顾一下网络代理"><span class="nav-number">4.</span> <span class="nav-text">回顾一下网络代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解Service-Mesh"><span class="nav-number">5.</span> <span class="nav-text">理解Service Mesh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sidecar概念"><span class="nav-number">6.</span> <span class="nav-text">Sidecar概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kubernetes-和Istio-的关系"><span class="nav-number">7.</span> <span class="nav-text">kubernetes 和Istio 的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#istio-架构"><span class="nav-number">8.</span> <span class="nav-text">istio 架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">9.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令"><span class="nav-number">10.</span> <span class="nav-text">常用命令</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -314,7 +317,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-21 10:56:24" itemprop="dateModified" datetime="2020-09-21T10:56:24+08:00">2020-09-21</time>
+                <time title="修改时间：2020-09-21 15:46:08" itemprop="dateModified" datetime="2020-09-21T15:46:08+08:00">2020-09-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -365,11 +368,18 @@
 <a id="more"></a>
 
 <p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/istio.jpg" alt=""></p>
-<h4 id="Sidecar概念"><a href="#Sidecar概念" class="headerlink" title="Sidecar概念"></a>Sidecar概念</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    Sidecar模式是一种将应用功能从应用本身剥离出来作为单独进程的方式。该模式允许我们向应用无侵入添加多种功能，避免了为满足第三方组件需求而向应用添加额外的配置代码。</span><br><span class="line">就像边车加装在摩托车上一样，在软件架构中，sidecar附加到主应用，或者叫父应用上，以扩展&#x2F;增强功能特性，同时Sidecar与主应用是松耦合的。</span><br><span class="line">举个例子，假设现在有6个相互通信的微服务，每个微服务都需要具有可观察性、监控、日志记录、配置、断路器等功能，而所有这些功能都是在微服务中使用一些第三方库实现的。这样一组服务的实际情况可能会非常复杂，增加了应用的整体复杂性，尤其是当每个微服务用不同的语言编写。</span><br></pre></td></tr></table></figure>
-
 <h4 id="服务网格是什么-Service-Mesh"><a href="#服务网格是什么-Service-Mesh" class="headerlink" title="服务网格是什么(Service Mesh)"></a>服务网格是什么(Service Mesh)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   服务网格用来描述组成这些应用程序的微服务网络以及它们之间的交互。随着服务网格的规模和复杂性不断的增长，它将会变得越来越难以理解和管理。它的需求包括服务发现、负载均衡、故障恢复、度量和监控等。服务网格通常还有更复杂的运维需求，比如 A&#x2F;B 测试、金丝雀发布、速率限制、访问控制和端到端认证。</span><br><span class="line">   服务网格（Service Mesh）是处理服务间通信的基础设施层。它负责构成现代云原生应用程序的复杂服务拓扑来可靠地交付请求。在实践中，Service Mesh 通常以轻量级网络代理阵列的形式实现，这些代理与应用程序代码部署在一起，对应用程序来说无需感知代理的存在。</span><br><span class="line"></span><br><span class="line">Service Mesh 有如下几个特点：</span><br><span class="line">应用程序间通信的中间层</span><br><span class="line">轻量级网络代理</span><br><span class="line">应用程序无感知</span><br><span class="line">解耦应用程序的重试&#x2F;超时、监控、追踪和服务发现</span><br><span class="line">目前两款流行的 Service Mesh 开源软件 Istio 和 Linkerd 都可以直接在 Kubernetes 中集成。</span><br></pre></td></tr></table></figure>
 
+<h4 id="回顾一下网络代理"><a href="#回顾一下网络代理" class="headerlink" title="回顾一下网络代理"></a>回顾一下网络代理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">说起网络代理，我们会想到翻墙，如果对软件架构比较熟悉的会想到 Nginx 等反向代理软件。</span><br><span class="line">其实网络代理的范围比较广，可以肯定的说，有网络访问的地方就会有代理的存在。</span><br><span class="line">NOTE：代理可以是嵌套的，也就是说通信双方 A、B 中间可以多多层代理，而这些代理的存在有可能对 A、B 是透明的。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/porxy.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Service Mesh 可以看做是传统代理的升级版，用来解决现在微服务框架中出现的问题，可以把 Service Mesh 看做是分布式的微服务代理。</span><br><span class="line">在传统模式下，代理一般是集中式的单独的服务器，所有的请求都要先通过代理，然后再流入转发到实际的后端。</span><br><span class="line">而在 Service Mesh 中，代理变成了分布式的，它常驻在了应用的身边（最常见的就是 Kubernetes Sidecar 模式，每一个应用的 Pod 中都运行着一个代理，负责流量相关的事情）。</span><br><span class="line">这样的话，应用所有的流量都被代理接管，那么这个代理就能做到上面提到的所有可能的事情，从而带来无限的想象力。</span><br></pre></td></tr></table></figure>
+
+
+
 <h4 id="理解Service-Mesh"><a href="#理解Service-Mesh" class="headerlink" title="理解Service Mesh"></a>理解Service Mesh</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果用一句话来解释什么是 Service Mesh，可以将它比作是应用程序或者说微服务间的 TCP&#x2F;IP，负责服务之间的网络调用、限流、熔断和监控。对于编写应用程序来说一般无须关心 TCP&#x2F;IP 这一层（比如通过 HTTP 协议的 RESTful 应用），同样使用 Service Mesh 也就无须关心服务之间的那些原本通过服务框架实现的事情，比如 Spring Cloud、Netflix OSS 和其他中间件，现在只要交给 Service Mesh 就可以了。</span><br></pre></td></tr></table></figure>
+
+<h4 id="Sidecar概念"><a href="#Sidecar概念" class="headerlink" title="Sidecar概念"></a>Sidecar概念</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    Sidecar模式是一种将应用功能从应用本身剥离出来作为单独进程的方式。该模式允许我们向应用无侵入添加多种功能，避免了为满足第三方组件需求而向应用添加额外的配置代码。</span><br><span class="line">就像边车加装在摩托车上一样，在软件架构中，sidecar附加到主应用，或者叫父应用上，以扩展&#x2F;增强功能特性，同时Sidecar与主应用是松耦合的。</span><br><span class="line">举个例子，假设现在有6个相互通信的微服务，每个微服务都需要具有可观察性、监控、日志记录、配置、断路器等功能，而所有这些功能都是在微服务中使用一些第三方库实现的。这样一组服务的实际情况可能会非常复杂，增加了应用的整体复杂性，尤其是当每个微服务用不同的语言编写。</span><br></pre></td></tr></table></figure>
 
 <p>Service Mesh 的架构如下图所示:</p>
 <p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/service-mesh-arch.png" alt=""></p>
@@ -378,6 +388,16 @@
 <p>​      其中绿色方块为应用服务，蓝色方块为 Sidecar Proxy，应用服务之间通过 Sidecar Proxy 进行通信，整个服务通信形成图中的蓝色网络连线，图中所有蓝色部分就形成了 Service Mesh。</p>
 <p>​      我们会看到上面的服务不再负责传递请求的具体逻辑，只负责完成业务处理。服务间通讯的环节就从应用里面剥离出来，呈现出一个抽象层。有大量服务，表现为网络。</p>
 <h4 id="kubernetes-和Istio-的关系"><a href="#kubernetes-和Istio-的关系" class="headerlink" title="kubernetes 和Istio 的关系"></a>kubernetes 和Istio 的关系</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/istio-1.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">istios 完美补齐了k8s服务治理的能力，从功能上来讲istio和k8s是一种完美的结合。</span><br></pre></td></tr></table></figure>
+
+<h4 id="istio-架构"><a href="#istio-架构" class="headerlink" title="istio 架构"></a>istio 架构</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/istio-2.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Istio 服务网格从逻辑上分为数据平面和控制平面。</span><br><span class="line">数据平面 由一组智能代理（Envoy）组成，被部署为 sidecar。这些代理负责协调和控制微服务之间的所有网络通信。他们还收集和报告所有网格流量的遥测数据。</span><br><span class="line">控制平面 管理并配置代理来进行流量路由。</span><br><span class="line">Istio 中的流量分为数据平面流量和控制平面流量。数据平面流量是指工作负载的业务逻辑发送和接收的消息。控制平面流量是指在 Istio 组件之间发送的配置和控制消息用来编排网格的行为。Istio 中的流量管理特指数据平面流量。</span><br><span class="line">pilot  配置规则到proxy，用户自己定义的rule。</span><br><span class="line">mixer  分为2部分，策略管理和监控，调用链分析、</span><br><span class="line">citadel 安全管理中心，证书的生成下发，</span><br><span class="line">galley  对规则进行verify data。</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/istio-3.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   这个示例部署了一个用于演示多种 Istio 特性的应用，该应用由四个单独的微服务构成。 这个应用模仿在线书店的一个分类，显示一本书的信息。 页面上会显示一本书的描述，书籍的细节（ISBN、页数等），以及关于这本书的一些评论。</span><br><span class="line">Bookinfo 应用分为四个单独的微服务：</span><br><span class="line">productpage. 这个微服务会调用 details 和 reviews 两个微服务，用来生成页面。</span><br><span class="line">details. 这个微服务中包含了书籍的信息。</span><br><span class="line">reviews. 这个微服务中包含了书籍相关的评论。它还会调用 ratings 微服务。</span><br><span class="line">ratings. 这个微服务中包含了由书籍评价组成的评级信息。</span><br><span class="line">reviews 微服务有 3 个版本：</span><br><span class="line">v1 版本不会调用 ratings 服务。</span><br><span class="line">v2 版本会调用 ratings 服务，并使用 1 到 5 个黑色星形图标来显示评分信息。</span><br><span class="line">v3 版本会调用 ratings 服务，并使用 1 到 5 个红色星形图标来显示评分信息。</span><br><span class="line">   Bookinfo 应用中的几个微服务是由不同的语言编写的。 这些服务对 Istio 并无依赖，但是构成了一个有代表性的服务网格的例子：它由多个服务、多个语言构成，并且 reviews 服务具有多个版本。</span><br></pre></td></tr></table></figure>
+
+
+
 <h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">删除实例应用</span><br><span class="line">samples&#x2F;bookinfo&#x2F;platform&#x2F;kube&#x2F;cleanup.sh</span><br><span class="line"></span><br><span class="line">卸载 Istio</span><br><span class="line">istioctl manifest generate --set profile&#x3D;demo | kubectl delete -f -</span><br></pre></td></tr></table></figure>
 
 
@@ -398,12 +418,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/" rel="prev" title="kubenetes 单机版">
-      <i class="fa fa-chevron-left"></i> kubenetes 单机版
+    <a href="/2020/09/07/mysql/" rel="prev" title="mysql">
+      <i class="fa fa-chevron-left"></i> mysql
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/09/11/cenos7%20shadowsocks/" rel="next" title="centos shadowsocks">
-      centos shadowsocks <i class="fa fa-chevron-right"></i>
+    <a href="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/" rel="next" title="kubenetes 单机版">
+      kubenetes 单机版 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
