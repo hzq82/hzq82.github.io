@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/2020/09/09/istio/</loc>
+    <lastmod>2020-09-30</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite.com/2020/07/24/hexo/</loc>
+    <lastmod>2020-09-29</lastmod>
+  </url>
+  <url>
     <loc>http://yoursite.com/2020/08/14/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2020-09-23</lastmod>
   </url>
   <url>
-    <loc>http://yoursite.com/2020/09/09/istio/</loc>
-    <lastmod>2020-09-22</lastmod>
-  </url>
-  <url>
     <loc>http://yoursite.com/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/</loc>
-    <lastmod>2020-09-21</lastmod>
-  </url>
-  <url>
-    <loc>http://yoursite.com/2020/07/24/hexo/</loc>
     <lastmod>2020-09-21</lastmod>
   </url>
   <url>
