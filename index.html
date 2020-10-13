@@ -215,7 +215,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -268,6 +268,101 @@
 
         <div class="content index posts-expand">
           
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/13/kubeadm%E9%83%A8%E7%BD%B2K8s%E9%9B%86%E7%BE%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="harry">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MY LIFE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/13/kubeadm%E9%83%A8%E7%BD%B2K8s%E9%9B%86%E7%BE%A4/" class="post-title-link" itemprop="url">hexo</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-13 11:00:00 / 修改时间：16:24:58" itemprop="dateCreated datePublished" datetime="2020-10-13T11:00:00+08:00">2020-10-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/10/13/kubeadm%E9%83%A8%E7%BD%B2K8s%E9%9B%86%E7%BE%A4/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/10/13/kubeadm%E9%83%A8%E7%BD%B2K8s%E9%9B%86%E7%BE%A4/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>kubeadm是官方社区推出的一个用于快速部署kubernetes集群的工具。</p>
+<p>这个工具能通过两条指令完成一个kubernetes集群的部署：</p>
+<p>创建一个 Master 节点 kubeadm init</p>
+<p>将一个 Node 节点加入到当前集群中 kubeadm join &lt;Master节点的IP和端口 &gt;</p>
+<h4 id="安装要求"><a href="#安装要求" class="headerlink" title="安装要求"></a>安装要求</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">在开始之前，部署Kubernetes集群机器需要满足以下几个条件：</span></span><br><span class="line"><span class="meta">-</span>   <span class="string">一台或多台机器，操作系统 CentOS7.x-86_x64</span></span><br><span class="line"><span class="meta">-</span>   <span class="string">硬件配置：2GB或更多RAM，2个CPU或更多CPU，硬盘30GB或更多</span></span><br><span class="line"><span class="meta">-</span>   <span class="string">集群中所有机器之间网络互通</span></span><br><span class="line"><span class="meta">-</span>   <span class="string">可以访问外网，需要拉取镜像</span></span><br><span class="line"><span class="meta">-</span>   <span class="string">禁止swap分区</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">-</span>   <span class="string">在所有节点上安装Docker和kubeadm</span></span><br><span class="line"><span class="meta">-</span>   <span class="string">部署Kubernetes Master</span></span><br><span class="line"><span class="meta">-</span>   <span class="string">部署容器网络插件</span></span><br><span class="line"><span class="meta">-</span>   <span class="string">部署 Kubernetes Node，将节点加入Kubernetes集群中</span></span><br><span class="line"><span class="meta">-</span>   <span class="string">部署Dashboard Web页面，可视化查看Kubernetes资源</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/13/kubeadm%E9%83%A8%E7%BD%B2K8s%E9%9B%86%E7%BE%A4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -378,103 +473,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="harry">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MY LIFE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/" class="post-title-link" itemprop="url">kubenetes 单机版</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-09 00:00:00" itemprop="dateCreated datePublished" datetime="2020-09-09T00:00:00+08:00">2020-09-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-21 11:00:03" itemprop="dateModified" datetime="2020-09-21T11:00:03+08:00">2020-09-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="关闭centos-自带的防火墙服务"><a href="#关闭centos-自带的防火墙服务" class="headerlink" title="关闭centos 自带的防火墙服务"></a>关闭centos 自带的防火墙服务</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">stop firewalld</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">disable firewalld</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="配置kubenetes-源"><a href="#配置kubenetes-源" class="headerlink" title="配置kubenetes 源"></a>配置kubenetes 源</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">vi</span> <span class="string">/etc/yum.repos.d/kubernetes.repo</span></span><br><span class="line"><span class="attr">[Kubernetes]</span></span><br><span class="line"><span class="attr">baseurl</span>=<span class="string">http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64</span></span><br><span class="line"><span class="attr">enabled</span>=<span class="string">1</span></span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="string">0</span></span><br><span class="line"><span class="attr">repo_gpgcheck</span>=<span class="string">0</span></span><br><span class="line"><span class="attr">gpgkey</span>=<span class="string">http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg  http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/09/istio/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -549,6 +547,103 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/09/09/istio/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="harry">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MY LIFE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/" class="post-title-link" itemprop="url">kubenetes 单机版</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-09 00:00:00" itemprop="dateCreated datePublished" datetime="2020-09-09T00:00:00+08:00">2020-09-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-21 11:00:03" itemprop="dateModified" datetime="2020-09-21T11:00:03+08:00">2020-09-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="关闭centos-自带的防火墙服务"><a href="#关闭centos-自带的防火墙服务" class="headerlink" title="关闭centos 自带的防火墙服务"></a>关闭centos 自带的防火墙服务</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">stop firewalld</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">disable firewalld</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="配置kubenetes-源"><a href="#配置kubenetes-源" class="headerlink" title="配置kubenetes 源"></a>配置kubenetes 源</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">vi</span> <span class="string">/etc/yum.repos.d/kubernetes.repo</span></span><br><span class="line"><span class="attr">[Kubernetes]</span></span><br><span class="line"><span class="attr">baseurl</span>=<span class="string">http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64</span></span><br><span class="line"><span class="attr">enabled</span>=<span class="string">1</span></span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="string">0</span></span><br><span class="line"><span class="attr">repo_gpgcheck</span>=<span class="string">0</span></span><br><span class="line"><span class="attr">gpgkey</span>=<span class="string">http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg  http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1122,103 +1217,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/08/04/%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="harry">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MY LIFE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" class="post-title-link" itemprop="url">nps内网穿透</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-03 11:08:50" itemprop="dateCreated datePublished" datetime="2020-08-03T11:08:50+08:00">2020-08-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-04 14:41:07" itemprop="dateModified" datetime="2020-08-04T14:41:07+08:00">2020-08-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="openwrt之nps内网穿透"><a href="#openwrt之nps内网穿透" class="headerlink" title="openwrt之nps内网穿透"></a>openwrt之nps内网穿透</h2><h4 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">折腾完openwrt后，为了能在公司访问到家中的openwrt管理界面</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2.准备工作"></a>2.准备工作</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1.一个域名</span></span><br><span class="line"><span class="attr">2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序</span></span><br><span class="line"><span class="attr">3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
