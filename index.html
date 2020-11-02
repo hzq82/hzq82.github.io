@@ -295,10 +295,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-10-28 00:00:00 / 修改时间：09:33:54" itemprop="dateCreated datePublished" datetime="2020-10-28T00:00:00+08:00">2020-10-28</time>
+              <time title="创建时间：2020-10-28 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-28T00:00:00+08:00">2020-10-28</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-02 10:50:30" itemprop="dateModified" datetime="2020-11-02T10:50:30+08:00">2020-11-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -334,11 +340,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">wget</span> <span class="string">https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz</span></span><br><span class="line"><span class="attr">tar</span> <span class="string">zxvf node_exporter-1.0.1.linux-amd64.tar.gz</span></span><br><span class="line"><span class="attr">mv</span> <span class="string">node_exporter-1.0.1.linux-amd64 node_exporter</span></span><br></pre></td></tr></table></figure>
+          <h4 id="node-exporter"><a href="#node-exporter" class="headerlink" title="node_exporter"></a>node_exporter</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">wget</span> <span class="string">https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz</span></span><br><span class="line"><span class="attr">tar</span> <span class="string">zxvf node_exporter-1.0.1.linux-amd64.tar.gz</span></span><br><span class="line"><span class="attr">mv</span> <span class="string">node_exporter-1.0.1.linux-amd64 node_exporter</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">vim</span> <span class="string">/etc/systemd/system/node_exporter.service </span></span><br><span class="line"><span class="attr">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=<span class="string">node_exporter</span></span><br><span class="line"><span class="attr">After</span>=<span class="string">network.target</span></span><br><span class="line"></span><br><span class="line"><span class="attr">[Service]</span></span><br><span class="line"><span class="attr">Restart</span>=<span class="string">on-failure</span></span><br><span class="line"><span class="attr">ExecStart</span>=<span class="string">/opt/node_exporter/node_exporter</span></span><br><span class="line"></span><br><span class="line"><span class="attr">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=<span class="string">multi-user.target</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">enable node_exporter</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start node_exporter</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">daemon-reload</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable node_exporter</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start node_exporter</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="process-exporter"><a href="#process-exporter" class="headerlink" title="process_exporter"></a>process_exporter</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">wget</span> <span class="string">https://github.com/ncabatoff/process-exporter/releases/download/v0.7.2/process-exporter-0.7.2.linux-amd64.tar.gz</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">vim</span> <span class="string">/etc/systemd/system/process_exporter.service </span></span><br><span class="line"><span class="attr">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=<span class="string">process_exporter</span></span><br><span class="line"><span class="attr">Documentation</span>=<span class="string">https://prometheus.io/</span></span><br><span class="line"><span class="attr">After</span>=<span class="string">network.target</span></span><br><span class="line"> </span><br><span class="line"><span class="attr">[Service]</span></span><br><span class="line"><span class="attr">Type</span>=<span class="string">simple</span></span><br><span class="line"><span class="attr">User</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">ExecStart</span>=<span class="string">/data/process-exporter/process-exporter -config.path /data/process-exporter/process-name.yaml</span></span><br><span class="line"><span class="attr">Restart</span>=<span class="string">on-failure</span></span><br><span class="line"> </span><br><span class="line"><span class="attr">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=<span class="string">multi-user.target</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">daemon-reload</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable process_exporter</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start process_exporter</span></span><br></pre></td></tr></table></figure>
+
+
+
+
 
 
       
