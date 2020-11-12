@@ -2,11 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://yoursite.com/2020/11/11/k8s%E9%9B%86%E7%BE%A4%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/</loc>
-    <lastmod>2020-11-11</lastmod>
+    <lastmod>2020-11-12</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite.com/2020/09/09/istio/</loc>
+    <lastmod>2020-11-12</lastmod>
   </url>
   <url>
     <loc>http://yoursite.com/2020/11/02/docker/</loc>
-    <lastmod>2020-11-11</lastmod>
+    <lastmod>2020-11-12</lastmod>
   </url>
   <url>
     <loc>http://yoursite.com/2020/10/13/kubeadm%E9%83%A8%E7%BD%B2K8s%E9%9B%86%E7%BE%A4/</loc>
@@ -18,10 +22,6 @@
   </url>
   <url>
     <loc>http://yoursite.com/2020/07/24/hexo/</loc>
-    <lastmod>2020-10-28</lastmod>
-  </url>
-  <url>
-    <loc>http://yoursite.com/2020/09/09/istio/</loc>
     <lastmod>2020-10-28</lastmod>
   </url>
   <url>
