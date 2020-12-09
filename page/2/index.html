@@ -215,7 +215,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -268,6 +268,109 @@
 
         <div class="content index posts-expand">
           
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/20/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="harry">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MY LIFE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/20/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF/" class="post-title-link" itemprop="url">大数据</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-20 00:00:00" itemprop="dateCreated datePublished" datetime="2020-08-20T00:00:00+08:00">2020-08-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-24 09:55:54" itemprop="dateModified" datetime="2020-08-24T09:55:54+08:00">2020-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/08/20/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/08/20/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="1-组件简介"><a href="#1-组件简介" class="headerlink" title="1.组件简介"></a>1.组件简介</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/bigdata.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#参考资料</span><br><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;sinat_35322593&#x2F;article&#x2F;details&#x2F;79883639</span><br><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;Mei_ZS&#x2F;article&#x2F;details&#x2F;93191279</span><br><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;NextAction&#x2F;article&#x2F;details&#x2F;78993014 #生态圈基本组件</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-HDFS"><a href="#2-HDFS" class="headerlink" title="2.HDFS"></a>2.HDFS</h4><p>&#8195;&#8195;它是由Google File System而来，全称是Hadoop Distributed File System，是Hadoop的分布式文件系统，有许多机器组成的，可以存储大型数据文件。</p>
+<p>&#8195;&#8195;它是由NameNode和DataNode组成，NameNode可以配置成HA(高可用)，避免单点故障。一般用Zookeeper来处理。两个NameNode是同步的。</p>
+<h4 id="3-MapReduce"><a href="#3-MapReduce" class="headerlink" title="3.MapReduce"></a>3.MapReduce</h4><p>&#8195;&#8195;主要由Google Reduce而来，它简化了大型数据的处理，是一个并行的，分布式处理的编程模型。</p>
+<p>&#8195;&#8195;MapReduce是一种分布式计算模型，用以进行海量数据的计算，它将计算抽象成Map和Reduce两部分，其中Map对数据集上的独立元素进行指定的操作，生成键-值对形式中间结果。Reduce则对中间结果中相同“键”的所有“值”进行规约，以得到最终结果。</p>
+<p>&#8195;&#8195;hadoop2.0它是基于YARN框架构建的。YARN的全称是Yet-Another-Resource-Negotiator。Yarn可以运用在S3|Spark等上。</p>
+<p>&#8195;&#8195;MapReduce是一个软件框架，基于它编写出来的应用可以以并行计算的方式在多个计算机节点上处理大量的数据。MapReduce为分析海量复杂的数据提供了分析能力。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/20/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -882,7 +985,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-28 14:48:55" itemprop="dateModified" datetime="2020-10-28T14:48:55+08:00">2020-10-28</time>
+                <time title="修改时间：2020-12-08 14:05:46" itemprop="dateModified" datetime="2020-12-08T14:05:46+08:00">2020-12-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -921,7 +1024,7 @@
       
           <h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">hexo</span> <span class="string">clean</span></span><br><span class="line"><span class="attr">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="attr">hexo</span> <span class="string">d</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">present出席 absent缺席 predict 预言;预告 linear 直线的</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">present出席 absent缺席 predict 预言;预告 linear 直线的 encountered 遇到</span><br></pre></td></tr></table></figure>
 
 <h4 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kubectl</span> <span class="string">create deployment java-demo --image=harry82/tomcat:v1 --dry-run=client -o yaml &gt; java-demo.yaml</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">expose deployment java-demo --port=80 --target-port=8080 --type=NodePort --dry-run=client -o yaml &gt;svc.yaml</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">get pod -o wide</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">desribe pod nginx-f89759699-gjgbn</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">get ep #查看svc关联pod</span></span><br><span class="line"></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">create deployment nginx --image=nginx</span></span><br></pre></td></tr></table></figure>
 
