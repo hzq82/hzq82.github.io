@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://yoursite.com/2020/10/13/kubeadm%E9%83%A8%E7%BD%B2K8s%E9%9B%86%E7%BE%A4/</loc>
-    <lastmod>2020-12-09</lastmod>
+    <loc>http://yoursite.com/2020/12/10/osi%E6%A8%A1%E5%9E%8B/</loc>
+    <lastmod>2020-12-10</lastmod>
   </url>
   <url>
     <loc>http://yoursite.com/2020/11/11/k8s%E9%9B%86%E7%BE%A4%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2020-12-09</lastmod>
   </url>
   <url>
-    <loc>http://yoursite.com/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95/</loc>
-    <lastmod>2020-12-08</lastmod>
+    <loc>http://yoursite.com/2020/07/24/hexo/</loc>
+    <lastmod>2020-12-09</lastmod>
   </url>
   <url>
-    <loc>http://yoursite.com/2020/07/24/hexo/</loc>
+    <loc>http://yoursite.com/2020/10/13/kubeadm%E9%83%A8%E7%BD%B2K8s%E9%9B%86%E7%BE%A4/</loc>
+    <lastmod>2020-12-09</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite.com/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95/</loc>
     <lastmod>2020-12-08</lastmod>
   </url>
   <url>
