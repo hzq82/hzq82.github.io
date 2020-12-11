@@ -24,18 +24,18 @@
 
   <meta name="description" content="命令123456789df -humount &#x2F;homevim &#x2F;etc&#x2F;fstab ####(注释掉&#x2F;home,避免开机自检)lvremove &#x2F;dev&#x2F;mapper&#x2F;centos-home #接着会出现确认的内容，输入“y”，回车vgdisplay #ps: 查看 Free  PE &#x2F; Size这项Free  PE &#x2F; Size       37151 &#x2F; 145.12 GiBlvextend">
 <meta property="og:type" content="article">
-<meta property="og:title" content="centos7扩展根目录">
-<meta property="og:url" content="http://yoursite.com/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95/index.html">
+<meta property="og:title" content="centos7扩展根目录,升级内核">
+<meta property="og:url" content="http://yoursite.com/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/index.html">
 <meta property="og:site_name" content="MY LIFE">
 <meta property="og:description" content="命令123456789df -humount &#x2F;homevim &#x2F;etc&#x2F;fstab ####(注释掉&#x2F;home,避免开机自检)lvremove &#x2F;dev&#x2F;mapper&#x2F;centos-home #接着会出现确认的内容，输入“y”，回车vgdisplay #ps: 查看 Free  PE &#x2F; Size这项Free  PE &#x2F; Size       37151 &#x2F; 145.12 GiBlvextend">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-08T06:59:50.000Z">
-<meta property="article:modified_time" content="2020-12-08T09:55:17.190Z">
+<meta property="article:modified_time" content="2020-12-11T03:27:50.496Z">
 <meta property="article:author" content="harry">
 <meta property="article:tag" content="运维">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95/">
+<link rel="canonical" href="http://yoursite.com/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/">
 
 
 <script class="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>centos7扩展根目录 | MY LIFE</title>
+  <title>centos7扩展根目录,升级内核 | MY LIFE</title>
   
 
 
@@ -205,7 +205,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#命令"><span class="nav-number">1.</span> <span class="nav-text">命令</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#命令"><span class="nav-number">1.</span> <span class="nav-text">命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#升级内核"><span class="nav-number">2.</span> <span class="nav-text">升级内核</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -279,7 +279,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -292,7 +292,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          centos7扩展根目录
+          centos7扩展根目录,升级内核
         </h1>
 
         <div class="post-meta">
@@ -301,10 +301,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-12-08 14:59:50 / 修改时间：17:55:17" itemprop="dateCreated datePublished" datetime="2020-12-08T14:59:50+08:00">2020-12-08</time>
+              <time title="创建时间：2020-12-08 14:59:50" itemprop="dateCreated datePublished" datetime="2020-12-08T14:59:50+08:00">2020-12-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-11 11:27:50" itemprop="dateModified" datetime="2020-12-11T11:27:50+08:00">2020-12-11</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -331,8 +337,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -348,6 +354,8 @@
 
       
         <h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">df</span> <span class="string">-h</span></span><br><span class="line"><span class="attr">umount</span> <span class="string">/home</span></span><br><span class="line"><span class="attr">vim</span> <span class="string">/etc/fstab ####(注释掉/home,避免开机自检)</span></span><br><span class="line"><span class="attr">lvremove</span> <span class="string">/dev/mapper/centos-home #接着会出现确认的内容，输入“y”，回车</span></span><br><span class="line"><span class="attr">vgdisplay</span> <span class="string">#ps: 查看 Free  PE / Size这项</span></span><br><span class="line"><span class="attr">Free</span>  <span class="string">PE / Size       37151 / 145.12 GiB</span></span><br><span class="line"><span class="attr">lvextend</span> <span class="string">-L +145G /dev/mapper/centos-root #扩展/root所在的lv</span></span><br><span class="line"><span class="attr">xfs_growfs</span> <span class="string">/dev/mapper/centos-root #扩展/root空间</span></span><br><span class="line"><span class="attr">df</span> <span class="string">-h #成功</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="升级内核"><a href="#升级内核" class="headerlink" title="升级内核"></a>升级内核</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">## 载入公钥</span><br><span class="line">$ rpm --import https:&#x2F;&#x2F;www.elrepo.org&#x2F;RPM-GPG-KEY-elrepo.org</span><br><span class="line"></span><br><span class="line">## 安装 ELRepo 最新版本</span><br><span class="line">$ yum install -y https:&#x2F;&#x2F;www.elrepo.org&#x2F;elrepo-release-7.el7.elrepo.noarch.rpm</span><br><span class="line"></span><br><span class="line">## 列出可以使用的 kernel 包版本</span><br><span class="line">$ yum list available --disablerepo&#x3D;* --enablerepo&#x3D;elrepo-kernel</span><br><span class="line"></span><br><span class="line">## 安装指定的 kernel 版本：</span><br><span class="line">$ yum install -y kernel-lt-4.4.218-1.el7.elrepo --enablerepo&#x3D;elrepo-kernel</span><br><span class="line"></span><br><span class="line">## 查看系统可用内核</span><br><span class="line">$ cat &#x2F;boot&#x2F;grub2&#x2F;grub.cfg | grep menuentry</span><br><span class="line"></span><br><span class="line">menuentry &#39;CentOS Linux (3.10.0-1062.el7.x86_64) 7 (Core)&#39; --class centos （略）</span><br><span class="line">menuentry &#39;CentOS Linux (4.4.218-1.el7.elrepo.x86_64) 7 (Core)&#39; --class centos ...（略）</span><br><span class="line"></span><br><span class="line">## 设置开机从新内核启动</span><br><span class="line">$ grub2-set-default &quot;CentOS Linux (4.4.218-1.el7.elrepo.x86_64) 7 (Core)&quot;</span><br><span class="line"></span><br><span class="line">## 查看内核启动项</span><br><span class="line">$ grub2-editenv list</span><br><span class="line">saved_entry&#x3D;CentOS Linux (4.4.218-1.el7.elrepo.x86_64) 7 (Core)</span><br></pre></td></tr></table></figure>
 
 
     </div>
