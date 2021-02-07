@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -19,15 +19,15 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"path":"search.xml"};
   </script>
 
-  <meta name="description" content="openwrt之nps内网穿透1.需求1折腾完openwrt后，为了能在公司访问到家中的openwrt管理界面  2.准备工作1231.一个域名2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序">
+  <meta name="description" content="openwrt之nps内网穿透1.需求1折腾完openwrt后，为了能在公司访问到家中的openwrt管理界面 2.准备工作1231.一个域名2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nps内网穿透">
 <meta property="og:url" content="http://yoursite.com/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/index.html">
 <meta property="og:site_name" content="MY LIFE">
-<meta property="og:description" content="openwrt之nps内网穿透1.需求1折腾完openwrt后，为了能在公司访问到家中的openwrt管理界面  2.准备工作1231.一个域名2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序">
+<meta property="og:description" content="openwrt之nps内网穿透1.需求1折腾完openwrt后，为了能在公司访问到家中的openwrt管理界面 2.准备工作1231.一个域名2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps1.jpg">
@@ -213,7 +213,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#openwrt之nps内网穿透"><span class="nav-number">1.</span> <span class="nav-text">openwrt之nps内网穿透</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-需求"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.需求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-准备工作"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.准备工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-服务端程序下载安装"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.服务端程序下载安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-服务端安装"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.服务端安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-客户端配置"><span class="nav-number">1.0.5.</span> <span class="nav-text">5.客户端配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-服务端配置"><span class="nav-number">1.0.6.</span> <span class="nav-text">6. 服务端配置</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#openwrt%E4%B9%8Bnps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F"><span class="nav-number">1.</span> <span class="nav-text">openwrt之nps内网穿透</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%9C%80%E6%B1%82"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.需求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.准备工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%A8%8B%E5%BA%8F%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.服务端程序下载安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%89%E8%A3%85"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.服务端安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">1.0.5.</span> <span class="nav-text">5.客户端配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">1.0.6.</span> <span class="nav-text">6. 服务端配置</span></a></li></ol></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -368,26 +368,21 @@
 
       
         <h2 id="openwrt之nps内网穿透"><a href="#openwrt之nps内网穿透" class="headerlink" title="openwrt之nps内网穿透"></a>openwrt之nps内网穿透</h2><h4 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">折腾完openwrt后，为了能在公司访问到家中的openwrt管理界面</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2.准备工作"></a>2.准备工作</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1.一个域名</span></span><br><span class="line"><span class="attr">2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序</span></span><br><span class="line"><span class="attr">3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序</span></span><br></pre></td></tr></table></figure>
-
 <a id="more"></a>
 
-<h4 id="3-服务端程序下载安装"><a href="#3-服务端程序下载安装" class="headerlink" title="3.服务端程序下载安装"></a>3.服务端程序下载安装</h4><p>GitHub：<a href="https://github.com/cnlh/nps" target="_blank" rel="noopener">https://github.com/cnlh/nps</a><br>releases github: <a href="https://github.com/ehang-io/nps/releases" target="_blank" rel="noopener">https://github.com/ehang-io/nps/releases</a>  #下载地址</p>
+<h4 id="3-服务端程序下载安装"><a href="#3-服务端程序下载安装" class="headerlink" title="3.服务端程序下载安装"></a>3.服务端程序下载安装</h4><p>GitHub：<a target="_blank" rel="noopener" href="https://github.com/cnlh/nps">https://github.com/cnlh/nps</a><br>releases github: <a target="_blank" rel="noopener" href="https://github.com/ehang-io/nps/releases">https://github.com/ehang-io/nps/releases</a>  #下载地址</p>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">我使用的是centos，所以下载对应的版本，客户端openwrt自带，所以不需要下载</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps.jpg"></p>
 <h4 id="4-服务端安装"><a href="#4-服务端安装" class="headerlink" title="4.服务端安装"></a>4.服务端安装</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">wget</span> <span class="string">https://github.com/cnlh/nps/releases/download/v0.26.3/linux_amd64_server.tar.gz</span></span><br><span class="line"><span class="attr">tar</span> <span class="string">xzvf linux_amd64_server.tar.gz</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">~/nps</span></span><br><span class="line"><span class="meta">./nps</span> <span class="string">install</span></span><br><span class="line"><span class="attr">nohup</span> <span class="string">./nps &amp;</span></span><br><span class="line"><span class="comment">#有特殊需求可以修改conf文件，比如端口等，此处没有修改任何配置，默认服务端口8080，访问：</span></span><br><span class="line"><span class="meta">用户名：admin</span> <span class="string">密码：123（默认）</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps1.jpg" alt=""></p>
-<h4 id="5-客户端配置"><a href="#5-客户端配置" class="headerlink" title="5.客户端配置"></a>5.客户端配置</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps2.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps1.jpg"></p>
+<h4 id="5-客户端配置"><a href="#5-客户端配置" class="headerlink" title="5.客户端配置"></a>5.客户端配置</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps2.jpg"></p>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#端口默认8024是客户端访问服务端的端口，秘钥为自己定义，服务端需要配置此秘钥</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="6-服务端配置"><a href="#6-服务端配置" class="headerlink" title="6. 服务端配置"></a>6. 服务端配置</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps3.jpg" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps4.jpg" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps5.jpg" alt=""></p>
+<h4 id="6-服务端配置"><a href="#6-服务端配置" class="headerlink" title="6. 服务端配置"></a>6. 服务端配置</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps3.jpg"></p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps4.jpg"></p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps5.jpg"></p>
 <p>至此所有都配置完成，下图访问效果</p>
-<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps6.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/github_nps6.jpg"></p>
 
     </div>
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -19,7 +19,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"path":"search.xml"};
   </script>
 
   <meta property="og:type" content="website">
@@ -340,8 +340,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span> <span class="string">flush privileges;</span></span><br><span class="line"><span class="meta">mysql&gt;GRANT</span> <span class="string">ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'a'; #赋权，使其可以远程登录</span></span><br></pre></td></tr></table></figure>
-
+          <h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span> <span class="string">flush privileges;</span></span><br><span class="line"><span class="meta">mysql&gt;GRANT</span> <span class="string">ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;a&#x27;; #赋权，使其可以远程登录</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -432,7 +431,6 @@
 
       
           <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#参考资料</span><br><span class="line">https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;de4d56433848 #hadoop环境搭建</span><br><span class="line">https:&#x2F;&#x2F;www.cnblogs.com&#x2F;zwcoding&#x2F;p&#x2F;9269712.html #hive基本命令</span><br></pre></td></tr></table></figure>
-
 <h4 id="hdfs命令"><a href="#hdfs命令" class="headerlink" title="hdfs命令"></a>hdfs命令</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 hdfs 上的目录</span></span><br><span class="line"><span class="attr">hadoop</span> <span class="string">fs -ls /</span></span><br><span class="line"><span class="comment"># 创建input目录，源数据的存放地</span></span><br><span class="line"><span class="attr">hadoop</span> <span class="string">fs -mkdir /input</span></span><br><span class="line"><span class="comment"># 如果有output目录，删除；把结果集输出到这里，事先不能存在</span></span><br><span class="line"><span class="attr">hadoop</span> <span class="string">fs -rm -r /output</span></span><br><span class="line"><span class="comment"># 把提前准备好的文本文件上传到 hdfs 的 /input 目录</span></span><br><span class="line"><span class="attr">hadoop</span> <span class="string">fs -put /home/hadoop/data/*.txt /input</span></span><br><span class="line"><span class="comment">#执行程序 wordcount</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">/opt/hadoop-3.3.0/share/hadoop/mapreduce/</span></span><br><span class="line"><span class="attr">hadoop</span> <span class="string">jar hadoop-mapreduce-examples-3.3.0.jar wordcount /input /output</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -528,9 +526,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="1-组件简介"><a href="#1-组件简介" class="headerlink" title="1.组件简介"></a>1.组件简介</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/bigdata.png" alt=""></p>
+          <h4 id="1-组件简介"><a href="#1-组件简介" class="headerlink" title="1.组件简介"></a>1.组件简介</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/bigdata.png"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#参考资料</span><br><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;sinat_35322593&#x2F;article&#x2F;details&#x2F;79883639</span><br><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;Mei_ZS&#x2F;article&#x2F;details&#x2F;93191279</span><br><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;NextAction&#x2F;article&#x2F;details&#x2F;78993014 #生态圈基本组件</span><br></pre></td></tr></table></figure>
-
 <h4 id="2-HDFS"><a href="#2-HDFS" class="headerlink" title="2.HDFS"></a>2.HDFS</h4><p>&#8195;&#8195;它是由Google File System而来，全称是Hadoop Distributed File System，是Hadoop的分布式文件系统，有许多机器组成的，可以存储大型数据文件。</p>
 <p>&#8195;&#8195;它是由NameNode和DataNode组成，NameNode可以配置成HA(高可用)，避免单点故障。一般用Zookeeper来处理。两个NameNode是同步的。</p>
 <h4 id="3-MapReduce"><a href="#3-MapReduce" class="headerlink" title="3.MapReduce"></a>3.MapReduce</h4><p>&#8195;&#8195;主要由Google Reduce而来，它简化了大型数据的处理，是一个并行的，分布式处理的编程模型。</p>
@@ -632,13 +629,10 @@
 
       
           <h4 id="https-通讯流程"><a href="#https-通讯流程" class="headerlink" title="https 通讯流程"></a>https 通讯流程</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1）Client发起请求；</span></span><br><span class="line"><span class="attr">2）Server端响应请求，并在之后将证书发送至Client；</span></span><br><span class="line"><span class="attr">3）Client使用认证机构的公钥认证证书，并从证书中取出Server端公钥；</span></span><br><span class="line"><span class="attr">4）Client使用公钥加密一个随机秘钥，并传到Server；</span></span><br><span class="line"><span class="attr">5）Server使用私钥解密出随机秘钥；</span></span><br><span class="line"><span class="attr">6）通信双方使用随机秘钥最为对称秘钥进行加密解密。</span></span><br><span class="line"><span class="comment">#参考 http://www.52im.net/thread-1751-1-1.html</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="traceroute的基本原理"><a href="#traceroute的基本原理" class="headerlink" title="traceroute的基本原理"></a>traceroute的基本原理</h4><p><img src="http://www.52im.net/data/attachment/forum/201809/21/161014pkzjhk8h93ozr89r.png" alt=""></p>
-<p><img src="http://www.52im.net/data/attachment/forum/201809/21/161013ss7klzmlm3dh9xis.png" alt=""></p>
+<h4 id="traceroute的基本原理"><a href="#traceroute的基本原理" class="headerlink" title="traceroute的基本原理"></a>traceroute的基本原理</h4><p><img src="http://www.52im.net/data/attachment/forum/201809/21/161014pkzjhk8h93ozr89r.png"></p>
+<p><img src="http://www.52im.net/data/attachment/forum/201809/21/161013ss7klzmlm3dh9xis.png"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">具体做法就是：</span><br><span class="line">1.Traceroute会设置特殊的TTL值，来追踪源主机和目标主机之间的路由数。首先它给目标主机发送一个 TTL&#x3D;1 的UDP数据包，那么这个数据包一旦在路上遇到一个路由器，TTL就变成了0（TTL规则是每经过一个路由器都会减1），因为TTL&#x3D;0了，所以路由器就会把这个数据包丢掉，然后产生一个错误类型（超时）的ICMP数据包回发给源主机，也就是差错包。这个时候源主机就拿到了第一个路由节点的IP和相关信息了;  </span><br><span class="line">2.接着，源主机再给目标主机发一个 TTL&#x3D;2 的UDP数据包，依旧上述流程走一遍，就知道第二个路由节点的IP和耗时情况等信息了;  </span><br><span class="line">3.如此反复进行，Traceroute就可以拿到从主机A到主机B之间所有路由器的信息了。</span><br><span class="line">4.但是有个问题是，如果数据包到达了目标主机的话，即使目标主机接收到TTL值为1的IP数据包，它也是不会丢弃该数据包的，也不会产生一份超时的ICMP回发数据包的，因为数据包已经达到了目的地嘛。那我们应该怎么认定数据包是否达到了目标主机呢?  </span><br><span class="line">5.Traceroute的方法是在源主机发送UDP数据包给目标主机的时候，会设置一个不可能达到的目标端口号（例如大于30000的端口号），那么当这个数据包真的到达目标主机的时候，目标主机发现没有对应的端口号，因此会产生一份“端口不可达”的错误ICMP报文返回给源主机.  </span><br><span class="line">#参考资料 http:&#x2F;&#x2F;www.52im.net&#x2F;thread-1973-1-1.html</span><br></pre></td></tr></table></figure>
-
 <h4 id="同步I-O、异步I-O与阻塞I-O、非阻塞I-O的区别"><a href="#同步I-O、异步I-O与阻塞I-O、非阻塞I-O的区别" class="headerlink" title="同步I/O、异步I/O与阻塞I/O、非阻塞I/O的区别"></a>同步I/O、异步I/O与阻塞I/O、非阻塞I/O的区别</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">一、I&#x2F;O</span><br><span class="line">　　I&#x2F;O (Input&#x2F;Output，输入&#x2F;输出)即数据的读取（接收）或写入（发送）操作。</span><br><span class="line">　　通常用户进程中的一个完整I&#x2F;O分为两阶段：用户进程空间&lt;--&gt;内核空间、内核空间&lt;--&gt;设备空间（磁盘、网络等）。</span><br><span class="line">　　I&#x2F;O有内存I&#x2F;O、网络I&#x2F;O和磁盘I&#x2F;O三种，通常我们说的IO指的是后两者。</span><br><span class="line">二、同步I&#x2F;O与异步I&#x2F;O</span><br><span class="line">　　同步和异步关注的是消息通信机制 (synchronous communication&#x2F; asynchronous communication)</span><br><span class="line">　　所谓同步，就是在发出一个调用时，在没有得到结果之前，该调用就不返回。但是一旦调用返回，就得到返回值了。</span><br><span class="line">　　换句话说，就是由调用者主动等待这个调用的结果。</span><br><span class="line">　　而异步则是相反，调用在发出之后，这个调用就直接返回了，所以没有返回结果。</span><br><span class="line">　　换句话说，当一个异步过程调用发出后，调用者不会立刻得到结果。而是在调用发出后，被调用者通过状态、通知来通知调用者，或通过回调函数处理这个调用。</span><br><span class="line">　　举个通俗的例子：</span><br><span class="line">　　你打电话问书店老板有没有《分布式系统》这本书，如果是同步通信机制，书店老板会说，你稍等，”我查一下&quot;，然后开始查啊查，等查好了（可能是5秒，也可能是一天）告诉你结果（返回结果）。</span><br><span class="line">　　而异步通信机制，书店老板直接告诉你我查一下啊，查好了打电话给你，然后直接挂电话了（不返回结果）。然后查好了，他会主动打电话给你。在这里老板通过“回电”这种方式来回调。</span><br><span class="line">三、阻塞I&#x2F;O、非阻塞I&#x2F;O</span><br><span class="line">　　阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态。</span><br><span class="line">　　阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才会返回。</span><br><span class="line">　　非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。</span><br><span class="line">　　举个通俗的例子：</span><br><span class="line"> 　 你打电话问书店老板有没有《分布式系统》这本书，你如果是阻塞式调用，你会一直把自己“挂起”，直到得到这本书有没有的结果。</span><br><span class="line">　　如果是非阻塞式调用，你不管老板有没有告诉你，你自己先一边去玩了， 当然你也要偶尔过几分钟check一下老板有没有返回结果。</span><br><span class="line">　　在这里阻塞与非阻塞与是否同步异步无关。跟老板通过什么方式回答你结果无关。</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -726,7 +720,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>参考资料<a href="https://blog.51cto.com/13490688/2061070" target="_blank" rel="noopener">https://blog.51cto.com/13490688/2061070</a></p>
+          <p>参考资料<a target="_blank" rel="noopener" href="https://blog.51cto.com/13490688/2061070">https://blog.51cto.com/13490688/2061070</a></p>
 <h4 id="postfix-维护"><a href="#postfix-维护" class="headerlink" title="postfix 维护"></a>postfix 维护</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">start postfix</span></span><br><span class="line"><span class="attr">vi</span> <span class="string">/etc/postfix/main.cf #发信功能配置文件</span></span><br><span class="line"><span class="attr">service</span> <span class="string">dovecot start</span></span><br><span class="line"><span class="attr">vi</span> <span class="string">/etc/dovecot/dovecot.conf #收信功能配置文件</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -920,7 +914,6 @@
 
       
           <h2 id="openwrt之nps内网穿透"><a href="#openwrt之nps内网穿透" class="headerlink" title="openwrt之nps内网穿透"></a>openwrt之nps内网穿透</h2><h4 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">折腾完openwrt后，为了能在公司访问到家中的openwrt管理界面</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2.准备工作"></a>2.准备工作</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1.一个域名</span></span><br><span class="line"><span class="attr">2.一个有公网ip的服务器服务器（能内网映射公网的也可以），运行服务端nps程序</span></span><br><span class="line"><span class="attr">3.要访问的ip（此处为openwrt的内网ip：192.168.3.252），运行nps客户端程序</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -1017,9 +1010,9 @@
 
       
           <h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><p><strong>一、介绍</strong></p>
-<p>​    Nginx是一个高性能的<strong>HTTP**</strong>和反向代理服务器<strong>，也是一个</strong>IMAP/POP3/SMTP<strong>**代理服务器</strong>。</p>
+<p>​    Nginx是一个高性能的<strong>HTTP**</strong>和反向代理服务器<strong>，也是一个</strong>IMAP/POP3/SMTP**<strong>代理服务器</strong>。</p>
 <p>​     Nginx是一款轻量级的Web服务器/反向代理服务器以及电子邮件代理服务器，并在一个BSD-like协议下发行。由俄罗斯的程序设计师lgor Sysoev所开发，供俄国大型的入口网站及搜索引擎Rambler使用。其特点是<strong>占有内存少，并发能力强</strong>，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。</p>
-<p>​     Nginx相较于Apache\lighttpd具有占有内存少，稳定性高等优势，并且依靠并发能力强，丰富的模块库以及友好灵活的配置而闻名。<strong>在**</strong>Linux<strong>**操作系统下</strong>，nginx使用<strong>epoll事件模型</strong>,得益于此，nginx在Linux操作系统下效率相当高。同时Nginx在OpenBSD或FreeBSD操作系统上采用类似于Epoll的高效事件模型kqueue.</p>
+<p>​     Nginx相较于Apache\lighttpd具有占有内存少，稳定性高等优势，并且依靠并发能力强，丰富的模块库以及友好灵活的配置而闻名。<strong>在**</strong>Linux**<strong>操作系统下</strong>，nginx使用<strong>epoll事件模型</strong>,得益于此，nginx在Linux操作系统下效率相当高。同时Nginx在OpenBSD或FreeBSD操作系统上采用类似于Epoll的高效事件模型kqueue.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/07/24/nginx/#more" rel="contents">
@@ -1211,11 +1204,8 @@
 
       
           <h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">hexo</span> <span class="string">clean</span></span><br><span class="line"><span class="attr">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="attr">hexo</span> <span class="string">d</span></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">present出席 absent缺席 predict 预言;预告 linear 直线的 encountered 遇到 contract合同</span><br></pre></td></tr></table></figure>
-
 <h4 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kubectl</span> <span class="string">create deployment java-demo --image=harry82/tomcat:v1 --dry-run=client -o yaml &gt; java-demo.yaml</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">expose deployment java-demo --port=80 --target-port=8080 --type=NodePort --dry-run=client -o yaml &gt;svc.yaml</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">get pod -o wide</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">desribe pod nginx-f89759699-gjgbn</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">get ep #查看svc关联pod</span></span><br><span class="line"></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">create deployment nginx --image=nginx</span></span><br></pre></td></tr></table></figure>
-
 
 
 <p>另一种实现这个功能的方法是按ctrl+r 来调用命令历史记录的递归搜索，输入后，提示变为：(reverse-i-search)`’:现在可以输入一个命令，并且会显示匹配的命令，按回车键执行。</p>

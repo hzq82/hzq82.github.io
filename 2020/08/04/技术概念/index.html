@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -19,7 +19,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"path":"search.xml"};
   </script>
 
   <meta name="description" content="技术杂谈1.sata 和 sas的区别一.性能区别    &amp;#8195;&amp;#8195;SAS更好：相比SATA，SAS在磁盘性能5261上更占优势。主要4102得益于强大SCSI指令集(包括SCSI指令队列)、双核处1653理器，以及对硬件顺序流处理的支持。SAS硬盘支持双向全双工模式，为同时发生的读写操作提供了两路活动通道,SATA只能提供单通道和半双工模式，无疑弱了不少。二.sas接口跟sat">
@@ -207,7 +207,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#技术杂谈"><span class="nav-number">1.</span> <span class="nav-text">技术杂谈</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-sata-和-sas的区别"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.sata 和 sas的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-NAS"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.NAS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-saas-paas-iaas"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.saas paas iaas</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GRUB"><span class="nav-number">1.0.4.</span> <span class="nav-text">GRUB</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88"><span class="nav-number">1.</span> <span class="nav-text">技术杂谈</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-sata-%E5%92%8C-sas%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.sata 和 sas的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-NAS"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.NAS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-saas-paas-iaas"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.saas paas iaas</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GRUB"><span class="nav-number">1.0.4.</span> <span class="nav-text">GRUB</span></a></li></ol></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -366,7 +366,7 @@
 <h4 id="2-NAS"><a href="#2-NAS" class="headerlink" title="2.NAS"></a>2.NAS</h4><p>&#8195;&#8195;NAS（Network Attached Storage：网络附属存储）按字面简单说就是连接在网络上，具备资料存储功能的装置，因此也称为“网络存储器”。它是一种专用数据存储服务器。它以数据为中心，将存储设备与服务器彻底分离，集中管理数据，从而释放带宽、提高性能、降低总拥有成本、保护投资。其成本远远低于使用服务器存储，而效率却远远高于后者。目前国际著名的NAS企业有Netapp、EMC、OUO等。</p>
 <a id="more"></a>
 
-<h4 id="3-saas-paas-iaas"><a href="#3-saas-paas-iaas" class="headerlink" title="3.saas paas iaas"></a>3.saas paas iaas</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/iaas-paas-saas-comparison-1024x759.jpg" alt=""></p>
+<h4 id="3-saas-paas-iaas"><a href="#3-saas-paas-iaas" class="headerlink" title="3.saas paas iaas"></a>3.saas paas iaas</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/iaas-paas-saas-comparison-1024x759.jpg"></p>
 <p>&#8195;&#8195;通常有三种云服务模型：SaaS（软件即服务），PaaS（平台即服务）和IaaS（基础架构即服务）。 每个都有自己的好处和差异。为了您的组织能作出最佳选择，您有必要了解SaaS，PaaS和IaaS之间的差异。</p>
 <p>SaaS：软件即服务</p>
 <p>软件即服务（也称为云应用程序服务）代表了云市场中企业最常用的选项。 SaaS利用互联网向其用户提供应用程序，这些应用程序由第三方供应商管理。 大多数SaaS应用程序直接通过Web浏览器运行，不需要在客户端进行任何下载或安装。</p>
@@ -374,9 +374,9 @@
 <p>云平台服务或平台即服务（PaaS）为某些软件提供云组件，这些组件主要用于应用程序。 PaaS为开发人员提供了一个框架，使他们可以基于它创建自定义应用程序。所有服务器，存储和网络都可以由企业或第三方提供商进行管理，而开发人员可以负责应用程序的管理。</p>
 <p>IaaS：基础架构即服务</p>
 <p>云基础架构服务称为基础架构即服务（IaaS），由高度可扩展和自动化的计算资源组成。 IaaS是完全自助服务，用于访问和监控计算、网络，存储和其他服务等内容，它允许企业按需求和需要购买资源，而不必购买全部硬件。</p>
-<p>参考文档:<a href="https://blog.csdn.net/liujg79/article/details/84453736" target="_blank" rel="noopener">https://blog.csdn.net/liujg79/article/details/84453736</a></p>
-<h4 id="GRUB"><a href="#GRUB" class="headerlink" title="GRUB"></a>GRUB</h4><p>&#8195;&#8195;GNU GRUB 是一个多重<a href="https://baike.baidu.com/item/操作系统" target="_blank" rel="noopener">操作系统</a>启动管理器。用来引导不同系统，如<a href="https://baike.baidu.com/item/windows/165458" target="_blank" rel="noopener">windows</a>，<a href="https://baike.baidu.com/item/linux/27050" target="_blank" rel="noopener">linux</a>。</p>
-<p>GNU GRUB（GRand Unified Bootloader简称“GRUB”）是一个来自<a href="https://baike.baidu.com/item/GNU" target="_blank" rel="noopener">GNU</a>项目的多<a href="https://baike.baidu.com/item/操作系统/192" target="_blank" rel="noopener">操作系统</a>启动程序。GRUB是多启动规范的实现，它允许用户可以在<a href="https://baike.baidu.com/item/计算机/140338" target="_blank" rel="noopener">计算机</a>内同时拥有多个<a href="https://baike.baidu.com/item/操作系统/192" target="_blank" rel="noopener">操作系统</a>，并在计算机启动时选择希望运行的操作系统。GRUB可用于选择<a href="https://baike.baidu.com/item/操作系统/192" target="_blank" rel="noopener">操作系统</a>分区上的不同<a href="https://baike.baidu.com/item/内核/108410" target="_blank" rel="noopener">内核</a>，也可用于向这些<a href="https://baike.baidu.com/item/内核/108410" target="_blank" rel="noopener">内核</a>传递启动参数。</p>
+<p>参考文档:<a target="_blank" rel="noopener" href="https://blog.csdn.net/liujg79/article/details/84453736">https://blog.csdn.net/liujg79/article/details/84453736</a></p>
+<h4 id="GRUB"><a href="#GRUB" class="headerlink" title="GRUB"></a>GRUB</h4><p>&#8195;&#8195;GNU GRUB 是一个多重<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">操作系统</a>启动管理器。用来引导不同系统，如<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/windows/165458">windows</a>，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/linux/27050">linux</a>。</p>
+<p>GNU GRUB（GRand Unified Bootloader简称“GRUB”）是一个来自<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/GNU">GNU</a>项目的多<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/192">操作系统</a>启动程序。GRUB是多启动规范的实现，它允许用户可以在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA/140338">计算机</a>内同时拥有多个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/192">操作系统</a>，并在计算机启动时选择希望运行的操作系统。GRUB可用于选择<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/192">操作系统</a>分区上的不同<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%86%85%E6%A0%B8/108410">内核</a>，也可用于向这些<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%86%85%E6%A0%B8/108410">内核</a>传递启动参数。</p>
 
     </div>
 
