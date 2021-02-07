@@ -4,35 +4,7 @@
   <url>
     <loc>http://yoursite.com/2021/01/07/go%E7%AC%94%E8%AE%B0/</loc>
     
-    <lastmod>2021-02-07</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/11/11/k8s%E9%9B%86%E7%BE%A4%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/</loc>
-    
-    <lastmod>2021-01-15</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/07/24/%E5%B8%B8%E7%94%A8%E5%8D%95%E8%AF%8D/</loc>
-    
-    <lastmod>2020-12-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/10/13/kubeadm%E9%83%A8%E7%BD%B2K8s%E9%9B%86%E7%BE%A4/</loc>
-    
-    <lastmod>2020-12-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/</loc>
-    
-    <lastmod>2020-12-11</lastmod>
+    <lastmod>2021-01-07</lastmod>
     
   </url>
   
@@ -44,77 +16,84 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2020/07/24/hexo/</loc>
+    <loc>http://yoursite.com/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/</loc>
     
-    <lastmod>2020-12-09</lastmod>
+    <lastmod>2020-12-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/11/11/k8s%E9%9B%86%E7%BE%A4%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/</loc>
+    
+    <lastmod>2020-11-11</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2020/11/02/docker/</loc>
     
-    <lastmod>2020-11-12</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/09/09/istio/</loc>
-    
-    <lastmod>2020-11-12</lastmod>
+    <lastmod>2020-11-02</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2020/10/28/exporter/</loc>
     
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-10-27</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2020/08/14/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/</loc>
+    <loc>http://yoursite.com/2020/10/13/kubeadm%E9%83%A8%E7%BD%B2K8s%E9%9B%86%E7%BE%A4/</loc>
     
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/</loc>
-    
-    <lastmod>2020-09-21</lastmod>
+    <lastmod>2020-10-13</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2020/09/11/cenos7%20shadowsocks/</loc>
     
-    <lastmod>2020-09-14</lastmod>
+    <lastmod>2020-09-10</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/09/09/istio/</loc>
+    
+    <lastmod>2020-09-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/09/09/kubenetes%20%E5%8D%95%E6%9C%BA%E7%89%88/</loc>
+    
+    <lastmod>2020-09-08</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2020/09/07/mysql/</loc>
     
-    <lastmod>2020-09-07</lastmod>
+    <lastmod>2020-09-06</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2020/08/24/hadoop/</loc>
     
-    <lastmod>2020-09-02</lastmod>
+    <lastmod>2020-08-23</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2020/08/20/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF/</loc>
     
-    <lastmod>2020-08-24</lastmod>
+    <lastmod>2020-08-19</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2020/08/04/%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5/</loc>
+    <loc>http://yoursite.com/2020/08/14/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/</loc>
     
     <lastmod>2020-08-13</lastmod>
     
@@ -123,28 +102,49 @@
   <url>
     <loc>http://yoursite.com/2020/08/12/ops%E7%AC%94%E8%AE%B0/</loc>
     
-    <lastmod>2020-08-13</lastmod>
+    <lastmod>2020-08-11</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2020/07/24/linux/</loc>
-    
-    <lastmod>2020-08-12</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</loc>
+    <loc>http://yoursite.com/2020/08/04/%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5/</loc>
     
     <lastmod>2020-08-04</lastmod>
     
   </url>
   
   <url>
+    <loc>http://yoursite.com/2020/08/03/nps%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</loc>
+    
+    <lastmod>2020-08-03</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/07/24/nginx/</loc>
     
-    <lastmod>2020-07-27</lastmod>
+    <lastmod>2020-07-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/24/linux/</loc>
+    
+    <lastmod>2020-07-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/24/hexo/</loc>
+    
+    <lastmod>2020-07-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/24/%E5%B8%B8%E7%94%A8%E5%8D%95%E8%AF%8D/</loc>
+    
+    <lastmod>2020-07-24</lastmod>
     
   </url>
   
