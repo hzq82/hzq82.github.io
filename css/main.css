@@ -182,7 +182,7 @@ body {
   background: var(--body-bg-color);
   color: var(--text-color);
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 0.95em;
+  font-size: 0.97em;
   line-height: 2;
   transition: all 0.2s ease-in-out;
 }
