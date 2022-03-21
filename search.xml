@@ -147,27 +147,6 @@
       </tags>
   </entry>
   <entry>
-    <title>expertor安装</title>
-    <url>/2020/10/28/exporter/</url>
-    <content><![CDATA[<h4 id="node-exporter"><a href="#node-exporter" class="headerlink" title="node_exporter"></a>node_exporter</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">wget</span> <span class="string">https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz</span></span><br><span class="line"><span class="attr">tar</span> <span class="string">zxvf node_exporter-1.0.1.linux-amd64.tar.gz</span></span><br><span class="line"><span class="attr">mv</span> <span class="string">node_exporter-1.0.1.linux-amd64 node_exporter</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">vim</span> <span class="string">/etc/systemd/system/node_exporter.service </span></span><br><span class="line"><span class="attr">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=<span class="string">node_exporter</span></span><br><span class="line"><span class="attr">After</span>=<span class="string">network.target</span></span><br><span class="line"></span><br><span class="line"><span class="attr">[Service]</span></span><br><span class="line"><span class="attr">Restart</span>=<span class="string">on-failure</span></span><br><span class="line"><span class="attr">ExecStart</span>=<span class="string">/opt/node_exporter/node_exporter</span></span><br><span class="line"></span><br><span class="line"><span class="attr">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=<span class="string">multi-user.target</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">daemon-reload</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable node_exporter</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start node_exporter</span></span><br></pre></td></tr></table></figure>
-<h4 id="process-exporter"><a href="#process-exporter" class="headerlink" title="process_exporter"></a>process_exporter</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">wget</span> <span class="string">https://github.com/ncabatoff/process-exporter/releases/download/v0.7.2/process-exporter-0.7.2.linux-amd64.tar.gz</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">vim</span> <span class="string">/etc/systemd/system/process_exporter.service </span></span><br><span class="line"><span class="attr">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=<span class="string">process_exporter</span></span><br><span class="line"><span class="attr">Documentation</span>=<span class="string">https://prometheus.io/</span></span><br><span class="line"><span class="attr">After</span>=<span class="string">network.target</span></span><br><span class="line"> </span><br><span class="line"><span class="attr">[Service]</span></span><br><span class="line"><span class="attr">Type</span>=<span class="string">simple</span></span><br><span class="line"><span class="attr">User</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">ExecStart</span>=<span class="string">/data/process-exporter/process-exporter -config.path /data/process-exporter/process-name.yaml</span></span><br><span class="line"><span class="attr">Restart</span>=<span class="string">on-failure</span></span><br><span class="line"> </span><br><span class="line"><span class="attr">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=<span class="string">multi-user.target</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">daemon-reload</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable process_exporter</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start process_exporter</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-]]></content>
-      <categories>
-        <category>ops</category>
-      </categories>
-      <tags>
-        <tag>运维</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>docker基础</title>
     <url>/2020/11/02/docker/</url>
     <content><![CDATA[<h4 id="docker是什么"><a href="#docker是什么" class="headerlink" title="docker是什么"></a>docker是什么</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Docker 到底是什么，要解决什么问题，好处又在哪里？</span><br><span class="line">软件开发最大的麻烦事之一，就是环境配置。用户计算机的环境都不相同，你怎么知道自家的软件，能在那些机器跑起来？</span><br><span class="line">虚拟机（virtual machine）就是带环境安装的一种解决方案。它可以在一种操作系统里面运行另一种操作系统，比如在 Windows 系统里面运行 Linux 系统。应用程序对此毫无感知，因为虚拟机看上去跟真实系统一模一样，而对于底层系统来说，虚拟机就是一个普通文件，不需要了就删掉，对其他部分毫无影响。</span><br><span class="line">虽然用户可以通过虚拟机还原软件的原始环境。</span><br><span class="line">（1）资源占用多</span><br><span class="line">（2）冗余步骤多</span><br><span class="line">（3）启动慢</span><br><span class="line">由于虚拟机存在这些缺点，Linux 发展出了另一种虚拟化技术：Linux 容器（Linux Containers，缩写为 LXC）。</span><br><span class="line">Linux 容器不是模拟一个完整的操作系统，而是对进程进行隔离。或者说，在正常进程的外面套了一个保护层。对于容器里面的进程来说，它接触到的各种资源都是虚拟的，从而实现与底层系统的隔离</span><br><span class="line">（1）启动快</span><br><span class="line">（2）资源占用少</span><br><span class="line">（3）体积小</span><br><span class="line">总之，容器有点像轻量级的虚拟机，能够提供虚拟化的环境，但是成本开销小得多。</span><br><span class="line">Docker 属于 Linux 容器的一种封装，提供简单易用的容器使用接口。它是目前最流行的 Linux 容器解决方案。</span><br><span class="line">Docker 将应用程序与该程序的依赖，打包在一个文件里面。运行这个文件，就会生成一个虚拟容器。程序在这个虚拟容器里运行，就好像在真实的物理机上运行一样。有了 Docker，就不用担心环境问题。</span><br><span class="line"></span><br><span class="line">Docker 的主要用途，目前有三大类。</span><br><span class="line">（1）提供一次性的环境。比如，本地测试他人的软件、持续集成的时候提供单元测试和构建的环境。</span><br><span class="line">（2）提供弹性的云服务。因为 Docker 容器可以随开随关，很适合动态扩容和缩容。</span><br><span class="line">（3）组建微服务架构。通过多个容器，一台机器可以跑多个服务，因此在本机就可以模拟出微服务架构。</span><br><span class="line"></span><br><span class="line">Docker 是一个开源的商业产品，有两个版本：社区版（Community Edition，缩写为 CE）和企业版（Enterprise Edition，缩写为 EE）。企业版包含了一些收费服务。</span><br></pre></td></tr></table></figure>
@@ -187,6 +166,27 @@
 <h3 id="实例演示"><a href="#实例演示" class="headerlink" title="实例演示"></a>实例演示</h3><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Hello world</span></span><br><span class="line"><span class="attr">docker</span> <span class="string">run ubuntu:15.10 /bin/echo &quot;Hello world&quot;</span></span><br><span class="line"><span class="attr">docker</span> <span class="string">run -i -t ubuntu:15.10 /bin/bash</span></span><br><span class="line"><span class="meta">以通过运行</span> <span class="string">exit 命令或者使用 CTRL+D 来退出容器</span></span><br><span class="line"><span class="attr">状态有7种：</span></span><br><span class="line"><span class="attr">created（已创建）</span></span><br><span class="line"><span class="attr">restarting（重启中）</span></span><br><span class="line"><span class="attr">running</span> <span class="string">或 Up（运行中）</span></span><br><span class="line"><span class="attr">removing（迁移中）</span></span><br><span class="line"><span class="attr">paused（暂停）</span></span><br><span class="line"><span class="attr">exited（停止）</span></span><br><span class="line"><span class="attr">dead（死亡）</span></span><br><span class="line"></span><br><span class="line"><span class="attr">docker</span> <span class="string">logs id</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#小工具</span></span><br><span class="line"><span class="attr">https</span>:<span class="string">//github.com/oh-my-docker/net-box</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#docker方式运行一个tomcat应用</span></span><br><span class="line"><span class="attr">https</span>:<span class="string">//github.com/lizhenliang/tomcat-java-demo</span></span><br><span class="line"><span class="attr">mvn</span> <span class="string">clean package  -DskipTests=true</span></span><br><span class="line"><span class="attr">docker</span> <span class="string">pull registry.ihdou.com/tomcat</span></span><br><span class="line"><span class="attr">docker</span> <span class="string">build -t harry82/tomcat:v2 .</span></span><br><span class="line"><span class="attr">https</span>:<span class="string">//hub.docker.com/  harry82/1234Qwer@</span></span><br><span class="line"></span><br><span class="line"><span class="attr">docker</span> <span class="string">push harry82/tomcat:v2</span></span><br><span class="line"></span><br><span class="line"><span class="attr">docker</span> <span class="string">run -it --rm -p 8888:8080 -v $PWD/webapps:/usr/local/tomcat/webapps tomcat:8.0</span></span><br><span class="line"><span class="comment"># -it  是-i和 -t的简写， 表示以交互式的方式运行容器，加上-d表示后台运行，这里为了截图输出启动日志我用了-it，也可以用-d，再用&quot;docker logs 容器名&quot;命令输出日志</span></span><br><span class="line"><span class="comment"># --rm 当容器被停止时自动删除容器</span></span><br><span class="line"><span class="comment"># -p 8888:8080，8080是为容器中的tomcat设置的端口， 这里表示将8080映射到宿主机8888端口，如果只写-p 8080容器会随机取值32768~61000中较大的端口号来映射到80端口上</span></span><br><span class="line"><span class="comment"># -v 将tomcat中的usr/local/tomcat/webapps目录映射到宿主机当前目录的webapps目录，后面更新jar包直接扔到被映射的宿主机目录中即可</span></span><br><span class="line"><span class="comment"># tomcat:8.0  # 镜像名：tag标签</span></span><br><span class="line"></span><br><span class="line"><span class="attr">docker</span> <span class="string">run -it --rm -p 8888:8080  harry82/tomcat:v2</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">FROM</span> <span class="string">registry.ihdou.com/java8</span></span><br><span class="line"><span class="attr">LABEL</span> <span class="string">maintainer www.ihdou.cn</span></span><br><span class="line"><span class="attr">ADD</span> <span class="string">app-0.0.1-SNAPSHOT.jar app.jar</span></span><br><span class="line"><span class="attr">EXPOSE</span> <span class="string">8761</span></span><br><span class="line"><span class="attr">ENTRYPOINT</span> <span class="string">[&quot;java&quot;,&quot;-jar&quot;,&quot;app.jar&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">1</span> <span class="string">FROM: 基础镜像,通过jdk8镜像开始</span></span><br><span class="line"><span class="attr">2</span> <span class="string">MAINTAINER: 维护者</span></span><br><span class="line"><span class="attr">3</span> <span class="string">ADD: 复制jar包到镜像内,名字为app.jar</span></span><br><span class="line"><span class="attr">4</span> <span class="string">EXPOSE: 声明端口</span></span><br><span class="line"><span class="attr">5</span> <span class="string">ENTRYPOINT: docker启动时,运行的命令.这里就是容器运行就启动jar服务</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#docker run -d --net=host  image:tag</span></span><br></pre></td></tr></table></figure>
 <h4 id="重置docker网络"><a href="#重置docker网络" class="headerlink" title="重置docker网络"></a>重置docker网络</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#停止docker</span><br><span class="line">systemctl stop docker</span><br><span class="line">#docker0</span><br><span class="line">ip link set dev docker0 down</span><br><span class="line">#删除docker0网桥</span><br><span class="line">brctl delbr docker0</span><br><span class="line">#增加docker0 网桥</span><br><span class="line">brctl addbr docker0</span><br><span class="line">#增加网卡</span><br><span class="line">ip addr add 172.16.10.1&#x2F;24 dev docker0</span><br><span class="line">#启用网卡</span><br><span class="line">ip link set dev docker0 up</span><br><span class="line">#重启docker服务</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>ops</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>expertor安装</title>
+    <url>/2020/10/28/exporter/</url>
+    <content><![CDATA[<h4 id="node-exporter"><a href="#node-exporter" class="headerlink" title="node_exporter"></a>node_exporter</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">wget</span> <span class="string">https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz</span></span><br><span class="line"><span class="attr">tar</span> <span class="string">zxvf node_exporter-1.0.1.linux-amd64.tar.gz</span></span><br><span class="line"><span class="attr">mv</span> <span class="string">node_exporter-1.0.1.linux-amd64 node_exporter</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">vim</span> <span class="string">/etc/systemd/system/node_exporter.service </span></span><br><span class="line"><span class="attr">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=<span class="string">node_exporter</span></span><br><span class="line"><span class="attr">After</span>=<span class="string">network.target</span></span><br><span class="line"></span><br><span class="line"><span class="attr">[Service]</span></span><br><span class="line"><span class="attr">Restart</span>=<span class="string">on-failure</span></span><br><span class="line"><span class="attr">ExecStart</span>=<span class="string">/opt/node_exporter/node_exporter</span></span><br><span class="line"></span><br><span class="line"><span class="attr">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=<span class="string">multi-user.target</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">daemon-reload</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable node_exporter</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start node_exporter</span></span><br></pre></td></tr></table></figure>
+<h4 id="process-exporter"><a href="#process-exporter" class="headerlink" title="process_exporter"></a>process_exporter</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">wget</span> <span class="string">https://github.com/ncabatoff/process-exporter/releases/download/v0.7.2/process-exporter-0.7.2.linux-amd64.tar.gz</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">vim</span> <span class="string">/etc/systemd/system/process_exporter.service </span></span><br><span class="line"><span class="attr">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=<span class="string">process_exporter</span></span><br><span class="line"><span class="attr">Documentation</span>=<span class="string">https://prometheus.io/</span></span><br><span class="line"><span class="attr">After</span>=<span class="string">network.target</span></span><br><span class="line"> </span><br><span class="line"><span class="attr">[Service]</span></span><br><span class="line"><span class="attr">Type</span>=<span class="string">simple</span></span><br><span class="line"><span class="attr">User</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">ExecStart</span>=<span class="string">/data/process-exporter/process-exporter -config.path /data/process-exporter/process-name.yaml</span></span><br><span class="line"><span class="attr">Restart</span>=<span class="string">on-failure</span></span><br><span class="line"> </span><br><span class="line"><span class="attr">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=<span class="string">multi-user.target</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">systemctl</span> <span class="string">daemon-reload</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable process_exporter</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start process_exporter</span></span><br></pre></td></tr></table></figure>
+
+
+
+
 ]]></content>
       <categories>
         <category>ops</category>
@@ -486,6 +486,17 @@
       </tags>
   </entry>
   <entry>
+    <title>TIPS</title>
+    <url>/2020/01/01/tips/</url>
+    <content><![CDATA[<h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4>]]></content>
+      <categories>
+        <category>pic</category>
+      </categories>
+      <tags>
+        <tag>杂谈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>大数据</title>
     <url>/2020/08/20/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF/</url>
     <content><![CDATA[<h4 id="1-组件简介"><a href="#1-组件简介" class="headerlink" title="1.组件简介"></a>1.组件简介</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/bigdata.png"></p>
@@ -543,17 +554,6 @@
       </tags>
   </entry>
   <entry>
-    <title>TIPS</title>
-    <url>/2020/01/01/tips/</url>
-    <content><![CDATA[<h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4>]]></content>
-      <categories>
-        <category>pic</category>
-      </categories>
-      <tags>
-        <tag>杂谈</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>常用单词</title>
     <url>/2020/07/24/%E5%B8%B8%E7%94%A8%E5%8D%95%E8%AF%8D/</url>
     <content><![CDATA[<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">migration</span> <span class="string">迁移; 迁徙; 移居 	美 [maɪˈɡreɪʃn]</span></span><br><span class="line"><span class="attr">stuck</span> <span class="string">卡住; 动不了; 无法移动; 美 [stʌk]</span></span><br><span class="line"><span class="attr">snapshot</span> <span class="string">快照 简介; 简要说明 美 [ˈsnæpʃɑːt]</span></span><br><span class="line"><span class="attr">present</span> <span class="string">出席 </span></span><br><span class="line"><span class="attr">absent</span> <span class="string">缺席</span></span><br><span class="line"><span class="attr">predict</span> <span class="string">预言;预告 </span></span><br><span class="line"><span class="attr">linear</span> <span class="string">直线的 </span></span><br><span class="line"><span class="attr">encountered</span> <span class="string">遇到 </span></span><br><span class="line"><span class="attr">contract合同</span></span><br><span class="line"><span class="attr">spec</span> <span class="string">n.规格; v.按特定标准设计并制造</span></span><br><span class="line"><span class="attr">authorization</span> <span class="string">授权; 授权书; 批准; 批准书 英 [ˌɔːθəraɪˈzeɪʃn]</span></span><br></pre></td></tr></table></figure>
@@ -563,6 +563,49 @@
       </categories>
       <tags>
         <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>杂谈</title>
+    <url>/2020/08/04/%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<h2 id="技术杂谈"><a href="#技术杂谈" class="headerlink" title="技术杂谈"></a>技术杂谈</h2><h4 id="1-sata-和-sas的区别"><a href="#1-sata-和-sas的区别" class="headerlink" title="1.sata 和 sas的区别"></a>1.sata 和 sas的区别</h4><p>一.性能区别   </p>
+<p>&#8195;&#8195;SAS更好：相比SATA，SAS在磁盘性能5261上更占优势。主要4102得益于强大SCSI指令集(包括SCSI指令队列)、双核处1653理器，以及对硬件顺序流处理的支持。SAS硬盘支持双向全双工模式，为同时发生的读写操作提供了两路活动通道,SATA只能提供单通道和半双工模式，无疑弱了不少。<br>二.sas接口跟sata接口一样吗<br>   不一样，sas的电源和数据口是一体的，可以插sata盘，sata的是分开的，不能插sas盘，sas向下兼容sata设备。</p>
+<h4 id="2-NAS"><a href="#2-NAS" class="headerlink" title="2.NAS"></a>2.NAS</h4><p>&#8195;&#8195;NAS（Network Attached Storage：网络附属存储）按字面简单说就是连接在网络上，具备资料存储功能的装置，因此也称为“网络存储器”。它是一种专用数据存储服务器。它以数据为中心，将存储设备与服务器彻底分离，集中管理数据，从而释放带宽、提高性能、降低总拥有成本、保护投资。其成本远远低于使用服务器存储，而效率却远远高于后者。目前国际著名的NAS企业有Netapp、EMC、OUO等。</p>
+<a id="more"></a>
+
+<h4 id="3-saas-paas-iaas"><a href="#3-saas-paas-iaas" class="headerlink" title="3.saas paas iaas"></a>3.saas paas iaas</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/iaas-paas-saas-comparison-1024x759.jpg"></p>
+<p>&#8195;&#8195;通常有三种云服务模型：SaaS（软件即服务），PaaS（平台即服务）和IaaS（基础架构即服务）。 每个都有自己的好处和差异。为了您的组织能作出最佳选择，您有必要了解SaaS，PaaS和IaaS之间的差异。</p>
+<p>SaaS：软件即服务</p>
+<p>软件即服务（也称为云应用程序服务）代表了云市场中企业最常用的选项。 SaaS利用互联网向其用户提供应用程序，这些应用程序由第三方供应商管理。 大多数SaaS应用程序直接通过Web浏览器运行，不需要在客户端进行任何下载或安装。</p>
+<p>PaaS：平台即服务</p>
+<p>云平台服务或平台即服务（PaaS）为某些软件提供云组件，这些组件主要用于应用程序。 PaaS为开发人员提供了一个框架，使他们可以基于它创建自定义应用程序。所有服务器，存储和网络都可以由企业或第三方提供商进行管理，而开发人员可以负责应用程序的管理。</p>
+<p>IaaS：基础架构即服务</p>
+<p>云基础架构服务称为基础架构即服务（IaaS），由高度可扩展和自动化的计算资源组成。 IaaS是完全自助服务，用于访问和监控计算、网络，存储和其他服务等内容，它允许企业按需求和需要购买资源，而不必购买全部硬件。</p>
+<p>参考文档:<a href="https://blog.csdn.net/liujg79/article/details/84453736">https://blog.csdn.net/liujg79/article/details/84453736</a></p>
+<h4 id="GRUB"><a href="#GRUB" class="headerlink" title="GRUB"></a>GRUB</h4><p>&#8195;&#8195;GNU GRUB 是一个多重<a href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">操作系统</a>启动管理器。用来引导不同系统，如<a href="https://baike.baidu.com/item/windows/165458">windows</a>，<a href="https://baike.baidu.com/item/linux/27050">linux</a>。</p>
+<p>GNU GRUB（GRand Unified Bootloader简称“GRUB”）是一个来自<a href="https://baike.baidu.com/item/GNU">GNU</a>项目的多<a href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/192">操作系统</a>启动程序。GRUB是多启动规范的实现，它允许用户可以在<a href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA/140338">计算机</a>内同时拥有多个<a href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/192">操作系统</a>，并在计算机启动时选择希望运行的操作系统。GRUB可用于选择<a href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/192">操作系统</a>分区上的不同<a href="https://baike.baidu.com/item/%E5%86%85%E6%A0%B8/108410">内核</a>，也可用于向这些<a href="https://baike.baidu.com/item/%E5%86%85%E6%A0%B8/108410">内核</a>传递启动参数。</p>
+]]></content>
+      <categories>
+        <category>IT</category>
+      </categories>
+      <tags>
+        <tag>杂谈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网络知识</title>
+    <url>/2020/08/14/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h4 id="https-通讯流程"><a href="#https-通讯流程" class="headerlink" title="https 通讯流程"></a>https 通讯流程</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">1）Client发起请求；</span></span><br><span class="line"><span class="attr">2）Server端响应请求，并在之后将证书发送至Client；</span></span><br><span class="line"><span class="attr">3）Client使用认证机构的公钥认证证书，并从证书中取出Server端公钥；</span></span><br><span class="line"><span class="attr">4）Client使用公钥加密一个随机秘钥，并传到Server；</span></span><br><span class="line"><span class="attr">5）Server使用私钥解密出随机秘钥；</span></span><br><span class="line"><span class="attr">6）通信双方使用随机秘钥最为对称秘钥进行加密解密。</span></span><br><span class="line"><span class="comment">#参考 http://www.52im.net/thread-1751-1-1.html</span></span><br></pre></td></tr></table></figure>
+<h4 id="traceroute的基本原理"><a href="#traceroute的基本原理" class="headerlink" title="traceroute的基本原理"></a>traceroute的基本原理</h4><p><img src="http://www.52im.net/data/attachment/forum/201809/21/161014pkzjhk8h93ozr89r.png"></p>
+<p><img src="http://www.52im.net/data/attachment/forum/201809/21/161013ss7klzmlm3dh9xis.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">具体做法就是：</span><br><span class="line">1.Traceroute会设置特殊的TTL值，来追踪源主机和目标主机之间的路由数。首先它给目标主机发送一个 TTL&#x3D;1 的UDP数据包，那么这个数据包一旦在路上遇到一个路由器，TTL就变成了0（TTL规则是每经过一个路由器都会减1），因为TTL&#x3D;0了，所以路由器就会把这个数据包丢掉，然后产生一个错误类型（超时）的ICMP数据包回发给源主机，也就是差错包。这个时候源主机就拿到了第一个路由节点的IP和相关信息了;  </span><br><span class="line">2.接着，源主机再给目标主机发一个 TTL&#x3D;2 的UDP数据包，依旧上述流程走一遍，就知道第二个路由节点的IP和耗时情况等信息了;  </span><br><span class="line">3.如此反复进行，Traceroute就可以拿到从主机A到主机B之间所有路由器的信息了。</span><br><span class="line">4.但是有个问题是，如果数据包到达了目标主机的话，即使目标主机接收到TTL值为1的IP数据包，它也是不会丢弃该数据包的，也不会产生一份超时的ICMP回发数据包的，因为数据包已经达到了目的地嘛。那我们应该怎么认定数据包是否达到了目标主机呢?  </span><br><span class="line">5.Traceroute的方法是在源主机发送UDP数据包给目标主机的时候，会设置一个不可能达到的目标端口号（例如大于30000的端口号），那么当这个数据包真的到达目标主机的时候，目标主机发现没有对应的端口号，因此会产生一份“端口不可达”的错误ICMP报文返回给源主机.  </span><br><span class="line">#参考资料 http:&#x2F;&#x2F;www.52im.net&#x2F;thread-1973-1-1.html</span><br></pre></td></tr></table></figure>
+<h4 id="同步I-O、异步I-O与阻塞I-O、非阻塞I-O的区别"><a href="#同步I-O、异步I-O与阻塞I-O、非阻塞I-O的区别" class="headerlink" title="同步I/O、异步I/O与阻塞I/O、非阻塞I/O的区别"></a>同步I/O、异步I/O与阻塞I/O、非阻塞I/O的区别</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">一、I&#x2F;O</span><br><span class="line">　　I&#x2F;O (Input&#x2F;Output，输入&#x2F;输出)即数据的读取（接收）或写入（发送）操作。</span><br><span class="line">　　通常用户进程中的一个完整I&#x2F;O分为两阶段：用户进程空间&lt;--&gt;内核空间、内核空间&lt;--&gt;设备空间（磁盘、网络等）。</span><br><span class="line">　　I&#x2F;O有内存I&#x2F;O、网络I&#x2F;O和磁盘I&#x2F;O三种，通常我们说的IO指的是后两者。</span><br><span class="line">二、同步I&#x2F;O与异步I&#x2F;O</span><br><span class="line">　　同步和异步关注的是消息通信机制 (synchronous communication&#x2F; asynchronous communication)</span><br><span class="line">　　所谓同步，就是在发出一个调用时，在没有得到结果之前，该调用就不返回。但是一旦调用返回，就得到返回值了。</span><br><span class="line">　　换句话说，就是由调用者主动等待这个调用的结果。</span><br><span class="line">　　而异步则是相反，调用在发出之后，这个调用就直接返回了，所以没有返回结果。</span><br><span class="line">　　换句话说，当一个异步过程调用发出后，调用者不会立刻得到结果。而是在调用发出后，被调用者通过状态、通知来通知调用者，或通过回调函数处理这个调用。</span><br><span class="line">　　举个通俗的例子：</span><br><span class="line">　　你打电话问书店老板有没有《分布式系统》这本书，如果是同步通信机制，书店老板会说，你稍等，”我查一下&quot;，然后开始查啊查，等查好了（可能是5秒，也可能是一天）告诉你结果（返回结果）。</span><br><span class="line">　　而异步通信机制，书店老板直接告诉你我查一下啊，查好了打电话给你，然后直接挂电话了（不返回结果）。然后查好了，他会主动打电话给你。在这里老板通过“回电”这种方式来回调。</span><br><span class="line">三、阻塞I&#x2F;O、非阻塞I&#x2F;O</span><br><span class="line">　　阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态。</span><br><span class="line">　　阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才会返回。</span><br><span class="line">　　非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。</span><br><span class="line">　　举个通俗的例子：</span><br><span class="line"> 　 你打电话问书店老板有没有《分布式系统》这本书，你如果是阻塞式调用，你会一直把自己“挂起”，直到得到这本书有没有的结果。</span><br><span class="line">　　如果是非阻塞式调用，你不管老板有没有告诉你，你自己先一边去玩了， 当然你也要偶尔过几分钟check一下老板有没有返回结果。</span><br><span class="line">　　在这里阻塞与非阻塞与是否同步异步无关。跟老板通过什么方式回答你结果无关。</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>ops</category>
+      </categories>
+      <tags>
+        <tag>杂谈</tag>
       </tags>
   </entry>
   <entry>
@@ -605,7 +648,7 @@
 <h4 id="configmap"><a href="#configmap" class="headerlink" title="configmap"></a>configmap</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;2937cf33d088</span><br><span class="line">kubectl describe configmap nginx-config</span><br><span class="line">kubectl get configmap nginx-config -o yaml</span><br></pre></td></tr></table></figure>
 <h4 id="initcontainer"><a href="#initcontainer" class="headerlink" title="initcontainer"></a>initcontainer</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">由于一个Pod里的存储卷是共享的，所以Init Container里产生的数据可以被主容器使用到。</span><br></pre></td></tr></table></figure>
 <h4 id="NFS-Provisioner"><a href="#NFS-Provisioner" class="headerlink" title="NFS Provisioner"></a>NFS Provisioner</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_32641153&#x2F;article&#x2F;details&#x2F;94730358</span><br></pre></td></tr></table></figure>
-<h4 id="harbor"><a href="#harbor" class="headerlink" title="harbor"></a>harbor</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;u014042047&#x2F;article&#x2F;details&#x2F;108771161</span><br><span class="line">cd harbor&#x2F;</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<h4 id="harbor"><a href="#harbor" class="headerlink" title="harbor"></a>harbor</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;u014042047&#x2F;article&#x2F;details&#x2F;108771161</span><br><span class="line">192.168.102.156</span><br><span class="line">cd harbor&#x2F;</span><br><span class="line">docker-compose up -d</span><br><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>
 <h4 id="EFK"><a href="#EFK" class="headerlink" title="EFK"></a>EFK</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;SoelIGIT5lQSgJlE4MYFjg</span><br><span class="line">kubectl apply -f kube-logging.yaml</span><br><span class="line">kubectl apply -f elasticsearch_svc.yaml</span><br><span class="line">kubectl get services --namespace&#x3D;kube-logging</span><br><span class="line">kubectl apply -f serviceaccount.yaml</span><br><span class="line">kubectl apply -f rbac.yaml</span><br><span class="line">kubectl apply -f deployment.yaml</span><br><span class="line">kubectl apply -f class.yaml</span><br><span class="line">kubectl apply -f elasticsaerch-statefulset.yaml</span><br><span class="line">kubectl get pods -n kube-logging</span><br><span class="line">kubectl apply -f kibana.yaml</span><br><span class="line">kubectl edit svc kibana -n kube-logging</span><br><span class="line">kubectl get svc -n kube-logging</span><br><span class="line">curl http:&#x2F;&#x2F;es-cluster-0.elasticsearch.kube-logging.svc.cluster.local:9200&#x2F;_cat&#x2F;health?v</span><br><span class="line">kubectl get cronjob -n kube-logging</span><br><span class="line">kubectl get jobs -n kube-logging</span><br><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_30607029&#x2F;article&#x2F;details&#x2F;99925796 #定时删除日志，保留3天</span><br></pre></td></tr></table></figure>
 <h4 id="Prometheus-Operator监控kubernetes集群"><a href="#Prometheus-Operator监控kubernetes集群" class="headerlink" title="Prometheus-Operator监控kubernetes集群"></a>Prometheus-Operator监控kubernetes集群</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;a687ab2d6ede</span><br><span class="line">kubectl  get pod,svc -n monitoring|grep grafana</span><br></pre></td></tr></table></figure>
 <h4 id="pod-管理"><a href="#pod-管理" class="headerlink" title="pod 管理"></a>pod 管理</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_44571270&#x2F;article&#x2F;details&#x2F;104823185</span><br><span class="line">#容器升级更新</span><br><span class="line">kubectl set image deployment&#x2F;product product&#x3D;registry.ihdou.com&#x2F;4.0&#x2F;product</span><br><span class="line">#查看容器升级更新进程</span><br><span class="line">kubectl -n default rollout status deployment&#x2F;product</span><br><span class="line">#回滚到上一个版本</span><br><span class="line">kubectl rollout undo deployments&#x2F;product -n default</span><br><span class="line">#查看是否回滚</span><br><span class="line">kubectl -n default rollout status deployments&#x2F;product</span><br><span class="line">#查看历史版本</span><br><span class="line">kubectl rollout history deploy&#x2F;product</span><br><span class="line">#查看某个版本详情</span><br><span class="line">kubectl rollout history deployment&#x2F;product --revision&#x3D;8</span><br><span class="line">#回滚至某个版本</span><br><span class="line">kubectl rollout undo deployment&#x2F;product  --to-revision&#x3D;2  -n default</span><br><span class="line">#删除不能正常删除的pod</span><br><span class="line">kubectl delete pod product-675894f45b-s9fjz –grace-period&#x3D;0 --force -n default </span><br><span class="line">for i in &#96;kubectl get pod -n default|awk &#39;&#123;print $1&#125;&#39;|grep product-675894f45b-s9fjz&#96;;do kubectl delete pod $i –grace-period&#x3D;0 --force -n default;done</span><br></pre></td></tr></table></figure>
@@ -844,49 +887,6 @@
       </categories>
       <tags>
         <tag>运维</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>杂谈</title>
-    <url>/2020/08/04/%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<h2 id="技术杂谈"><a href="#技术杂谈" class="headerlink" title="技术杂谈"></a>技术杂谈</h2><h4 id="1-sata-和-sas的区别"><a href="#1-sata-和-sas的区别" class="headerlink" title="1.sata 和 sas的区别"></a>1.sata 和 sas的区别</h4><p>一.性能区别   </p>
-<p>&#8195;&#8195;SAS更好：相比SATA，SAS在磁盘性能5261上更占优势。主要4102得益于强大SCSI指令集(包括SCSI指令队列)、双核处1653理器，以及对硬件顺序流处理的支持。SAS硬盘支持双向全双工模式，为同时发生的读写操作提供了两路活动通道,SATA只能提供单通道和半双工模式，无疑弱了不少。<br>二.sas接口跟sata接口一样吗<br>   不一样，sas的电源和数据口是一体的，可以插sata盘，sata的是分开的，不能插sas盘，sas向下兼容sata设备。</p>
-<h4 id="2-NAS"><a href="#2-NAS" class="headerlink" title="2.NAS"></a>2.NAS</h4><p>&#8195;&#8195;NAS（Network Attached Storage：网络附属存储）按字面简单说就是连接在网络上，具备资料存储功能的装置，因此也称为“网络存储器”。它是一种专用数据存储服务器。它以数据为中心，将存储设备与服务器彻底分离，集中管理数据，从而释放带宽、提高性能、降低总拥有成本、保护投资。其成本远远低于使用服务器存储，而效率却远远高于后者。目前国际著名的NAS企业有Netapp、EMC、OUO等。</p>
-<a id="more"></a>
-
-<h4 id="3-saas-paas-iaas"><a href="#3-saas-paas-iaas" class="headerlink" title="3.saas paas iaas"></a>3.saas paas iaas</h4><p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/iaas-paas-saas-comparison-1024x759.jpg"></p>
-<p>&#8195;&#8195;通常有三种云服务模型：SaaS（软件即服务），PaaS（平台即服务）和IaaS（基础架构即服务）。 每个都有自己的好处和差异。为了您的组织能作出最佳选择，您有必要了解SaaS，PaaS和IaaS之间的差异。</p>
-<p>SaaS：软件即服务</p>
-<p>软件即服务（也称为云应用程序服务）代表了云市场中企业最常用的选项。 SaaS利用互联网向其用户提供应用程序，这些应用程序由第三方供应商管理。 大多数SaaS应用程序直接通过Web浏览器运行，不需要在客户端进行任何下载或安装。</p>
-<p>PaaS：平台即服务</p>
-<p>云平台服务或平台即服务（PaaS）为某些软件提供云组件，这些组件主要用于应用程序。 PaaS为开发人员提供了一个框架，使他们可以基于它创建自定义应用程序。所有服务器，存储和网络都可以由企业或第三方提供商进行管理，而开发人员可以负责应用程序的管理。</p>
-<p>IaaS：基础架构即服务</p>
-<p>云基础架构服务称为基础架构即服务（IaaS），由高度可扩展和自动化的计算资源组成。 IaaS是完全自助服务，用于访问和监控计算、网络，存储和其他服务等内容，它允许企业按需求和需要购买资源，而不必购买全部硬件。</p>
-<p>参考文档:<a href="https://blog.csdn.net/liujg79/article/details/84453736">https://blog.csdn.net/liujg79/article/details/84453736</a></p>
-<h4 id="GRUB"><a href="#GRUB" class="headerlink" title="GRUB"></a>GRUB</h4><p>&#8195;&#8195;GNU GRUB 是一个多重<a href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">操作系统</a>启动管理器。用来引导不同系统，如<a href="https://baike.baidu.com/item/windows/165458">windows</a>，<a href="https://baike.baidu.com/item/linux/27050">linux</a>。</p>
-<p>GNU GRUB（GRand Unified Bootloader简称“GRUB”）是一个来自<a href="https://baike.baidu.com/item/GNU">GNU</a>项目的多<a href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/192">操作系统</a>启动程序。GRUB是多启动规范的实现，它允许用户可以在<a href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA/140338">计算机</a>内同时拥有多个<a href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/192">操作系统</a>，并在计算机启动时选择希望运行的操作系统。GRUB可用于选择<a href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/192">操作系统</a>分区上的不同<a href="https://baike.baidu.com/item/%E5%86%85%E6%A0%B8/108410">内核</a>，也可用于向这些<a href="https://baike.baidu.com/item/%E5%86%85%E6%A0%B8/108410">内核</a>传递启动参数。</p>
-]]></content>
-      <categories>
-        <category>IT</category>
-      </categories>
-      <tags>
-        <tag>杂谈</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网络知识</title>
-    <url>/2020/08/14/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<h4 id="https-通讯流程"><a href="#https-通讯流程" class="headerlink" title="https 通讯流程"></a>https 通讯流程</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">1）Client发起请求；</span></span><br><span class="line"><span class="attr">2）Server端响应请求，并在之后将证书发送至Client；</span></span><br><span class="line"><span class="attr">3）Client使用认证机构的公钥认证证书，并从证书中取出Server端公钥；</span></span><br><span class="line"><span class="attr">4）Client使用公钥加密一个随机秘钥，并传到Server；</span></span><br><span class="line"><span class="attr">5）Server使用私钥解密出随机秘钥；</span></span><br><span class="line"><span class="attr">6）通信双方使用随机秘钥最为对称秘钥进行加密解密。</span></span><br><span class="line"><span class="comment">#参考 http://www.52im.net/thread-1751-1-1.html</span></span><br></pre></td></tr></table></figure>
-<h4 id="traceroute的基本原理"><a href="#traceroute的基本原理" class="headerlink" title="traceroute的基本原理"></a>traceroute的基本原理</h4><p><img src="http://www.52im.net/data/attachment/forum/201809/21/161014pkzjhk8h93ozr89r.png"></p>
-<p><img src="http://www.52im.net/data/attachment/forum/201809/21/161013ss7klzmlm3dh9xis.png"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">具体做法就是：</span><br><span class="line">1.Traceroute会设置特殊的TTL值，来追踪源主机和目标主机之间的路由数。首先它给目标主机发送一个 TTL&#x3D;1 的UDP数据包，那么这个数据包一旦在路上遇到一个路由器，TTL就变成了0（TTL规则是每经过一个路由器都会减1），因为TTL&#x3D;0了，所以路由器就会把这个数据包丢掉，然后产生一个错误类型（超时）的ICMP数据包回发给源主机，也就是差错包。这个时候源主机就拿到了第一个路由节点的IP和相关信息了;  </span><br><span class="line">2.接着，源主机再给目标主机发一个 TTL&#x3D;2 的UDP数据包，依旧上述流程走一遍，就知道第二个路由节点的IP和耗时情况等信息了;  </span><br><span class="line">3.如此反复进行，Traceroute就可以拿到从主机A到主机B之间所有路由器的信息了。</span><br><span class="line">4.但是有个问题是，如果数据包到达了目标主机的话，即使目标主机接收到TTL值为1的IP数据包，它也是不会丢弃该数据包的，也不会产生一份超时的ICMP回发数据包的，因为数据包已经达到了目的地嘛。那我们应该怎么认定数据包是否达到了目标主机呢?  </span><br><span class="line">5.Traceroute的方法是在源主机发送UDP数据包给目标主机的时候，会设置一个不可能达到的目标端口号（例如大于30000的端口号），那么当这个数据包真的到达目标主机的时候，目标主机发现没有对应的端口号，因此会产生一份“端口不可达”的错误ICMP报文返回给源主机.  </span><br><span class="line">#参考资料 http:&#x2F;&#x2F;www.52im.net&#x2F;thread-1973-1-1.html</span><br></pre></td></tr></table></figure>
-<h4 id="同步I-O、异步I-O与阻塞I-O、非阻塞I-O的区别"><a href="#同步I-O、异步I-O与阻塞I-O、非阻塞I-O的区别" class="headerlink" title="同步I/O、异步I/O与阻塞I/O、非阻塞I/O的区别"></a>同步I/O、异步I/O与阻塞I/O、非阻塞I/O的区别</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">一、I&#x2F;O</span><br><span class="line">　　I&#x2F;O (Input&#x2F;Output，输入&#x2F;输出)即数据的读取（接收）或写入（发送）操作。</span><br><span class="line">　　通常用户进程中的一个完整I&#x2F;O分为两阶段：用户进程空间&lt;--&gt;内核空间、内核空间&lt;--&gt;设备空间（磁盘、网络等）。</span><br><span class="line">　　I&#x2F;O有内存I&#x2F;O、网络I&#x2F;O和磁盘I&#x2F;O三种，通常我们说的IO指的是后两者。</span><br><span class="line">二、同步I&#x2F;O与异步I&#x2F;O</span><br><span class="line">　　同步和异步关注的是消息通信机制 (synchronous communication&#x2F; asynchronous communication)</span><br><span class="line">　　所谓同步，就是在发出一个调用时，在没有得到结果之前，该调用就不返回。但是一旦调用返回，就得到返回值了。</span><br><span class="line">　　换句话说，就是由调用者主动等待这个调用的结果。</span><br><span class="line">　　而异步则是相反，调用在发出之后，这个调用就直接返回了，所以没有返回结果。</span><br><span class="line">　　换句话说，当一个异步过程调用发出后，调用者不会立刻得到结果。而是在调用发出后，被调用者通过状态、通知来通知调用者，或通过回调函数处理这个调用。</span><br><span class="line">　　举个通俗的例子：</span><br><span class="line">　　你打电话问书店老板有没有《分布式系统》这本书，如果是同步通信机制，书店老板会说，你稍等，”我查一下&quot;，然后开始查啊查，等查好了（可能是5秒，也可能是一天）告诉你结果（返回结果）。</span><br><span class="line">　　而异步通信机制，书店老板直接告诉你我查一下啊，查好了打电话给你，然后直接挂电话了（不返回结果）。然后查好了，他会主动打电话给你。在这里老板通过“回电”这种方式来回调。</span><br><span class="line">三、阻塞I&#x2F;O、非阻塞I&#x2F;O</span><br><span class="line">　　阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态。</span><br><span class="line">　　阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才会返回。</span><br><span class="line">　　非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。</span><br><span class="line">　　举个通俗的例子：</span><br><span class="line"> 　 你打电话问书店老板有没有《分布式系统》这本书，你如果是阻塞式调用，你会一直把自己“挂起”，直到得到这本书有没有的结果。</span><br><span class="line">　　如果是非阻塞式调用，你不管老板有没有告诉你，你自己先一边去玩了， 当然你也要偶尔过几分钟check一下老板有没有返回结果。</span><br><span class="line">　　在这里阻塞与非阻塞与是否同步异步无关。跟老板通过什么方式回答你结果无关。</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>ops</category>
-      </categories>
-      <tags>
-        <tag>杂谈</tag>
       </tags>
   </entry>
 </search>
