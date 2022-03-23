@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2022-03-20T16:00:00.000Z</updated>
+  <updated>2022-03-22T16:00:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql</title>
+    <link href="http://yoursite.com/2022/03/23/mysql/"/>
+    <id>http://yoursite.com/2022/03/23/mysql/</id>
+    <published>2022-03-22T16:00:00.000Z</published>
+    <updated>2022-03-22T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span> <span class="string">flush privileges;</span></span><br><span class="line"><span class="meta">mysql&gt;GRANT</span> <span class="string">ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;a&#x27;; #赋权，使其可以远程登录</span></span><br></pre></td></tr></table></figure><h3 id="8-0安装"><a href="#8-0安装" class="headerlink" title="8.0安装"></a>8.0安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#https:&#x2F;&#x2F;www.modb.pro&#x2F;db&#x2F;332219</span><br><span class="line">wget https:&#x2F;&#x2F;dev.mysql.com&#x2F;get&#x2F;mysql80-community-release-el7-5.noarch.rpm</span><br><span class="line">yum install -y mysql80-community-release-el7-5.noarch.rpm</span><br><span class="line">yum install -y mysql-community-server</span><br><span class="line"></span><br><span class="line">#修改临时密码</span><br><span class="line">grep &#39;temporary password&#39; &#x2F;var&#x2F;log&#x2F;mysqld.log</span><br><span class="line">mysql -uroot -p</span><br><span class="line">ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;1234Qwer@&#39;;</span><br><span class="line"></span><br><span class="line">#配置允许远程登录</span><br><span class="line">USE mysql;</span><br><span class="line">UPDATE user SET host &#x3D; &#39;%&#39; WHERE user &#x3D; &#39;root&#39;;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;常用命令&quot;&gt;&lt;a href=&quot;#常用命令&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a&gt;常用命令&lt;/h4&gt;&lt;figure class=&quot;highlight properties&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter</summary>
+      
+    
+    
+    
+    <category term="ops" scheme="http://yoursite.com/categories/ops/"/>
+    
+    
+    <category term="运维" scheme="http://yoursite.com/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>ops笔记</title>
@@ -271,30 +295,6 @@
     
     <summary type="html">&lt;h4 id=&quot;关闭centos-自带的防火墙服务&quot;&gt;&lt;a href=&quot;#关闭centos-自带的防火墙服务&quot; class=&quot;headerlink&quot; title=&quot;关闭centos 自带的防火墙服务&quot;&gt;&lt;/a&gt;关闭centos 自带的防火墙服务&lt;/h4&gt;&lt;figure class=&quot;highlight properties&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;systemctl&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;stop firewalld&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;systemctl&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;disable firewalld&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h4 id=&quot;配置kubenetes-源&quot;&gt;&lt;a href=&quot;#配置kubenetes-源&quot; class=&quot;headerlink&quot; title=&quot;配置kubenetes 源&quot;&gt;&lt;/a&gt;配置kubenetes 源&lt;/h4&gt;&lt;figure class=&quot;highlight properties&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;vi&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;/etc/yum.repos.d/kubernetes.repo&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;[Kubernetes]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;baseurl&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;enabled&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;gpgcheck&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;repo_gpgcheck&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;gpgkey&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg  http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="ops" scheme="http://yoursite.com/categories/ops/"/>
-    
-    
-    <category term="运维" scheme="http://yoursite.com/tags/%E8%BF%90%E7%BB%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mysql</title>
-    <link href="http://yoursite.com/2020/09/07/mysql/"/>
-    <id>http://yoursite.com/2020/09/07/mysql/</id>
-    <published>2020-09-06T16:00:00.000Z</published>
-    <updated>2020-09-06T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span> <span class="string">flush privileges;</span></span><br><span class="line"><span class="meta">mysql&gt;GRANT</span> <span class="string">ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;a&#x27;; #赋权，使其可以远程登录</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h4 id=&quot;常用命令&quot;&gt;&lt;a href=&quot;#常用命令&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a&gt;常用命令&lt;/h4&gt;&lt;figure class=&quot;highlight properties&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter</summary>
-      
     
     
     
