@@ -215,7 +215,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -274,6 +274,95 @@
 
         <div class="content index posts-expand">
           
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/11/k8s%E9%9B%86%E7%BE%A4%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="harry">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MY LIFE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/11/k8s%E9%9B%86%E7%BE%A4%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/" class="post-title-link" itemprop="url">k8s集群应用部署</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-11 10:00:00" itemprop="dateCreated datePublished" datetime="2020-11-11T10:00:00+08:00">2020-11-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/11/11/k8s%E9%9B%86%E7%BE%A4%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/11/k8s%E9%9B%86%E7%BE%A4%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="集群常用命令"><a href="#集群常用命令" class="headerlink" title="集群常用命令"></a>集群常用命令</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kubectl</span> <span class="string">create deployment java-demo --image=harry82/tomcat:v1 --dry-run=client -o yaml &gt; java-demo.yaml</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">expose deployment java-demo --port=80 --target-port=8080 --type=NodePort --dry-run=client -o yaml &gt;svc.yaml</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">get pod -o wide</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">desribe pod nginx-f89759699-gjgbn</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">get ep #查看svc关联pod</span></span><br><span class="line"></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">create deployment nginx --image=nginx</span></span><br><span class="line"></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">get cm</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">describe cm petclinic-config</span></span><br><span class="line"></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">logs [podName] #注意如果pod里容器大于1,则不能使用这种方法访问</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">logs -f &lt;pod-name&gt; # 实时查看日志</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">log myapp-pod -c test #查看容器日志（如果pod里大于1个容器，那么要加-c [容器名称]）</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">delete pod fluentd-bq8px -n kube-logging --grace-period=0 --force  #强制删除无法删除的pod</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">logs --tail 200 kube-apiserver-master  -n kube-system</span></span><br></pre></td></tr></table></figure>
+<h3 id="K8s-部署java应用"><a href="#K8s-部署java应用" class="headerlink" title="K8s 部署java应用"></a>K8s 部署java应用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;192.168.102.160:30001</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/11/k8s%E9%9B%86%E7%BE%A4%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1091,96 +1180,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/04/%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="harry">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MY LIFE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/04/%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">杂谈</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-04 09:20:50" itemprop="dateCreated datePublished" datetime="2020-08-04T09:20:50+08:00">2020-08-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/08/04/%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/08/04/%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="技术杂谈"><a href="#技术杂谈" class="headerlink" title="技术杂谈"></a>技术杂谈</h2><h4 id="1-sata-和-sas的区别"><a href="#1-sata-和-sas的区别" class="headerlink" title="1.sata 和 sas的区别"></a>1.sata 和 sas的区别</h4><p>一.性能区别   </p>
-<p>&#8195;&#8195;SAS更好：相比SATA，SAS在磁盘性能5261上更占优势。主要4102得益于强大SCSI指令集(包括SCSI指令队列)、双核处1653理器，以及对硬件顺序流处理的支持。SAS硬盘支持双向全双工模式，为同时发生的读写操作提供了两路活动通道,SATA只能提供单通道和半双工模式，无疑弱了不少。<br>二.sas接口跟sata接口一样吗<br>   不一样，sas的电源和数据口是一体的，可以插sata盘，sata的是分开的，不能插sas盘，sas向下兼容sata设备。</p>
-<h4 id="2-NAS"><a href="#2-NAS" class="headerlink" title="2.NAS"></a>2.NAS</h4><p>&#8195;&#8195;NAS（Network Attached Storage：网络附属存储）按字面简单说就是连接在网络上，具备资料存储功能的装置，因此也称为“网络存储器”。它是一种专用数据存储服务器。它以数据为中心，将存储设备与服务器彻底分离，集中管理数据，从而释放带宽、提高性能、降低总拥有成本、保护投资。其成本远远低于使用服务器存储，而效率却远远高于后者。目前国际著名的NAS企业有Netapp、EMC、OUO等。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/04/%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1226,7 +1225,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

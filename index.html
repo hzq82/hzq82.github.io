@@ -215,7 +215,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -274,6 +274,94 @@
 
         <div class="content index posts-expand">
           
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/07/15/docker2022/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="harry">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MY LIFE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/15/docker2022/" class="post-title-link" itemprop="url">docker2022</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-07-15 16:00:00" itemprop="dateCreated datePublished" datetime="2022-07-15T16:00:00+08:00">2022-07-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/07/15/docker2022/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/07/15/docker2022/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="使用镜像"><a href="#使用镜像" class="headerlink" title="使用镜像"></a>使用镜像</h5><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">yum</span> <span class="string">update</span></span><br><span class="line"><span class="attr">yum</span> <span class="string">install -y yum-utils</span></span><br><span class="line"><span class="meta">yum-config-manager</span>     <span class="string">--add-repo     http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br><span class="line"><span class="attr">yum</span> <span class="string">makecache fast</span></span><br><span class="line"><span class="attr">yum</span> <span class="string">install docker-ce docker-ce-cli containerd.io</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start docker</span></span><br><span class="line"><span class="attr">docker</span> <span class="string">version</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable docker</span></span><br><span class="line"><span class="attr">swapoff</span> <span class="string">-a &amp;&amp; sed -i &#x27;/ swap / s/^\(.*\)$/#\1/g&#x27; /etc/fstab</span></span><br><span class="line"></span><br><span class="line"><span class="meta">[root@template</span> <span class="string">~]# vi /etc/docker/daemon.json</span></span><br><span class="line"><span class="attr">&#123;</span></span><br><span class="line"><span class="meta">&quot;insecure-registries&quot;</span>:<span class="string">[&quot;registry.ihdou.com&quot;,&quot;192.168.102.156&quot;],</span></span><br><span class="line"><span class="meta">&quot;registry-mirrors&quot;</span>: <span class="string">[&quot;https://registry.docker-cn.com&quot;],</span></span><br><span class="line"><span class="meta">&quot;data-root&quot;</span>: <span class="string">&quot;/home/docker&quot;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">[root@template</span> <span class="string">~]# systemctl daemon-reload</span></span><br><span class="line"><span class="meta">[root@template</span> <span class="string">~]# systemctl restart docker</span></span><br><span class="line"><span class="attr">hostname</span> <span class="string">rancher &amp;&amp; hostnamectl set-hostname rancher</span></span><br><span class="line"></span><br><span class="line"><span class="attr">iptables</span> <span class="string">-L</span></span><br><span class="line"></span><br><span class="line"><span class="attr">rancher安装</span></span><br><span class="line"><span class="comment">#先建目录</span></span><br><span class="line"><span class="attr">docker</span> <span class="string">run -d --privileged --restart=unless-stopped -p 80:80 -p 443:443 -v /home/rancher/rancher:/var/lib/rancher -v /home/rancher/auditlog:/var/log/auditlog --name rancher rancher/rancher:stable</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/07/15/docker2022/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1058,95 +1146,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/11/k8s%E9%9B%86%E7%BE%A4%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="harry">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MY LIFE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/11/k8s%E9%9B%86%E7%BE%A4%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/" class="post-title-link" itemprop="url">k8s集群应用部署</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-11 10:00:00" itemprop="dateCreated datePublished" datetime="2020-11-11T10:00:00+08:00">2020-11-11</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/11/11/k8s%E9%9B%86%E7%BE%A4%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/11/k8s%E9%9B%86%E7%BE%A4%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="集群常用命令"><a href="#集群常用命令" class="headerlink" title="集群常用命令"></a>集群常用命令</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kubectl</span> <span class="string">create deployment java-demo --image=harry82/tomcat:v1 --dry-run=client -o yaml &gt; java-demo.yaml</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">expose deployment java-demo --port=80 --target-port=8080 --type=NodePort --dry-run=client -o yaml &gt;svc.yaml</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">get pod -o wide</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">desribe pod nginx-f89759699-gjgbn</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">get ep #查看svc关联pod</span></span><br><span class="line"></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">create deployment nginx --image=nginx</span></span><br><span class="line"></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">get cm</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">describe cm petclinic-config</span></span><br><span class="line"></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">logs [podName] #注意如果pod里容器大于1,则不能使用这种方法访问</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">logs -f &lt;pod-name&gt; # 实时查看日志</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">log myapp-pod -c test #查看容器日志（如果pod里大于1个容器，那么要加-c [容器名称]）</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">delete pod fluentd-bq8px -n kube-logging --grace-period=0 --force  #强制删除无法删除的pod</span></span><br><span class="line"><span class="attr">kubectl</span> <span class="string">logs --tail 200 kube-apiserver-master  -n kube-system</span></span><br></pre></td></tr></table></figure>
-<h3 id="K8s-部署java应用"><a href="#K8s-部署java应用" class="headerlink" title="K8s 部署java应用"></a>K8s 部署java应用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;192.168.102.160:30001</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/11/k8s%E9%9B%86%E7%BE%A4%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1192,7 +1191,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
