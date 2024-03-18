@@ -215,7 +215,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -274,6 +274,88 @@
 
         <div class="content index posts-expand">
           
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="harry">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MY LIFE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/" class="post-title-link" itemprop="url">centos7扩展根目录,升级内核</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-08 14:59:50" itemprop="dateCreated datePublished" datetime="2020-12-08T14:59:50+08:00">2020-12-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">df</span> <span class="string">-h</span></span><br><span class="line"><span class="attr">umount</span> <span class="string">/home</span></span><br><span class="line"><span class="attr">vim</span> <span class="string">/etc/fstab ####(注释掉/home,避免开机自检)</span></span><br><span class="line"><span class="attr">lvremove</span> <span class="string">/dev/mapper/centos-home #接着会出现确认的内容，输入“y”，回车</span></span><br><span class="line"><span class="attr">vgdisplay</span> <span class="string">#ps: 查看 Free  PE / Size这项</span></span><br><span class="line"><span class="attr">Free</span>  <span class="string">PE / Size       37151 / 145.12 GiB</span></span><br><span class="line"><span class="attr">lvextend</span> <span class="string">-L +145G /dev/mapper/centos-root #扩展/root所在的lv</span></span><br><span class="line"><span class="attr">xfs_growfs</span> <span class="string">/dev/mapper/centos-root #扩展/root空间</span></span><br><span class="line"><span class="attr">df</span> <span class="string">-h #成功</span></span><br></pre></td></tr></table></figure>
+<h4 id="升级内核"><a href="#升级内核" class="headerlink" title="升级内核"></a>升级内核</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">## 载入公钥</span><br><span class="line">$ rpm --import https:&#x2F;&#x2F;www.elrepo.org&#x2F;RPM-GPG-KEY-elrepo.org</span><br><span class="line"></span><br><span class="line">## 安装 ELRepo 最新版本</span><br><span class="line">$ yum install -y https:&#x2F;&#x2F;www.elrepo.org&#x2F;elrepo-release-7.el7.elrepo.noarch.rpm</span><br><span class="line"></span><br><span class="line">## 列出可以使用的 kernel 包版本</span><br><span class="line">$ yum list available --disablerepo&#x3D;* --enablerepo&#x3D;elrepo-kernel</span><br><span class="line"></span><br><span class="line">## 安装指定的 kernel 版本：</span><br><span class="line">$ yum install -y kernel-lt-4.4.218-1.el7.elrepo --enablerepo&#x3D;elrepo-kernel</span><br><span class="line"></span><br><span class="line">## 查看系统可用内核</span><br><span class="line">$ cat &#x2F;boot&#x2F;grub2&#x2F;grub.cfg | grep menuentry</span><br><span class="line"></span><br><span class="line">menuentry &#39;CentOS Linux (3.10.0-1062.el7.x86_64) 7 (Core)&#39; --class centos （略）</span><br><span class="line">menuentry &#39;CentOS Linux (4.4.218-1.el7.elrepo.x86_64) 7 (Core)&#39; --class centos ...（略）</span><br><span class="line"></span><br><span class="line">## 设置开机从新内核启动</span><br><span class="line">$ grub2-set-default &quot;CentOS Linux (4.4.218-1.el7.elrepo.x86_64) 7 (Core)&quot;</span><br><span class="line"></span><br><span class="line">## 查看内核启动项</span><br><span class="line">$ grub2-editenv list</span><br><span class="line">saved_entry&#x3D;CentOS Linux (4.4.218-1.el7.elrepo.x86_64) 7 (Core)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1081,91 +1163,6 @@
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/14/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="harry">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MY LIFE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/14/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">网络知识</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-14 00:00:00" itemprop="dateCreated datePublished" datetime="2020-08-14T00:00:00+08:00">2020-08-14</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ops/" itemprop="url" rel="index"><span itemprop="name">ops</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/08/14/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/08/14/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="https-通讯流程"><a href="#https-通讯流程" class="headerlink" title="https 通讯流程"></a>https 通讯流程</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1）Client发起请求；</span></span><br><span class="line"><span class="attr">2）Server端响应请求，并在之后将证书发送至Client；</span></span><br><span class="line"><span class="attr">3）Client使用认证机构的公钥认证证书，并从证书中取出Server端公钥；</span></span><br><span class="line"><span class="attr">4）Client使用公钥加密一个随机秘钥，并传到Server；</span></span><br><span class="line"><span class="attr">5）Server使用私钥解密出随机秘钥；</span></span><br><span class="line"><span class="attr">6）通信双方使用随机秘钥最为对称秘钥进行加密解密。</span></span><br><span class="line"><span class="comment">#参考 http://www.52im.net/thread-1751-1-1.html</span></span><br></pre></td></tr></table></figure>
-<h4 id="traceroute的基本原理"><a href="#traceroute的基本原理" class="headerlink" title="traceroute的基本原理"></a>traceroute的基本原理</h4><p><img src="http://www.52im.net/data/attachment/forum/201809/21/161014pkzjhk8h93ozr89r.png"></p>
-<p><img src="http://www.52im.net/data/attachment/forum/201809/21/161013ss7klzmlm3dh9xis.png"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">具体做法就是：</span><br><span class="line">1.Traceroute会设置特殊的TTL值，来追踪源主机和目标主机之间的路由数。首先它给目标主机发送一个 TTL&#x3D;1 的UDP数据包，那么这个数据包一旦在路上遇到一个路由器，TTL就变成了0（TTL规则是每经过一个路由器都会减1），因为TTL&#x3D;0了，所以路由器就会把这个数据包丢掉，然后产生一个错误类型（超时）的ICMP数据包回发给源主机，也就是差错包。这个时候源主机就拿到了第一个路由节点的IP和相关信息了;  </span><br><span class="line">2.接着，源主机再给目标主机发一个 TTL&#x3D;2 的UDP数据包，依旧上述流程走一遍，就知道第二个路由节点的IP和耗时情况等信息了;  </span><br><span class="line">3.如此反复进行，Traceroute就可以拿到从主机A到主机B之间所有路由器的信息了。</span><br><span class="line">4.但是有个问题是，如果数据包到达了目标主机的话，即使目标主机接收到TTL值为1的IP数据包，它也是不会丢弃该数据包的，也不会产生一份超时的ICMP回发数据包的，因为数据包已经达到了目的地嘛。那我们应该怎么认定数据包是否达到了目标主机呢?  </span><br><span class="line">5.Traceroute的方法是在源主机发送UDP数据包给目标主机的时候，会设置一个不可能达到的目标端口号（例如大于30000的端口号），那么当这个数据包真的到达目标主机的时候，目标主机发现没有对应的端口号，因此会产生一份“端口不可达”的错误ICMP报文返回给源主机.  </span><br><span class="line">#参考资料 http:&#x2F;&#x2F;www.52im.net&#x2F;thread-1973-1-1.html</span><br></pre></td></tr></table></figure>
-<h4 id="同步I-O、异步I-O与阻塞I-O、非阻塞I-O的区别"><a href="#同步I-O、异步I-O与阻塞I-O、非阻塞I-O的区别" class="headerlink" title="同步I/O、异步I/O与阻塞I/O、非阻塞I/O的区别"></a>同步I/O、异步I/O与阻塞I/O、非阻塞I/O的区别</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">一、I&#x2F;O</span><br><span class="line">　　I&#x2F;O (Input&#x2F;Output，输入&#x2F;输出)即数据的读取（接收）或写入（发送）操作。</span><br><span class="line">　　通常用户进程中的一个完整I&#x2F;O分为两阶段：用户进程空间&lt;--&gt;内核空间、内核空间&lt;--&gt;设备空间（磁盘、网络等）。</span><br><span class="line">　　I&#x2F;O有内存I&#x2F;O、网络I&#x2F;O和磁盘I&#x2F;O三种，通常我们说的IO指的是后两者。</span><br><span class="line">二、同步I&#x2F;O与异步I&#x2F;O</span><br><span class="line">　　同步和异步关注的是消息通信机制 (synchronous communication&#x2F; asynchronous communication)</span><br><span class="line">　　所谓同步，就是在发出一个调用时，在没有得到结果之前，该调用就不返回。但是一旦调用返回，就得到返回值了。</span><br><span class="line">　　换句话说，就是由调用者主动等待这个调用的结果。</span><br><span class="line">　　而异步则是相反，调用在发出之后，这个调用就直接返回了，所以没有返回结果。</span><br><span class="line">　　换句话说，当一个异步过程调用发出后，调用者不会立刻得到结果。而是在调用发出后，被调用者通过状态、通知来通知调用者，或通过回调函数处理这个调用。</span><br><span class="line">　　举个通俗的例子：</span><br><span class="line">　　你打电话问书店老板有没有《分布式系统》这本书，如果是同步通信机制，书店老板会说，你稍等，”我查一下&quot;，然后开始查啊查，等查好了（可能是5秒，也可能是一天）告诉你结果（返回结果）。</span><br><span class="line">　　而异步通信机制，书店老板直接告诉你我查一下啊，查好了打电话给你，然后直接挂电话了（不返回结果）。然后查好了，他会主动打电话给你。在这里老板通过“回电”这种方式来回调。</span><br><span class="line">三、阻塞I&#x2F;O、非阻塞I&#x2F;O</span><br><span class="line">　　阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态。</span><br><span class="line">　　阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才会返回。</span><br><span class="line">　　非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。</span><br><span class="line">　　举个通俗的例子：</span><br><span class="line"> 　 你打电话问书店老板有没有《分布式系统》这本书，你如果是阻塞式调用，你会一直把自己“挂起”，直到得到这本书有没有的结果。</span><br><span class="line">　　如果是非阻塞式调用，你不管老板有没有告诉你，你自己先一边去玩了， 当然你也要偶尔过几分钟check一下老板有没有返回结果。</span><br><span class="line">　　在这里阻塞与非阻塞与是否同步异步无关。跟老板通过什么方式回答你结果无关。</span><br></pre></td></tr></table></figure>
-
       
     </div>
 
