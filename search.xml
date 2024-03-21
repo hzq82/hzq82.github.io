@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>centos7扩展根目录,升级内核</title>
+    <url>/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/</url>
+    <content><![CDATA[<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">df</span> <span class="string">-h</span></span><br><span class="line"><span class="attr">umount</span> <span class="string">/home</span></span><br><span class="line"><span class="attr">vim</span> <span class="string">/etc/fstab ####(注释掉/home,避免开机自检)</span></span><br><span class="line"><span class="attr">lvremove</span> <span class="string">/dev/mapper/centos-home #接着会出现确认的内容，输入“y”，回车</span></span><br><span class="line"><span class="attr">vgdisplay</span> <span class="string">#ps: 查看 Free  PE / Size这项</span></span><br><span class="line"><span class="attr">Free</span>  <span class="string">PE / Size       37151 / 145.12 GiB</span></span><br><span class="line"><span class="attr">lvextend</span> <span class="string">-L +145G /dev/mapper/centos-root #扩展/root所在的lv</span></span><br><span class="line"><span class="attr">xfs_growfs</span> <span class="string">/dev/mapper/centos-root #扩展/root空间</span></span><br><span class="line"><span class="attr">df</span> <span class="string">-h #成功</span></span><br></pre></td></tr></table></figure>
+<h4 id="升级内核"><a href="#升级内核" class="headerlink" title="升级内核"></a>升级内核</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">## 载入公钥</span><br><span class="line">$ rpm --import https:&#x2F;&#x2F;www.elrepo.org&#x2F;RPM-GPG-KEY-elrepo.org</span><br><span class="line"></span><br><span class="line">## 安装 ELRepo 最新版本</span><br><span class="line">$ yum install -y https:&#x2F;&#x2F;www.elrepo.org&#x2F;elrepo-release-7.el7.elrepo.noarch.rpm</span><br><span class="line"></span><br><span class="line">## 列出可以使用的 kernel 包版本</span><br><span class="line">$ yum list available --disablerepo&#x3D;* --enablerepo&#x3D;elrepo-kernel</span><br><span class="line"></span><br><span class="line">## 安装指定的 kernel 版本：</span><br><span class="line">$ yum install -y kernel-lt-4.4.218-1.el7.elrepo --enablerepo&#x3D;elrepo-kernel</span><br><span class="line"></span><br><span class="line">## 查看系统可用内核</span><br><span class="line">$ cat &#x2F;boot&#x2F;grub2&#x2F;grub.cfg | grep menuentry</span><br><span class="line"></span><br><span class="line">menuentry &#39;CentOS Linux (3.10.0-1062.el7.x86_64) 7 (Core)&#39; --class centos （略）</span><br><span class="line">menuentry &#39;CentOS Linux (4.4.218-1.el7.elrepo.x86_64) 7 (Core)&#39; --class centos ...（略）</span><br><span class="line"></span><br><span class="line">## 设置开机从新内核启动</span><br><span class="line">$ grub2-set-default &quot;CentOS Linux (4.4.218-1.el7.elrepo.x86_64) 7 (Core)&quot;</span><br><span class="line"></span><br><span class="line">## 查看内核启动项</span><br><span class="line">$ grub2-editenv list</span><br><span class="line">saved_entry&#x3D;CentOS Linux (4.4.218-1.el7.elrepo.x86_64) 7 (Core)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>ops</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>centos shadowsocks</title>
     <url>/2020/09/11/cenos7%20shadowsocks/</url>
     <content><![CDATA[<h2 id="1-安装配置Shadowsocks客户端"><a href="#1-安装配置Shadowsocks客户端" class="headerlink" title="1. 安装配置Shadowsocks客户端"></a>1. 安装配置Shadowsocks客户端</h2><h3 id="1-1-安装Shadowsocks客户端"><a href="#1-1-安装Shadowsocks客户端" class="headerlink" title="1.1 安装Shadowsocks客户端"></a>1.1 安装Shadowsocks客户端</h3><ul>
@@ -134,19 +147,6 @@
       </tags>
   </entry>
   <entry>
-    <title>centos7扩展根目录,升级内核</title>
-    <url>/2020/12/08/centos7%E6%89%A9%E5%B1%95%E6%A0%B9%E7%9B%AE%E5%BD%95-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8/</url>
-    <content><![CDATA[<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">df</span> <span class="string">-h</span></span><br><span class="line"><span class="attr">umount</span> <span class="string">/home</span></span><br><span class="line"><span class="attr">vim</span> <span class="string">/etc/fstab ####(注释掉/home,避免开机自检)</span></span><br><span class="line"><span class="attr">lvremove</span> <span class="string">/dev/mapper/centos-home #接着会出现确认的内容，输入“y”，回车</span></span><br><span class="line"><span class="attr">vgdisplay</span> <span class="string">#ps: 查看 Free  PE / Size这项</span></span><br><span class="line"><span class="attr">Free</span>  <span class="string">PE / Size       37151 / 145.12 GiB</span></span><br><span class="line"><span class="attr">lvextend</span> <span class="string">-L +145G /dev/mapper/centos-root #扩展/root所在的lv</span></span><br><span class="line"><span class="attr">xfs_growfs</span> <span class="string">/dev/mapper/centos-root #扩展/root空间</span></span><br><span class="line"><span class="attr">df</span> <span class="string">-h #成功</span></span><br></pre></td></tr></table></figure>
-<h4 id="升级内核"><a href="#升级内核" class="headerlink" title="升级内核"></a>升级内核</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">## 载入公钥</span><br><span class="line">$ rpm --import https:&#x2F;&#x2F;www.elrepo.org&#x2F;RPM-GPG-KEY-elrepo.org</span><br><span class="line"></span><br><span class="line">## 安装 ELRepo 最新版本</span><br><span class="line">$ yum install -y https:&#x2F;&#x2F;www.elrepo.org&#x2F;elrepo-release-7.el7.elrepo.noarch.rpm</span><br><span class="line"></span><br><span class="line">## 列出可以使用的 kernel 包版本</span><br><span class="line">$ yum list available --disablerepo&#x3D;* --enablerepo&#x3D;elrepo-kernel</span><br><span class="line"></span><br><span class="line">## 安装指定的 kernel 版本：</span><br><span class="line">$ yum install -y kernel-lt-4.4.218-1.el7.elrepo --enablerepo&#x3D;elrepo-kernel</span><br><span class="line"></span><br><span class="line">## 查看系统可用内核</span><br><span class="line">$ cat &#x2F;boot&#x2F;grub2&#x2F;grub.cfg | grep menuentry</span><br><span class="line"></span><br><span class="line">menuentry &#39;CentOS Linux (3.10.0-1062.el7.x86_64) 7 (Core)&#39; --class centos （略）</span><br><span class="line">menuentry &#39;CentOS Linux (4.4.218-1.el7.elrepo.x86_64) 7 (Core)&#39; --class centos ...（略）</span><br><span class="line"></span><br><span class="line">## 设置开机从新内核启动</span><br><span class="line">$ grub2-set-default &quot;CentOS Linux (4.4.218-1.el7.elrepo.x86_64) 7 (Core)&quot;</span><br><span class="line"></span><br><span class="line">## 查看内核启动项</span><br><span class="line">$ grub2-editenv list</span><br><span class="line">saved_entry&#x3D;CentOS Linux (4.4.218-1.el7.elrepo.x86_64) 7 (Core)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>ops</category>
-      </categories>
-      <tags>
-        <tag>运维</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>docker基础</title>
     <url>/2020/11/02/docker/</url>
     <content><![CDATA[<h4 id="docker是什么"><a href="#docker是什么" class="headerlink" title="docker是什么"></a>docker是什么</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Docker 到底是什么，要解决什么问题，好处又在哪里？</span><br><span class="line">软件开发最大的麻烦事之一，就是环境配置。用户计算机的环境都不相同，你怎么知道自家的软件，能在那些机器跑起来？</span><br><span class="line">虚拟机（virtual machine）就是带环境安装的一种解决方案。它可以在一种操作系统里面运行另一种操作系统，比如在 Windows 系统里面运行 Linux 系统。应用程序对此毫无感知，因为虚拟机看上去跟真实系统一模一样，而对于底层系统来说，虚拟机就是一个普通文件，不需要了就删掉，对其他部分毫无影响。</span><br><span class="line">虽然用户可以通过虚拟机还原软件的原始环境。</span><br><span class="line">（1）资源占用多</span><br><span class="line">（2）冗余步骤多</span><br><span class="line">（3）启动慢</span><br><span class="line">由于虚拟机存在这些缺点，Linux 发展出了另一种虚拟化技术：Linux 容器（Linux Containers，缩写为 LXC）。</span><br><span class="line">Linux 容器不是模拟一个完整的操作系统，而是对进程进行隔离。或者说，在正常进程的外面套了一个保护层。对于容器里面的进程来说，它接触到的各种资源都是虚拟的，从而实现与底层系统的隔离</span><br><span class="line">（1）启动快</span><br><span class="line">（2）资源占用少</span><br><span class="line">（3）体积小</span><br><span class="line">总之，容器有点像轻量级的虚拟机，能够提供虚拟化的环境，但是成本开销小得多。</span><br><span class="line">Docker 属于 Linux 容器的一种封装，提供简单易用的容器使用接口。它是目前最流行的 Linux 容器解决方案。</span><br><span class="line">Docker 将应用程序与该程序的依赖，打包在一个文件里面。运行这个文件，就会生成一个虚拟容器。程序在这个虚拟容器里运行，就好像在真实的物理机上运行一样。有了 Docker，就不用担心环境问题。</span><br><span class="line"></span><br><span class="line">Docker 的主要用途，目前有三大类。</span><br><span class="line">（1）提供一次性的环境。比如，本地测试他人的软件、持续集成的时候提供单元测试和构建的环境。</span><br><span class="line">（2）提供弹性的云服务。因为 Docker 容器可以随开随关，很适合动态扩容和缩容。</span><br><span class="line">（3）组建微服务架构。通过多个容器，一台机器可以跑多个服务，因此在本机就可以模拟出微服务架构。</span><br><span class="line"></span><br><span class="line">Docker 是一个开源的商业产品，有两个版本：社区版（Community Edition，缩写为 CE）和企业版（Enterprise Edition，缩写为 EE）。企业版包含了一些收费服务。</span><br></pre></td></tr></table></figure>
@@ -175,24 +175,6 @@
       </tags>
   </entry>
   <entry>
-    <title>docker2022</title>
-    <url>/2022/07/15/docker2022/</url>
-    <content><![CDATA[<h5 id="使用镜像"><a href="#使用镜像" class="headerlink" title="使用镜像"></a>使用镜像</h5><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">yum</span> <span class="string">update</span></span><br><span class="line"><span class="attr">yum</span> <span class="string">install -y yum-utils</span></span><br><span class="line"><span class="meta">yum-config-manager</span>     <span class="string">--add-repo     http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br><span class="line"><span class="attr">yum</span> <span class="string">makecache fast</span></span><br><span class="line"><span class="attr">yum</span> <span class="string">install docker-ce docker-ce-cli containerd.io</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start docker</span></span><br><span class="line"><span class="attr">docker</span> <span class="string">version</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable docker</span></span><br><span class="line"><span class="attr">swapoff</span> <span class="string">-a &amp;&amp; sed -i &#x27;/ swap / s/^\(.*\)$/#\1/g&#x27; /etc/fstab</span></span><br><span class="line"></span><br><span class="line"><span class="meta">[root@template</span> <span class="string">~]# vi /etc/docker/daemon.json</span></span><br><span class="line"><span class="attr">&#123;</span></span><br><span class="line"><span class="meta">&quot;insecure-registries&quot;</span>:<span class="string">[&quot;registry.ihdou.com&quot;,&quot;192.168.102.156&quot;],</span></span><br><span class="line"><span class="meta">&quot;registry-mirrors&quot;</span>: <span class="string">[&quot;https://registry.docker-cn.com&quot;],</span></span><br><span class="line"><span class="meta">&quot;data-root&quot;</span>: <span class="string">&quot;/home/docker&quot;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">[root@template</span> <span class="string">~]# systemctl daemon-reload</span></span><br><span class="line"><span class="meta">[root@template</span> <span class="string">~]# systemctl restart docker</span></span><br><span class="line"><span class="attr">hostname</span> <span class="string">rancher &amp;&amp; hostnamectl set-hostname rancher</span></span><br><span class="line"></span><br><span class="line"><span class="attr">iptables</span> <span class="string">-L</span></span><br><span class="line"></span><br><span class="line"><span class="attr">rancher安装</span></span><br><span class="line"><span class="comment">#先建目录</span></span><br><span class="line"><span class="attr">docker</span> <span class="string">run -d --privileged --restart=unless-stopped -p 80:80 -p 443:443 -v /home/rancher/rancher:/var/lib/rancher -v /home/rancher/auditlog:/var/log/auditlog --name rancher rancher/rancher:stable</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kubectl taint nodes master node-role.kubernetes.io&#x2F;master&#x3D;:NoSchedule-</span><br></pre></td></tr></table></figure>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">curl</span> <span class="string">-LO &quot;https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">install</span> <span class="string">-o root -g root -m 0755 kubectl /usr/local/bin/kubectl</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;export HISTTIMEFORMAT&#x3D;&#39;%F %T &#39;&quot; &gt;&gt; &#x2F;etc&#x2F;profile &amp;&amp; source &#x2F;etc&#x2F;profile</span><br></pre></td></tr></table></figure>
-<p> git push -u origin main</p>
-]]></content>
-      <categories>
-        <category>ops</category>
-      </categories>
-      <tags>
-        <tag>运维</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>elasticsearch 单机docker集群搭建</title>
     <url>/2022/07/15/elasticsearch/</url>
     <content><![CDATA[<h5 id="使用镜像"><a href="#使用镜像" class="headerlink" title="使用镜像"></a>使用镜像</h5><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">docker.elastic.co/elasticsearch/elasticsearch</span></span><br><span class="line"><span class="meta">tobias74/elasticsearch-head</span>  <span class="string"></span></span><br><span class="line"><span class="comment">#分词器</span></span><br><span class="line"><span class="attr">wget</span> <span class="string">https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.15.2/elasticsearch-analysis-ik-7.15.2.zip</span></span><br></pre></td></tr></table></figure>
@@ -205,6 +187,24 @@
 <h5 id="修改系统配置"><a href="#修改系统配置" class="headerlink" title="修改系统配置"></a>修改系统配置</h5><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">vi</span> <span class="string">/etc/sysctl.conf</span></span><br><span class="line"><span class="meta">vm.max_map_count</span>=<span class="string">655360</span></span><br></pre></td></tr></table></figure>
 <h5 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h5><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#启动</span></span><br><span class="line"><span class="meta">docker-compose</span> <span class="string">up -d</span></span><br><span class="line"><span class="comment">#查看日志</span></span><br><span class="line"><span class="meta">docker-compose</span> <span class="string">logs</span></span><br><span class="line"><span class="comment">#停止</span></span><br><span class="line"><span class="meta">docker-compose</span> <span class="string">stop</span></span><br><span class="line"><span class="comment">#删除集群</span></span><br><span class="line"><span class="meta">docker-compose</span> <span class="string">rm</span></span><br></pre></td></tr></table></figure>
 <h5 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;ip:9100</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>ops</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker2022</title>
+    <url>/2022/07/15/docker2022/</url>
+    <content><![CDATA[<h5 id="使用镜像"><a href="#使用镜像" class="headerlink" title="使用镜像"></a>使用镜像</h5><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">yum</span> <span class="string">update</span></span><br><span class="line"><span class="attr">yum</span> <span class="string">install -y yum-utils</span></span><br><span class="line"><span class="meta">yum-config-manager</span>     <span class="string">--add-repo     http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br><span class="line"><span class="attr">yum</span> <span class="string">makecache fast</span></span><br><span class="line"><span class="attr">yum</span> <span class="string">install docker-ce docker-ce-cli containerd.io</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">start docker</span></span><br><span class="line"><span class="attr">docker</span> <span class="string">version</span></span><br><span class="line"><span class="attr">systemctl</span> <span class="string">enable docker</span></span><br><span class="line"><span class="attr">swapoff</span> <span class="string">-a &amp;&amp; sed -i &#x27;/ swap / s/^\(.*\)$/#\1/g&#x27; /etc/fstab</span></span><br><span class="line"></span><br><span class="line"><span class="meta">[root@template</span> <span class="string">~]# vi /etc/docker/daemon.json</span></span><br><span class="line"><span class="attr">&#123;</span></span><br><span class="line"><span class="meta">&quot;insecure-registries&quot;</span>:<span class="string">[&quot;registry.ihdou.com&quot;,&quot;192.168.102.156&quot;],</span></span><br><span class="line"><span class="meta">&quot;registry-mirrors&quot;</span>: <span class="string">[&quot;https://registry.docker-cn.com&quot;],</span></span><br><span class="line"><span class="meta">&quot;data-root&quot;</span>: <span class="string">&quot;/home/docker&quot;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">[root@template</span> <span class="string">~]# systemctl daemon-reload</span></span><br><span class="line"><span class="meta">[root@template</span> <span class="string">~]# systemctl restart docker</span></span><br><span class="line"><span class="attr">hostname</span> <span class="string">rancher &amp;&amp; hostnamectl set-hostname rancher</span></span><br><span class="line"></span><br><span class="line"><span class="attr">iptables</span> <span class="string">-L</span></span><br><span class="line"></span><br><span class="line"><span class="attr">rancher安装</span></span><br><span class="line"><span class="comment">#先建目录</span></span><br><span class="line"><span class="attr">docker</span> <span class="string">run -d --privileged --restart=unless-stopped -p 80:80 -p 443:443 -v /home/rancher/rancher:/var/lib/rancher -v /home/rancher/auditlog:/var/log/auditlog --name rancher rancher/rancher:stable</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kubectl taint nodes master node-role.kubernetes.io&#x2F;master&#x3D;:NoSchedule-</span><br></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">curl</span> <span class="string">-LO &quot;https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">install</span> <span class="string">-o root -g root -m 0755 kubectl /usr/local/bin/kubectl</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;export HISTTIMEFORMAT&#x3D;&#39;%F %T &#39;&quot; &gt;&gt; &#x2F;etc&#x2F;profile &amp;&amp; source &#x2F;etc&#x2F;profile</span><br></pre></td></tr></table></figure>
+<p> git push -u origin main</p>
 ]]></content>
       <categories>
         <category>ops</category>
@@ -293,6 +293,22 @@
       </tags>
   </entry>
   <entry>
+    <title>ISSUE</title>
+    <url>/2024/03/18/issue/</url>
+    <content><![CDATA[<h2 id="issue-vlog"><a href="#issue-vlog" class="headerlink" title="issue vlog"></a>issue vlog</h2><h4 id="1-nagios-无法停止联系人发送短讯"><a href="#1-nagios-无法停止联系人发送短讯" class="headerlink" title="1.nagios 无法停止联系人发送短讯"></a>1.nagios 无法停止联系人发送短讯</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">1.联系人配置去掉勾选“活动”选项</span></span><br><span class="line"><span class="attr">2.联系人组移除admin</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/nagisosql.png"></p>
+<h4 id="zabbix-客户端安装"><a href="#zabbix-客户端安装" class="headerlink" title="zabbix 客户端安装"></a>zabbix 客户端安装</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#选择对应服务器的版本，安装对应yum数据库</span></span><br><span class="line"><span class="attr">rpm</span> <span class="string">-Uvh http://repo.zabbix.com/zabbix/3.0/rhel/7/x86_64/zabbix-release-3.0-1.el7.noarch.rpm</span></span><br><span class="line"><span class="comment">#yum安装Zabbix-Agent</span></span><br><span class="line"><span class="attr">yum</span> <span class="string">-y install zabbix-agent</span></span><br><span class="line"><span class="comment">#开机启动</span></span><br><span class="line"><span class="meta">[root@rancher-nfs</span> <span class="string">~]# systemctl start zabbix-agent</span></span><br><span class="line"><span class="meta">[root@rancher-nfs</span> <span class="string">~]# systemctl enable zabbix-agent</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+]]></content>
+      <categories>
+        <category>ops</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>常用命令</title>
     <url>/2022/06/23/hexo/</url>
     <content><![CDATA[<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">hexo</span> <span class="string">clean</span></span><br><span class="line"><span class="attr">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="attr">hexo</span> <span class="string">d</span></span><br></pre></td></tr></table></figure>
@@ -311,19 +327,6 @@
 <h3 id="google远程电脑"><a href="#google远程电脑" class="headerlink" title="google远程电脑"></a>google远程电脑</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;colab.research.google.com&#x2F;github&#x2F;PradyumnaKrishna&#x2F;Colab-Hacks&#x2F;blob&#x2F;master&#x2F;Colab%20RDP&#x2F;Colab%20RDP.ipynb</span><br></pre></td></tr></table></figure>
 <h3 id="订阅转换"><a href="#订阅转换" class="headerlink" title="订阅转换"></a>订阅转换</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;sub.789.st&#x2F;</span><br><span class="line"></span><br><span class="line">##trojan-go xray 一键脚本</span><br><span class="line">https:&#x2F;&#x2F;github.com&#x2F;jinwyp&#x2F;one_click_script&#x2F;blob&#x2F;master&#x2F;README_CN.md</span><br><span class="line"></span><br><span class="line">##扩容根</span><br><span class="line">https:&#x2F;&#x2F;www.moewah.com&#x2F;archives&#x2F;4719.html</span><br><span class="line"></span><br><span class="line">mkdir -p &#x2F;tmp&#x2F;introot</span><br><span class="line">mkdir -p &#x2F;tmp&#x2F;extroot</span><br><span class="line">mount --bind &#x2F; &#x2F;tmp&#x2F;introot</span><br><span class="line">mount &#x2F;dev&#x2F;mmcblk0p3 &#x2F;tmp&#x2F;extroot</span><br><span class="line">tar -C &#x2F;tmp&#x2F;introot -cvf - . | tar -C &#x2F;tmp&#x2F;extroot -xf -</span><br><span class="line">umount &#x2F;tmp&#x2F;introot</span><br><span class="line">umount &#x2F;tmp&#x2F;extroot</span><br><span class="line"></span><br><span class="line">## 固件下载</span><br><span class="line">https:&#x2F;&#x2F;github.com&#x2F;DHDAXCW</span><br><span class="line">https:&#x2F;&#x2F;github.com&#x2F;DHDAXCW&#x2F;NanoPi-R4S&#x2F;releases</span><br><span class="line"></span><br><span class="line">#友善官网</span><br><span class="line">https:&#x2F;&#x2F;bigdongdong.gitbook.io&#x2F;nanopi-r2s&#x2F;r4sotherfirmware</span><br></pre></td></tr></table></figure>
 ]]></content>
-      <categories>
-        <category>ops</category>
-      </categories>
-      <tags>
-        <tag>运维</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ISSUE</title>
-    <url>/2024/03/18/issue/</url>
-    <content><![CDATA[<h2 id="issue-vlog"><a href="#issue-vlog" class="headerlink" title="issue vlog"></a>issue vlog</h2><h4 id="1-nagios-无法停止联系人发送短讯"><a href="#1-nagios-无法停止联系人发送短讯" class="headerlink" title="1.nagios 无法停止联系人发送短讯"></a>1.nagios 无法停止联系人发送短讯</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">1.联系人配置去掉勾选“活动”选项</span></span><br><span class="line"><span class="attr">2.联系人组移除admin</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/nagisosql.png"></p>
-<a id="more"></a>]]></content>
       <categories>
         <category>ops</category>
       </categories>
@@ -423,57 +426,6 @@
       </tags>
   </entry>
   <entry>
-    <title>nginx</title>
-    <url>/2020/07/24/nginx/</url>
-    <content><![CDATA[<h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><p><strong>一、介绍</strong></p>
-<p>​    Nginx是一个高性能的<strong>HTTP**</strong>和反向代理服务器<strong>，也是一个</strong>IMAP/POP3/SMTP**<strong>代理服务器</strong>。</p>
-<p>​     Nginx是一款轻量级的Web服务器/反向代理服务器以及电子邮件代理服务器，并在一个BSD-like协议下发行。由俄罗斯的程序设计师lgor Sysoev所开发，供俄国大型的入口网站及搜索引擎Rambler使用。其特点是<strong>占有内存少，并发能力强</strong>，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。</p>
-<p>​     Nginx相较于Apache\lighttpd具有占有内存少，稳定性高等优势，并且依靠并发能力强，丰富的模块库以及友好灵活的配置而闻名。<strong>在**</strong>Linux**<strong>操作系统下</strong>，nginx使用<strong>epoll事件模型</strong>,得益于此，nginx在Linux操作系统下效率相当高。同时Nginx在OpenBSD或FreeBSD操作系统上采用类似于Epoll的高效事件模型kqueue.</p>
-<a id="more"></a>
-
-<p><strong>二、名词解释</strong></p>
-<p><strong>代理服务器</strong></p>
-<p>一般是指局域网内部的机器<strong>通过代理服务器</strong>发送请求到互联网上的服务器，代理服务器一般作用在客户端。</p>
-<p><strong>反向代理</strong></p>
-<p>​      客户端（用户A）向反向代理的<strong>命名空间（**</strong>name-space**<strong>）中的内容</strong>发送普通请求，接着反向代理将判断<strong>向何处（原始服务器）转交请求</strong>，并将获得的内容返回给客户端。而客户端始终认为它访问的是原始服务器B而不是服务器Z。由于防火墙作用，只允许服务器Z进出，防火墙和反向代理共同作用保护了院子资源服务器B。</p>
-<p><img src="https://img-blog.csdn.net/20150630214513300?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1dGVuZ3RlbmcxMzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
-<p>​     <strong>用途：将防火墙后面的服务器提供给Internet用户访问。反向代理还可以为后端的多台服务器提供负载平衡或为后端较慢的服务器提供缓冲服务。</strong></p>
-<p><strong>正向代理</strong></p>
-<p>​     正向代理是一个位于<strong>客户端**</strong>A和原始服务器（服务器B）之间的服务器（代理服务器Z**），为了从原始服务器取得内容，用户A向代理服务器Z发送一个请求并指定目标（服务器B），然后代理服务器Z向服务器B转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。</p>
-<p><img src="https://img-blog.csdn.net/20150630214532017?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1dGVuZ3RlbmcxMzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
-<p>​      用途：<strong>在防火墙内的局域网客户端提供访问**</strong>Internet**<strong>的途径</strong>。还可以使用缓冲特性减少网络使用率。</p>
-<p>从安全性来讲：</p>
-<p>​    <strong>正向代理允许客户端通过它访问任意网站并且隐藏客户端自身</strong>，因此你必须采取安全措施以确保仅为经过授权的客户端提供服务。</p>
-<p>​    反向代理对外都是透明的，访问者并不知道自己访问的是一个代理。</p>
-<p><strong>三、Nginx VSApache</strong></p>
-<p>相同点：</p>
-<p>1、都是HTTP服务器软件</p>
-<p>2、功能上都采用模块化结构设计</p>
-<p>3、都支持通用的语言接口，如PHP、Perl、Python等</p>
-<p>4、支持正向、反向代理、虚拟主机、URL重写、压缩传输、SSL加密传输</p>
-<p>不同点：</p>
-<p>1、Apache处理速度很慢，占用很多内存资源</p>
-<p>2、功能上，Apache所有模块支持动静态编译，<strong>Nginx模块都是静态编译的</strong></p>
-<p>3、对Fcgi的支持：Apache支持的很不好，Nginx支持非常好</p>
-<p>4、处理连接方式：<strong>Nginx支持epoll,Apache不支持</strong></p>
-<p>5、空间使用上：<strong>Nginx安装包仅几百K</strong></p>
-<p>四、Nginx优势</p>
-<p>1、作为Web服务器，<strong>Nginx处理静态文件、索引文件，自动索引的效率非常高</strong></p>
-<p>2、作为代理服务器，Nginx可以实现无缓存的反向代理加速，提高网站运行速度</p>
-<p>3、作为负载均衡服务器，Nginx既可以在内部直接支持Rails和PHP，也可以支持HTTP代理服务器对外进行服务，同时还<strong>支持简单的容错和利用算法进行负载均衡</strong></p>
-<p>4、在性能方面，Nginx是专门为性能优化而开发的，实现上非常注重效率。它采用内核Poll模型，可以支持更多的并发连接，最大可以支持对5万个并发连接数的响应，而且只占用很低的内存资源</p>
-<p>5、在稳定性方面，Nginx采取了<strong>分阶段资源分配技术</strong>，使得CPU与内存的占用率非常低。Nginx官方表示，Nginx保持1万个没有活动的连接，而这些连接只占用2.5MB内存，因此，类似DOS这样的攻击对Nginx来说基本上是没有任何作用的</p>
-<p>6、在高可用性方面，<strong>Nginx支持热部署，启动速度特别迅速，因此可以在不间断服务的情况下，对软件版本或者配置进行升级，即使运行数月也无需重新启动，几乎可以做到7x24小时不间断地运行</strong></p>
-<p>   Nginx具有很高的稳定性；支持热部署；代码质量非常高，代码很规范，手法成熟，模块扩展也很容易；采用了一些os提供的最新特性如对sendfile(Linux2.2+),accept-filter（FreeBSD4.1+）,TCP_DEFER_ACCEPT(Linux 2.4+)的支持，从而大大提高了性能。</p>
-]]></content>
-      <categories>
-        <category>ops</category>
-      </categories>
-      <tags>
-        <tag>运维</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>mysql</title>
     <url>/2022/03/23/mysql/</url>
     <content><![CDATA[<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span> <span class="string">flush privileges;</span></span><br><span class="line"><span class="meta">mysql&gt;GRANT</span> <span class="string">ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;a&#x27;; #赋权，使其可以远程登录</span></span><br></pre></td></tr></table></figure>
@@ -542,6 +494,57 @@
 <p><img src="https://raw.githubusercontent.com/hzq82/img/master/img/osi.jpg"></p>
 <p>四层负载均衡，是主要作用于TCP协议报文之上，基于IP+端口来判断需要重定向的报文，并修改报文中目标IP地址以进行重定向的负载均衡方式。</p>
 <h5 id="ipvs"><a href="#ipvs" class="headerlink" title="ipvs"></a>ipvs</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Kubernetes的ClusterIP和NodePort都是通过ipvs service实现的，Pod当作ipvs service的server，通过NAT MQSQ实现转发。</span><br><span class="line"></span><br><span class="line">简单来说kube-proxy主要在所有的Node节点做如下三件事:</span><br><span class="line"></span><br><span class="line">    如果没有dummy类型虚拟网卡，则创建一个，默认名称为kube-ipvs0;把Kubernetes ClusterIP地址添加到kube-ipvs0，同时添加到ipset中。创建ipvs service，ipvs service地址为ClusterIP以及Cluster Port，ipvs server为所有的Endpoint地址，即Pod IP及端口。</span><br><span class="line"></span><br><span class="line">使用ipvs作为kube-proxy后端，不仅提高了转发性能，结合ipset还使iptables规则变得更“干净”清楚，从此再也不怕iptables。</span><br><span class="line"></span><br><span class="line">ipvs是专门设计用来做内核态四层负载均衡的，由于使用了hash表的数据结构，因此相比iptables来说性能会更好。基于ipvs实现Service转发，Kubernetes几乎能够具备无限的水平扩展能力。随着Kubernetes的部署规模越来越大，应用越来越广泛，ipvs必然会取代iptables成为Kubernetes Service的默认实现后端。</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>ops</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nginx</title>
+    <url>/2020/07/24/nginx/</url>
+    <content><![CDATA[<h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><p><strong>一、介绍</strong></p>
+<p>​    Nginx是一个高性能的<strong>HTTP**</strong>和反向代理服务器<strong>，也是一个</strong>IMAP/POP3/SMTP**<strong>代理服务器</strong>。</p>
+<p>​     Nginx是一款轻量级的Web服务器/反向代理服务器以及电子邮件代理服务器，并在一个BSD-like协议下发行。由俄罗斯的程序设计师lgor Sysoev所开发，供俄国大型的入口网站及搜索引擎Rambler使用。其特点是<strong>占有内存少，并发能力强</strong>，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。</p>
+<p>​     Nginx相较于Apache\lighttpd具有占有内存少，稳定性高等优势，并且依靠并发能力强，丰富的模块库以及友好灵活的配置而闻名。<strong>在**</strong>Linux**<strong>操作系统下</strong>，nginx使用<strong>epoll事件模型</strong>,得益于此，nginx在Linux操作系统下效率相当高。同时Nginx在OpenBSD或FreeBSD操作系统上采用类似于Epoll的高效事件模型kqueue.</p>
+<a id="more"></a>
+
+<p><strong>二、名词解释</strong></p>
+<p><strong>代理服务器</strong></p>
+<p>一般是指局域网内部的机器<strong>通过代理服务器</strong>发送请求到互联网上的服务器，代理服务器一般作用在客户端。</p>
+<p><strong>反向代理</strong></p>
+<p>​      客户端（用户A）向反向代理的<strong>命名空间（**</strong>name-space**<strong>）中的内容</strong>发送普通请求，接着反向代理将判断<strong>向何处（原始服务器）转交请求</strong>，并将获得的内容返回给客户端。而客户端始终认为它访问的是原始服务器B而不是服务器Z。由于防火墙作用，只允许服务器Z进出，防火墙和反向代理共同作用保护了院子资源服务器B。</p>
+<p><img src="https://img-blog.csdn.net/20150630214513300?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1dGVuZ3RlbmcxMzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p>​     <strong>用途：将防火墙后面的服务器提供给Internet用户访问。反向代理还可以为后端的多台服务器提供负载平衡或为后端较慢的服务器提供缓冲服务。</strong></p>
+<p><strong>正向代理</strong></p>
+<p>​     正向代理是一个位于<strong>客户端**</strong>A和原始服务器（服务器B）之间的服务器（代理服务器Z**），为了从原始服务器取得内容，用户A向代理服务器Z发送一个请求并指定目标（服务器B），然后代理服务器Z向服务器B转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。</p>
+<p><img src="https://img-blog.csdn.net/20150630214532017?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1dGVuZ3RlbmcxMzA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p>​      用途：<strong>在防火墙内的局域网客户端提供访问**</strong>Internet**<strong>的途径</strong>。还可以使用缓冲特性减少网络使用率。</p>
+<p>从安全性来讲：</p>
+<p>​    <strong>正向代理允许客户端通过它访问任意网站并且隐藏客户端自身</strong>，因此你必须采取安全措施以确保仅为经过授权的客户端提供服务。</p>
+<p>​    反向代理对外都是透明的，访问者并不知道自己访问的是一个代理。</p>
+<p><strong>三、Nginx VSApache</strong></p>
+<p>相同点：</p>
+<p>1、都是HTTP服务器软件</p>
+<p>2、功能上都采用模块化结构设计</p>
+<p>3、都支持通用的语言接口，如PHP、Perl、Python等</p>
+<p>4、支持正向、反向代理、虚拟主机、URL重写、压缩传输、SSL加密传输</p>
+<p>不同点：</p>
+<p>1、Apache处理速度很慢，占用很多内存资源</p>
+<p>2、功能上，Apache所有模块支持动静态编译，<strong>Nginx模块都是静态编译的</strong></p>
+<p>3、对Fcgi的支持：Apache支持的很不好，Nginx支持非常好</p>
+<p>4、处理连接方式：<strong>Nginx支持epoll,Apache不支持</strong></p>
+<p>5、空间使用上：<strong>Nginx安装包仅几百K</strong></p>
+<p>四、Nginx优势</p>
+<p>1、作为Web服务器，<strong>Nginx处理静态文件、索引文件，自动索引的效率非常高</strong></p>
+<p>2、作为代理服务器，Nginx可以实现无缓存的反向代理加速，提高网站运行速度</p>
+<p>3、作为负载均衡服务器，Nginx既可以在内部直接支持Rails和PHP，也可以支持HTTP代理服务器对外进行服务，同时还<strong>支持简单的容错和利用算法进行负载均衡</strong></p>
+<p>4、在性能方面，Nginx是专门为性能优化而开发的，实现上非常注重效率。它采用内核Poll模型，可以支持更多的并发连接，最大可以支持对5万个并发连接数的响应，而且只占用很低的内存资源</p>
+<p>5、在稳定性方面，Nginx采取了<strong>分阶段资源分配技术</strong>，使得CPU与内存的占用率非常低。Nginx官方表示，Nginx保持1万个没有活动的连接，而这些连接只占用2.5MB内存，因此，类似DOS这样的攻击对Nginx来说基本上是没有任何作用的</p>
+<p>6、在高可用性方面，<strong>Nginx支持热部署，启动速度特别迅速，因此可以在不间断服务的情况下，对软件版本或者配置进行升级，即使运行数月也无需重新启动，几乎可以做到7x24小时不间断地运行</strong></p>
+<p>   Nginx具有很高的稳定性；支持热部署；代码质量非常高，代码很规范，手法成熟，模块扩展也很容易；采用了一些os提供的最新特性如对sendfile(Linux2.2+),accept-filter（FreeBSD4.1+）,TCP_DEFER_ACCEPT(Linux 2.4+)的支持，从而大大提高了性能。</p>
 ]]></content>
       <categories>
         <category>ops</category>
@@ -636,22 +639,6 @@
       </tags>
   </entry>
   <entry>
-    <title>网络知识</title>
-    <url>/2020/08/14/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<h4 id="https-通讯流程"><a href="#https-通讯流程" class="headerlink" title="https 通讯流程"></a>https 通讯流程</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">1）Client发起请求；</span></span><br><span class="line"><span class="attr">2）Server端响应请求，并在之后将证书发送至Client；</span></span><br><span class="line"><span class="attr">3）Client使用认证机构的公钥认证证书，并从证书中取出Server端公钥；</span></span><br><span class="line"><span class="attr">4）Client使用公钥加密一个随机秘钥，并传到Server；</span></span><br><span class="line"><span class="attr">5）Server使用私钥解密出随机秘钥；</span></span><br><span class="line"><span class="attr">6）通信双方使用随机秘钥最为对称秘钥进行加密解密。</span></span><br><span class="line"><span class="comment">#参考 http://www.52im.net/thread-1751-1-1.html</span></span><br></pre></td></tr></table></figure>
-<h4 id="traceroute的基本原理"><a href="#traceroute的基本原理" class="headerlink" title="traceroute的基本原理"></a>traceroute的基本原理</h4><p><img src="http://www.52im.net/data/attachment/forum/201809/21/161014pkzjhk8h93ozr89r.png"></p>
-<p><img src="http://www.52im.net/data/attachment/forum/201809/21/161013ss7klzmlm3dh9xis.png"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">具体做法就是：</span><br><span class="line">1.Traceroute会设置特殊的TTL值，来追踪源主机和目标主机之间的路由数。首先它给目标主机发送一个 TTL&#x3D;1 的UDP数据包，那么这个数据包一旦在路上遇到一个路由器，TTL就变成了0（TTL规则是每经过一个路由器都会减1），因为TTL&#x3D;0了，所以路由器就会把这个数据包丢掉，然后产生一个错误类型（超时）的ICMP数据包回发给源主机，也就是差错包。这个时候源主机就拿到了第一个路由节点的IP和相关信息了;  </span><br><span class="line">2.接着，源主机再给目标主机发一个 TTL&#x3D;2 的UDP数据包，依旧上述流程走一遍，就知道第二个路由节点的IP和耗时情况等信息了;  </span><br><span class="line">3.如此反复进行，Traceroute就可以拿到从主机A到主机B之间所有路由器的信息了。</span><br><span class="line">4.但是有个问题是，如果数据包到达了目标主机的话，即使目标主机接收到TTL值为1的IP数据包，它也是不会丢弃该数据包的，也不会产生一份超时的ICMP回发数据包的，因为数据包已经达到了目的地嘛。那我们应该怎么认定数据包是否达到了目标主机呢?  </span><br><span class="line">5.Traceroute的方法是在源主机发送UDP数据包给目标主机的时候，会设置一个不可能达到的目标端口号（例如大于30000的端口号），那么当这个数据包真的到达目标主机的时候，目标主机发现没有对应的端口号，因此会产生一份“端口不可达”的错误ICMP报文返回给源主机.  </span><br><span class="line">#参考资料 http:&#x2F;&#x2F;www.52im.net&#x2F;thread-1973-1-1.html</span><br></pre></td></tr></table></figure>
-<h4 id="同步I-O、异步I-O与阻塞I-O、非阻塞I-O的区别"><a href="#同步I-O、异步I-O与阻塞I-O、非阻塞I-O的区别" class="headerlink" title="同步I/O、异步I/O与阻塞I/O、非阻塞I/O的区别"></a>同步I/O、异步I/O与阻塞I/O、非阻塞I/O的区别</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">一、I&#x2F;O</span><br><span class="line">　　I&#x2F;O (Input&#x2F;Output，输入&#x2F;输出)即数据的读取（接收）或写入（发送）操作。</span><br><span class="line">　　通常用户进程中的一个完整I&#x2F;O分为两阶段：用户进程空间&lt;--&gt;内核空间、内核空间&lt;--&gt;设备空间（磁盘、网络等）。</span><br><span class="line">　　I&#x2F;O有内存I&#x2F;O、网络I&#x2F;O和磁盘I&#x2F;O三种，通常我们说的IO指的是后两者。</span><br><span class="line">二、同步I&#x2F;O与异步I&#x2F;O</span><br><span class="line">　　同步和异步关注的是消息通信机制 (synchronous communication&#x2F; asynchronous communication)</span><br><span class="line">　　所谓同步，就是在发出一个调用时，在没有得到结果之前，该调用就不返回。但是一旦调用返回，就得到返回值了。</span><br><span class="line">　　换句话说，就是由调用者主动等待这个调用的结果。</span><br><span class="line">　　而异步则是相反，调用在发出之后，这个调用就直接返回了，所以没有返回结果。</span><br><span class="line">　　换句话说，当一个异步过程调用发出后，调用者不会立刻得到结果。而是在调用发出后，被调用者通过状态、通知来通知调用者，或通过回调函数处理这个调用。</span><br><span class="line">　　举个通俗的例子：</span><br><span class="line">　　你打电话问书店老板有没有《分布式系统》这本书，如果是同步通信机制，书店老板会说，你稍等，”我查一下&quot;，然后开始查啊查，等查好了（可能是5秒，也可能是一天）告诉你结果（返回结果）。</span><br><span class="line">　　而异步通信机制，书店老板直接告诉你我查一下啊，查好了打电话给你，然后直接挂电话了（不返回结果）。然后查好了，他会主动打电话给你。在这里老板通过“回电”这种方式来回调。</span><br><span class="line">三、阻塞I&#x2F;O、非阻塞I&#x2F;O</span><br><span class="line">　　阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态。</span><br><span class="line">　　阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才会返回。</span><br><span class="line">　　非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。</span><br><span class="line">　　举个通俗的例子：</span><br><span class="line"> 　 你打电话问书店老板有没有《分布式系统》这本书，你如果是阻塞式调用，你会一直把自己“挂起”，直到得到这本书有没有的结果。</span><br><span class="line">　　如果是非阻塞式调用，你不管老板有没有告诉你，你自己先一边去玩了， 当然你也要偶尔过几分钟check一下老板有没有返回结果。</span><br><span class="line">　　在这里阻塞与非阻塞与是否同步异步无关。跟老板通过什么方式回答你结果无关。</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>ops</category>
-      </categories>
-      <tags>
-        <tag>杂谈</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>杂谈</title>
     <url>/2020/08/04/%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<h2 id="技术杂谈"><a href="#技术杂谈" class="headerlink" title="技术杂谈"></a>技术杂谈</h2><h4 id="1-sata-和-sas的区别"><a href="#1-sata-和-sas的区别" class="headerlink" title="1.sata 和 sas的区别"></a>1.sata 和 sas的区别</h4><p>一.性能区别   </p>
@@ -673,6 +660,22 @@
 ]]></content>
       <categories>
         <category>IT</category>
+      </categories>
+      <tags>
+        <tag>杂谈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网络知识</title>
+    <url>/2020/08/14/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h4 id="https-通讯流程"><a href="#https-通讯流程" class="headerlink" title="https 通讯流程"></a>https 通讯流程</h4><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">1）Client发起请求；</span></span><br><span class="line"><span class="attr">2）Server端响应请求，并在之后将证书发送至Client；</span></span><br><span class="line"><span class="attr">3）Client使用认证机构的公钥认证证书，并从证书中取出Server端公钥；</span></span><br><span class="line"><span class="attr">4）Client使用公钥加密一个随机秘钥，并传到Server；</span></span><br><span class="line"><span class="attr">5）Server使用私钥解密出随机秘钥；</span></span><br><span class="line"><span class="attr">6）通信双方使用随机秘钥最为对称秘钥进行加密解密。</span></span><br><span class="line"><span class="comment">#参考 http://www.52im.net/thread-1751-1-1.html</span></span><br></pre></td></tr></table></figure>
+<h4 id="traceroute的基本原理"><a href="#traceroute的基本原理" class="headerlink" title="traceroute的基本原理"></a>traceroute的基本原理</h4><p><img src="http://www.52im.net/data/attachment/forum/201809/21/161014pkzjhk8h93ozr89r.png"></p>
+<p><img src="http://www.52im.net/data/attachment/forum/201809/21/161013ss7klzmlm3dh9xis.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">具体做法就是：</span><br><span class="line">1.Traceroute会设置特殊的TTL值，来追踪源主机和目标主机之间的路由数。首先它给目标主机发送一个 TTL&#x3D;1 的UDP数据包，那么这个数据包一旦在路上遇到一个路由器，TTL就变成了0（TTL规则是每经过一个路由器都会减1），因为TTL&#x3D;0了，所以路由器就会把这个数据包丢掉，然后产生一个错误类型（超时）的ICMP数据包回发给源主机，也就是差错包。这个时候源主机就拿到了第一个路由节点的IP和相关信息了;  </span><br><span class="line">2.接着，源主机再给目标主机发一个 TTL&#x3D;2 的UDP数据包，依旧上述流程走一遍，就知道第二个路由节点的IP和耗时情况等信息了;  </span><br><span class="line">3.如此反复进行，Traceroute就可以拿到从主机A到主机B之间所有路由器的信息了。</span><br><span class="line">4.但是有个问题是，如果数据包到达了目标主机的话，即使目标主机接收到TTL值为1的IP数据包，它也是不会丢弃该数据包的，也不会产生一份超时的ICMP回发数据包的，因为数据包已经达到了目的地嘛。那我们应该怎么认定数据包是否达到了目标主机呢?  </span><br><span class="line">5.Traceroute的方法是在源主机发送UDP数据包给目标主机的时候，会设置一个不可能达到的目标端口号（例如大于30000的端口号），那么当这个数据包真的到达目标主机的时候，目标主机发现没有对应的端口号，因此会产生一份“端口不可达”的错误ICMP报文返回给源主机.  </span><br><span class="line">#参考资料 http:&#x2F;&#x2F;www.52im.net&#x2F;thread-1973-1-1.html</span><br></pre></td></tr></table></figure>
+<h4 id="同步I-O、异步I-O与阻塞I-O、非阻塞I-O的区别"><a href="#同步I-O、异步I-O与阻塞I-O、非阻塞I-O的区别" class="headerlink" title="同步I/O、异步I/O与阻塞I/O、非阻塞I/O的区别"></a>同步I/O、异步I/O与阻塞I/O、非阻塞I/O的区别</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">一、I&#x2F;O</span><br><span class="line">　　I&#x2F;O (Input&#x2F;Output，输入&#x2F;输出)即数据的读取（接收）或写入（发送）操作。</span><br><span class="line">　　通常用户进程中的一个完整I&#x2F;O分为两阶段：用户进程空间&lt;--&gt;内核空间、内核空间&lt;--&gt;设备空间（磁盘、网络等）。</span><br><span class="line">　　I&#x2F;O有内存I&#x2F;O、网络I&#x2F;O和磁盘I&#x2F;O三种，通常我们说的IO指的是后两者。</span><br><span class="line">二、同步I&#x2F;O与异步I&#x2F;O</span><br><span class="line">　　同步和异步关注的是消息通信机制 (synchronous communication&#x2F; asynchronous communication)</span><br><span class="line">　　所谓同步，就是在发出一个调用时，在没有得到结果之前，该调用就不返回。但是一旦调用返回，就得到返回值了。</span><br><span class="line">　　换句话说，就是由调用者主动等待这个调用的结果。</span><br><span class="line">　　而异步则是相反，调用在发出之后，这个调用就直接返回了，所以没有返回结果。</span><br><span class="line">　　换句话说，当一个异步过程调用发出后，调用者不会立刻得到结果。而是在调用发出后，被调用者通过状态、通知来通知调用者，或通过回调函数处理这个调用。</span><br><span class="line">　　举个通俗的例子：</span><br><span class="line">　　你打电话问书店老板有没有《分布式系统》这本书，如果是同步通信机制，书店老板会说，你稍等，”我查一下&quot;，然后开始查啊查，等查好了（可能是5秒，也可能是一天）告诉你结果（返回结果）。</span><br><span class="line">　　而异步通信机制，书店老板直接告诉你我查一下啊，查好了打电话给你，然后直接挂电话了（不返回结果）。然后查好了，他会主动打电话给你。在这里老板通过“回电”这种方式来回调。</span><br><span class="line">三、阻塞I&#x2F;O、非阻塞I&#x2F;O</span><br><span class="line">　　阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态。</span><br><span class="line">　　阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才会返回。</span><br><span class="line">　　非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。</span><br><span class="line">　　举个通俗的例子：</span><br><span class="line"> 　 你打电话问书店老板有没有《分布式系统》这本书，你如果是阻塞式调用，你会一直把自己“挂起”，直到得到这本书有没有的结果。</span><br><span class="line">　　如果是非阻塞式调用，你不管老板有没有告诉你，你自己先一边去玩了， 当然你也要偶尔过几分钟check一下老板有没有返回结果。</span><br><span class="line">　　在这里阻塞与非阻塞与是否同步异步无关。跟老板通过什么方式回答你结果无关。</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>ops</category>
       </categories>
       <tags>
         <tag>杂谈</tag>
